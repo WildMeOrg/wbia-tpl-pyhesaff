@@ -9,6 +9,7 @@ dist
 *.dll
 *.so
 *.a
+_skbuild/
 
 
 # utool output

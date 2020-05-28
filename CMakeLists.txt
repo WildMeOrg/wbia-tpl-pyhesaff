@@ -1,51 +1,51 @@
 cmake_minimum_required(VERSION 3.13.0)
 
+set (CMAKE_CXX_STANDARD 11)
 
-#######################################
-# Clang2 = Clang + OpenMP built for OSX Mavericks
-# http://goo.gl/1Tg0Zj
-if (APPLE)
-    set(CMAKE_MACOSX_RPATH 1)
-    message(STATUS "Detected APPLE system")
-    SET(CLANG2 Off)
-endif()
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0003 NEW)
+endif(COMMAND cmake_policy)
 
-if (APPLE AND CLANG2)
-    message(STATUS "Using clang2")
-    set(CMAKE_C_COMPILER "clang2")
-    set(CMAKE_CXX_COMPILER "clang2++")
-endif()
+project(pyhesaff LANGUAGES C CXX)
+string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
 
-#######################################
-project(hesaff LANGUAGES C CXX) #### !!!!IMPORTANT!!!! THIS MUST BE DOWN HERE FOR CLANG2
-#set(CMAKE_BUILD_TYPE "Release")
+include(${PROJECT_SOURCE_DIR}/CMake/pyhesaff_utils.cmake)
 
-if (APPLE)
-    #MacPorts
-    message(STATUS "USING MACPORTS")
-    # Fixme: newstyle include and link
+function(_pycmd outvar cmd)
+  execute_process(
+    COMMAND python -c "${cmd}"
+    RESULT_VARIABLE _exitcode
+    OUTPUT_VARIABLE _output
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+  if(NOT ${_exitcode} EQUAL 0)
+    message(ERROR "Failed when running python code: \"\"\"
+${cmd}\"\"\"")
+    message(FATAL_ERROR "Python command failed with error code: ${_exitcode}")
+  endif()
+  # Remove supurflous newlines (artifacts of print)
+  string(STRIP "${_output}" _output)
+  set(${outvar} "${_output}" PARENT_SCOPE)
+endfunction()
+_pycmd(PYHESAFF_VERSION "import setup; print(setup.version)")
+
+message(STATUS "PYHESAFF_VERSION = ${PYHESAFF_VERSION}")
+
+DISSECT_VERSION()
+GET_OS_INFO()
+
+if (OS_IS_MACOS)
+    message(STATUS "INCLUDING MACPORTS")
+
     include_directories(/opt/local/include)
     link_directories(/opt/local/lib)
-endif()
 
-#######################################
-if(APPLE AND CLANG2)
     # Add flags to support clang2
-    message(STATUS "APPLE + CLANG2: Adding stdlib flags for clang")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -lc++")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++")
-else()
-    # TODO: this is gcc only, fix for clang
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
-
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-#set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -lc++")
-#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++")
 
 # Setup basic python stuff and ensure we have skbuild
 #list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_SOURCE_DIR}/CMake")
@@ -53,78 +53,172 @@ endif()
 
 #######################################
 
+# detect if using the Clang compiler
+if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang")
+  set(CMAKE_COMPILER_IS_CLANG 1)
+endif ()
 
-# OpenCV_ROOT_DIR=$HOME/.local
-# OpenCV_ROOT_DIR=$HOME/.local python setup.py develop
-#set(OpenCV_FIND_REQUIRED_COMPONENTS)
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+  set(CMAKE_COMPILER_IS_CLANGXX 1)
+endif ()
+
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
+# Add an "uninstall" target
+CONFIGURE_FILE ("${PROJECT_SOURCE_DIR}/CMake/uninstall_target.cmake.in"
+    "${PROJECT_BINARY_DIR}/uninstall_target.cmake" IMMEDIATE @ONLY)
+ADD_CUSTOM_TARGET (uninstall "${CMAKE_COMMAND}" -P
+    "${PROJECT_BINARY_DIR}/uninstall_target.cmake")
+
+# Set the build type.  Options are:
+#  Debug          : w/ debug symbols, w/o optimization
+#  Release        : w/o debug symbols, w/ optimization
+#  RelWithDebInfo : w/ debug symbols, w/ optimization
+#  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
+
+if (NOT CMAKE_BUILD_TYPE)
+    #set(CMAKE_BUILD_TYPE Release)
+    set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Build type" FORCE)
+    #set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+#set the default path for built executables to the "bin" directory
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+#set the default path for built libraries to the "lib" directory
+set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+# set output path for tests
+set(TEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/test)
+
+option(BUILD_TESTS "Build tests" ON)
+option(BUILD_DOC "Build documentation" ON)
+option(USE_OPENMP "Use OpenMP multi-threading" ON)
+
 find_package( OpenCV REQUIRED )
 IF(OpenCV_FOUND)
-  message(STATUS "Found OpenCV! ^_^")
-  message(STATUS "OpenCV_FOUND = ${OpenCV_FOUND}")
-  message(STATUS "OpenCV_INCLUDE_DIR = ${OpenCV_INCLUDE_DIR}")
-  message(STATUS "OpenCV_LIBRARIES = ${OpenCV_LIBRARIES}")
-  message(STATUS "OpenCV_LINK_DIRECTORIES = ${OpenCV_LINK_DIRECTORIES}")
-  message(STATUS "OpenCV_ROOT_DIR = ${OpenCV_ROOT_DIR}")
+  include_directories(${OpenCV_INCLUDE_DIR})
 ELSE()
-  message(FATAL_ERROR "Missing OpenCV! x.x")
+  message(FATAL_ERROR "OpenCV NOT found")
 ENDIF()
 
-#######################################
-find_package(OpenMP)
-IF(OPENMP_FOUND)
-    message(STATUS "Found OpenMP! ^_^")
-    # add flags for OpenMP
-    #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS} -fopenmp")
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS} -fopenmp")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${OpenMP_C_FLAGS} ${OpenMP_SHARED_LINKER_FLAGS}")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_C_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
-ELSE()
-  message(STATUS "Missed OpenMP! x_x")
-ENDIF()
+if (USE_OPENMP)
+    find_package(OpenMP)
+    if(OPENMP_FOUND)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+    else()
+        message(WARNING "OpenMP NOT found")
+    endif()
+endif()
 
-option(ENABLE_GPROF Off)
-IF(ENABLE_GPROF)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
-    SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
-    SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
-ENDIF()
+find_package(PkgConfig REQUIRED)
 
-#######################################
-set(SOURCE_FILES
-    src/hesaff.cpp
-    src/pyramid.cpp
-    src/helpers.cpp
-    src/affine.cpp
-    src/orientation.cpp
-    #src/python_bindings.cpp
-    src/siftdesc.cpp)
+#set the C/C++ include path to the "include" directory
+include_directories(BEFORE ${PROJECT_SOURCE_DIR}/src/cpp)
+
+add_definitions("-Wall -Wno-unknown-pragmas -Wno-unused-function" )
+
+# install and export variables
+set(config_install_dir "lib/CMake/${PROJECT_NAME}")
+set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
+set(version_config "${generated_dir}/pyhesaff-config-version.cmake")
+set(project_config "${generated_dir}/pyhesaff-config.cmake")
+set(targets_export_name "pyhesaff-targets")
+set(namespace "pyhesaff::")
+
+if (SKBUILD)
+  # Override output paths when using scikit-build
+  set(HESAFF_LIB_INSTALL_DIR "pyhesaff/lib")
+  set(HESAFF_INCLUDE_INSTALL_DIR "pyhesaff/include")
+endif()
+
+if (NOT SKBUILD)
+  add_subdirectory( CMake )
+endif()
+add_subdirectory( src/cpp )
+if (BUILD_TESTS)
+  add_subdirectory( test )
+endif (BUILD_TESTS)
+
+# CMake configuration file creation
+# Include module with fuction 'write_basic_package_version_file'
+include(CMakePackageConfigHelpers)
+
+# Configure 'pyhesaff-config-version.cmake'
+# Note: PYHESAFF_VERSION is used as a VERSION
+write_basic_package_version_file(
+    "${version_config}"
+    VERSION ${PYHESAFF_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+# Configure 'pyhesaff-config.cmake'
+# Use variables:
+#   * targets_export_name
+#   * PROJECT_NAME
+configure_package_config_file(
+  "CMake/Config.cmake.in"
+    "${project_config}"
+    INSTALL_DESTINATION "${config_install_dir}"
+)
+
+if (NOT SKBUILD)
+  # Config
+  #   * <prefix>/lib/CMake/pyhesaff/pyhesaff-config.cmake
+  #   * <prefix>/lib/CMake/pyhesaff/pyhesaff-config-version.cmake
+  install(
+      FILES "${project_config}" "${version_config}"
+      DESTINATION "${config_install_dir}"
+  )
+  # Config
+  #   * <prefix>/lib/CMake/pyhesaff/pyhesaff-targets.cmake
+  install(
+      EXPORT "${targets_export_name}"
+      NAMESPACE "${namespace}"
+      DESTINATION "${config_install_dir}"
+  )
+endif()
 
 
-message(STATUS "OpenMP_SHARED_LINKER_FLAGS = ${OpenMP_SHARED_LINKER_FLAGS}")
-message(STATUS "OpenMP_EXE_LINKER_FLAGS = ${OpenMP_EXE_LINKER_FLAGS}")
-message(STATUS "OpenCV_INCLUDE_DIR = ${OpenCV_INCLUDE_DIR}")
-message(STATUS "OpenCV_LIBRARIES = ${OpenCV_LIBRARIES}")
+# CPACK options
 
-add_library(hesaff SHARED ${SOURCE_FILES})
+# RPM
+find_program(RPM_PROGRAM rpm)
+if(EXISTS ${RPM_PROGRAM})
+  list(APPEND CPACK_GENERATOR "RPM")
+endif(EXISTS ${RPM_PROGRAM})
+# DEB
+find_program(DPKG_PROGRAM dpkg)
+if(EXISTS ${DPKG_PROGRAM})
+  list(APPEND CPACK_GENERATOR "DEB")
+endif(EXISTS ${DPKG_PROGRAM})
+# NSIS
+find_program(NSIS_PROGRAM makensis MakeNSIS)
+if(EXISTS ${NSIS_PROGRAM})
+  list(APPEND CPACK_GENERATOR "NSIS")
+endif(EXISTS ${NSIS_PROGRAM})
+# dpkg
+find_program(PACKAGE_MAKER_PROGRAM PackageMaker
+	    HINTS /Developer/Applications/Utilities)
+if(EXISTS ${PACKAGE_MAKER_PROGRAM})
+  list(APPEND CPACK_GENERATOR "PackageMaker")
+endif(EXISTS ${PACKAGE_MAKER_PROGRAM})
 
-target_include_directories(hesaff PRIVATE ${OpenCV_INCLUDE_DIR})
+set(CPACK_GENERATOR "${CPACK_GENERATOR}")
+set(CPACK_MONOLITHIC_INSTALL 1)
+set(CPACK_SET_DESTDIR ON)
+include(InstallRequiredSystemLibraries)
+set(CPACK_PACKAGE_CONTACT "Marius Muja")
+set(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+SET(CPACK_PACKAGE_VERSION ${PYHESAFF_VERSION})
+SET(CPACK_PACKAGE_VERSION_MAJOR ${PYHESAFF_VERSION_MAJOR})
+SET(CPACK_PACKAGE_VERSION_MINOR ${PYHESAFF_VERSION_MINOR})
+SET(CPACK_PACKAGE_VERSION_PATCH ${PYHESAFF_VERSION_PATCH})
+include(CPack)
 
-#######################################
-target_link_libraries(hesaff PRIVATE ${OpenCV_LIBRARIES})
 
-file(RELATIVE_PATH _install_dest "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
-install(TARGETS ${module_name} LIBRARY DESTINATION "${_install_dest}")
-#message(STATUS CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE})
-
-
-# Annotate code with ctags
-#set_source_files_properties( tags PROPERTIES GENERATED true)
-#add_custom_command ( OUTPUT tags
-#    COMMAND ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
-#    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} )
-#add_executable(hesaff_tags tags)
-#add_executable(hesaffexe ${SOURCE_FILES})
-#target_include_directories(hesaffexe PRIVATE ${OpenCV_INCLUDE_DIR})
-#target_link_libraries(hesaffexe ${OpenCV_LIBRARIES})
+message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "Building tests: ${BUILD_TESTS}")
+message(STATUS "Building documentation: ${BUILD_DOC}")
+message(STATUS "Using OpenMP support: ${USE_OPENMP}")
