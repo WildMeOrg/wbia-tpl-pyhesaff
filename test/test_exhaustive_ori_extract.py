@@ -30,9 +30,9 @@ def test_ori_extract_main():
     import pyhesaff
     from plottool import draw_func2 as df2
     from plottool.viz_keypoints import show_keypoints
-    import vtool  # NOQA
-    import vtool.image as gtool
-    import vtool.keypoint as ktool
+    import vtool_ibeis  # NOQA
+    import vtool_ibeis.image as gtool
+    import vtool_ibeis.keypoint as ktool
     np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
     # Read data
     print('[rotinvar] loading test data')

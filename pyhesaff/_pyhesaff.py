@@ -382,8 +382,8 @@ def detect_feats(img_fpath, use_adaptive_scale=False, nogravity_hack=False, **kw
         python -m pyhesaff detect_feats --show --fname easy1.png --no-ai --scale-min=100 --verbose
         python -m pyhesaff detect_feats --show --fname easy1.png --no-ai --scale-max=20 --verbose
 
-        python -m vtool.test_constrained_matching visualize_matches --show
-        python -m vtool.tests.dummy testdata_ratio_matches --show
+        python -m vtool_ibeis.test_constrained_matching visualize_matches --show
+        python -m vtool_ibeis.tests.dummy testdata_ratio_matches --show
 
         python -m pyhesaff detect_feats --show --fname easy1.png --ai \
             --verbose --rebuild-hesaff --scale-min=35 --scale-max=40 --no-rmbuild
@@ -419,7 +419,7 @@ def detect_feats(img_fpath, use_adaptive_scale=False, nogravity_hack=False, **kw
         >>> # ENABLE_DOCTEST
         >>> # Test simple detect
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> TAU = 2 * np.pi
         >>> fpath = grab_test_imgpath(ub.argval('--fname', default='astro.png'))
         >>> theta = float(ub.argval('--theta', 0))  # TAU * 3 / 8)
@@ -580,7 +580,7 @@ def detect_feats_in_image(img, **kwargs):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath('astro.png')
         >>> img= vt.imread(img_fpath)
         >>> (kpts, vecs) = detect_feats_in_image(img)
@@ -626,7 +626,7 @@ def detect_num_feats_in_image(img, **kwargs):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath('zebra.png')
         >>> img = vt.imread(img_fpath)
         >>> nKpts = detect_num_feats_in_image(img)
@@ -640,7 +640,7 @@ def detect_num_feats_in_image(img, **kwargs):
         >>> from pyhesaff._pyhesaff import *  # NOQA
         >>> setup = ub.codeblock(
             '''
-            import vtool as vt
+            import vtool_ibeis as vt
             import pyhesaff
             img_fpath = grab_test_imgpath('carl.jpg')
             img = vt.imread(img_fpath)
@@ -691,9 +691,9 @@ def extract_vecs(img_fpath, kpts, **kwargs):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath('carl.jpg')
-        >>> kpts = vt.dummy.get_dummy_kpts()
+        >>> kpts = vt.demodata.get_dummy_kpts()
         >>> vecs = extract_vecs(img_fpath, kpts)
         >>> result = ('vecs = %s' % (str(vecs),))
         >>> print(result)
@@ -701,7 +701,7 @@ def extract_vecs(img_fpath, kpts, **kwargs):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath(ub.argval('--fname', default='astro.png'))
         >>> # Extract original keypoints
         >>> kpts, vecs1 = detect_feats(img_fpath)
@@ -759,7 +759,7 @@ def extract_patches(img_or_fpath, kpts, **kwargs):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> kwargs = {}
         >>> img_fpath = grab_test_imgpath('carl.jpg')
         >>> img = vt.imread(img_fpath)
@@ -807,7 +807,7 @@ def extract_desc_from_patches(patch_list):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath(ub.argval('--fname', default='astro.png'))
         >>> # First extract keypoints normally
         >>> (orig_kpts_list, orig_vecs_list) = detect_feats(img_fpath)
@@ -824,7 +824,7 @@ def extract_desc_from_patches(patch_list):
     Example:
         >>> # ENABLE_DOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
-        >>> import vtool as vt
+        >>> import vtool_ibeis as vt
         >>> img_fpath = grab_test_imgpath(ub.argval('--fname', default='astro.png'))
         >>> # First extract keypoints normally
         >>> (orig_kpts_list, orig_vecs_list) = detect_feats(img_fpath)
@@ -905,8 +905,8 @@ def test_rot_invar():
         python -m pyhesaff test_rot_invar --show --rebuild-hesaff --no-rmbuild
         python -m pyhesaff test_rot_invar --show --nocpp
 
-        python -m vtool.tests.dummy testdata_ratio_matches --show --ratio_thresh=1.0 --rotation_invariance --rebuild-hesaff
-        python -m vtool.tests.dummy testdata_ratio_matches --show --ratio_thresh=1.1 --rotation_invariance --rebuild-hesaff
+        python -m vtool_ibeis.tests.demodata testdata_ratio_matches --show --ratio_thresh=1.0 --rotation_invariance --rebuild-hesaff
+        python -m vtool_ibeis.tests.demodata testdata_ratio_matches --show --ratio_thresh=1.1 --rotation_invariance --rebuild-hesaff
 
     Example:
         >>> # DISABLE_DODCTEST
@@ -914,7 +914,7 @@ def test_rot_invar():
         >>> test_rot_invar()
     """
     import cv2
-    import vtool as vt
+    import vtool_ibeis as vt
     import plottool as pt
     TAU = 2 * np.pi
     fnum = pt.next_fnum()
@@ -963,8 +963,8 @@ def test_rot_invar():
 
 def vtool_adapt_rotation(img_fpath, kpts):
     """ rotation invariance in python """
-    import vtool.patch as ptool
-    import vtool.image as gtool
+    import vtool_ibeis.patch as ptool
+    import vtool_ibeis.image as gtool
     imgBGR = gtool.imread(img_fpath)
     kpts2 = ptool.find_kpts_direction(imgBGR, kpts)
     vecs2 = extract_vecs(img_fpath, kpts2)
@@ -972,7 +972,7 @@ def vtool_adapt_rotation(img_fpath, kpts):
 
 
 def adapt_scale(img_fpath, kpts):
-    import vtool.ellipse as etool
+    import vtool_ibeis.ellipse as etool
     nScales = 16
     nSamples = 16
     low, high = -1, 2

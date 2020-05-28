@@ -9,7 +9,7 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
     from plottool import draw_func2 as df2
     from plottool.viz_keypoints import _annotate_kpts, show_keypoints
     from plottool.viz_featrow import draw_feat_row
-    import vtool.patch as ptool
+    import vtool_ibeis.patch as ptool
     hrint = utool.horiz_print
     print('[rotinvar] +---')
     print('[rotinvar] | 3) Find dominant orientation in histogram')
@@ -25,7 +25,7 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
 def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers):
     from plottool import draw_func2 as df2
     import plottool
-    import vtool.patch as ptool
+    import vtool_ibeis.patch as ptool
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
     fnum = 1
     gorimag = plottool.color_orimag(gori, gmag, True)
@@ -71,7 +71,7 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
 
 def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     import pyhesaff
-    import vtool.patch as ptool
+    import vtool_ibeis.patch as ptool
     from plottool import draw_func2 as df2
     #----------------------#
     # --- Extract Data --- #

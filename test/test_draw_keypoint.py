@@ -23,7 +23,7 @@ def test_draw_keypoint_main():
     """
     from plottool import draw_func2 as df2
     from plottool import mpl_keypoint
-    import vtool.keypoint as ktool  # NOQA
+    import vtool_ibeis.keypoint as ktool  # NOQA
 
     # TODO: Gui tests yield:
     # Jul 13 13:14:53 www.longerdog.com Python[23974] <Error>: This user is not allowed access to the window system right now.

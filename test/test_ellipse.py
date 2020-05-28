@@ -9,7 +9,7 @@ from six.moves import zip, range
 import utool as ut
 import matplotlib as mpl
 import numpy as np
-import vtool.linalg as ltool
+import vtool_ibeis.linalg as ltool
 
 
 TAU = 2 * np.pi  # References: tauday.com
@@ -120,7 +120,7 @@ def in_depth_ellipse(kp):
     V = np.linalg.inv(invV)
     Z = (V.T).dot(V)
 
-    import vtool as vt
+    import vtool_ibeis as vt
     V_2x2 = V[0:2, 0:2]
     Z_2x2 = Z[0:2, 0:2]
     V_2x2_ = vt.decompose_Z_to_V_2x2(Z_2x2)

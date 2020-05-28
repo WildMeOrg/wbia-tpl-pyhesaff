@@ -63,7 +63,7 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     from plottool.viz_keypoints import _annotate_kpts, show_keypoints
     from plottool.viz_featrow import draw_feat_row
     import plottool
-    import vtool.patch as ptool
+    import vtool_ibeis.patch as ptool
     #----------------------#
     # --- Extract Data --- #
     #----------------------#
