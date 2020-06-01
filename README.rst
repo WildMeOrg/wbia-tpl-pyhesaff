@@ -1,4 +1,4 @@
-|CircleCI| |Travis| |Appveyor| |Codecov| |Pypi| |Downloads| |ReadTheDocs|
+|Travis| |Pypi|
 
 
 Hessian Affine + SIFT keypoints in Python
@@ -71,17 +71,7 @@ NOTES
 Requires opencv. On ubuntu you can: ``sudo apt-get install libopencv-dev``. You can also build / use wheels. 
 
 
-.. |CircleCI| image:: https://circleci.com/gh/Erotemic/hesaff.svg?style=svg
-    :target: https://circleci.com/gh/Erotemic/hesaff
-.. |Travis| image:: https://img.shields.io/travis/Erotemic/hesaff/master.svg?label=Travis%20CI
-   :target: https://travis-ci.org/Erotemic/hesaff?branch=master
-.. |Appveyor| image:: https://ci.appveyor.com/api/projects/status/github/Erotemic/hesaff?branch=master&svg=True
-   :target: https://ci.appveyor.com/project/Erotemic/hesaff/branch/master
-.. |Codecov| image:: https://codecov.io/github/Erotemic/hesaff/badge.svg?branch=master&service=github
-   :target: https://codecov.io/github/Erotemic/hesaff?branch=master
+.. |Travis| image:: https://img.shields.io/travis/WildbookOrg/hesaff/master.svg?label=Travis%20CI
+   :target: https://travis-ci.org/WildbookOrg/hesaff?branch=master
 .. |Pypi| image:: https://img.shields.io/pypi/v/hesaff.svg
-   :target: https://pypi.python.org/pypi/hesaff
-.. |Downloads| image:: https://img.shields.io/pypi/dm/hesaff.svg
-   :target: https://pypistats.org/packages/hesaff
-.. |ReadTheDocs| image:: https://readthedocs.org/projects/hesaff/badge/?version=latest
-    :target: http://hesaff.readthedocs.io/en/latest/
+   :target: https://pypi.python.org/pypi/wbia-pyhesaff
