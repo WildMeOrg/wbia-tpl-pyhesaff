@@ -161,44 +161,35 @@ except Exception:
     raise RuntimeError('FAILED TO ADD BUILD CONSTRUCTS')
 
 
-NAME = 'pyhesaff'
+NAME = 'wbia-pyhesaff'
 
 
 MB_PYTHON_TAG = native_mb_python_tag()  # NOQA
 VERSION = version = parse_version('pyhesaff/__init__.py')  # must be global for git tags
 
-ORIGINAL_AUTHORS = 'Krystian Mikolajczyk, Michal Perdoch'
-EXTENDED_AUTHORS = 'Jon Crall, Avi Weinstock'
+ORIGINAL_AUTHORS = ['Krystian Mikolajczyk', 'Michal Perdoch']
+EXTENDED_AUTHORS = ['Jon Crall', 'Avi Weinstock']
+CURRENT_AUTHORS = ['WildMe Developers']
 
-AUTHORS = ORIGINAL_AUTHORS + EXTENDED_AUTHORS
-AUTHOR_EMAIL = 'erotemic@gmail.com'
-URL_LIST = [
-    'http://cmp.felk.cvut.cz/~perdom1/hesaff/',
-    'https://github.com/Erotemic/hesaff',
-]
-URL = 'https://github.com/Erotemic/hesaff'
-LICENSE = 'BSD'
+AUTHORS = ', '.join(ORIGINAL_AUTHORS + EXTENDED_AUTHORS + CURRENT_AUTHORS)
+AUTHOR_EMAIL = 'dev@wildme.org'
+URL = 'https://github.com/WildbookOrg/hesaff'
+LICENSE = 'APL 2.0'
 DESCRIPTION = 'Vtool - Image Tools for Wildbook IA'
 
 
 KWARGS = OrderedDict(
     name=NAME,
     version=VERSION,
-    author=', '.join(AUTHORS),
+    author=AUTHORS,
     author_email=AUTHOR_EMAIL,
     description=DESCRIPTION,
     long_description=parse_long_description('README.rst'),
     long_description_content_type='text/x-rst',
     url=URL,
     license=LICENSE,
-    install_requires=parse_requirements('requirements/runtime.txt'),
-    extras_require={
-        'all': parse_requirements('requirements.txt'),
-        'tests': parse_requirements('requirements/tests.txt'),
-        'build': parse_requirements('requirements/build.txt'),
-        'runtime': parse_requirements('requirements/runtime.txt'),
-    },
-
+    install_requires=parse_requirements('requirements.txt'),
+    extras_require={},
     # --- PACKAGES ---
     # The combination of packages and package_dir is how scikit-build will
     # know that the cmake installed files belong in the pyhesaff module and
