@@ -12,8 +12,6 @@ add_definitions(-D_HESAFF_VERSION=${HESAFF_VERSION})
 add_definitions(-DHESAFF_VERSION_=${HESAFF_VERSION})
 add_definitions(-DHESAFF_VERSION=${HESAFF_VERSION})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/hesaff/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/hesaff/config.h)
-
 set(CPP_SOURCES 
     ${CMAKE_CURRENT_SOURCE_DIR}/hesaff/hesaff.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/hesaff/pyramid.cpp
