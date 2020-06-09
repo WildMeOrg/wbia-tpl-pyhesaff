@@ -30,6 +30,7 @@ endif()
 set_property(TARGET hesaff_s PROPERTY COMPILE_DEFINITIONS HESAFF_STATIC)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_COMPILER_IS_GNUCC)
+    add_library(hesaff SHARED ${CPP_SOURCES})
     set_target_properties(hesaff PROPERTIES LINKER_LANGUAGE CXX)
     target_link_libraries(hesaff -Wl,-whole-archive hesaff_s -Wl,-no-whole-archive)
 else()
