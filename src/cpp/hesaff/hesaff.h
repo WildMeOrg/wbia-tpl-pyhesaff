@@ -7,15 +7,15 @@
 #endif // ndef sprintf
 #endif // WIN32
 
-#define PYHESAFF_EXPORT // ????
+#define HESAFF_EXPORT // ????
 #ifndef FOO_DLL  // ???
-#ifdef PYHESAFF_EXPORTS // EXPORTS??? ... No need on mingw
-#define PYHESAFF_EXPORT __declspec(dllexport)
+#ifdef HESAFF_EXPORTS // EXPORTS??? ... No need on mingw
+#define HESAFF_EXPORT __declspec(dllexport)
 #else
-//#define PYHESAFF_EXPORT __declspec(dllimport)
+//#define HESAFF_EXPORT __declspec(dllimport)
 #endif
 #else
-#define PYHESAFF_EXPORT
+#define HESAFF_EXPORT
 #endif // FOO_DLL // ???
 
 // TODO : use either adapt_rotation or rotation_invariance, but not both

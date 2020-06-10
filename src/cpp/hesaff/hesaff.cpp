@@ -928,7 +928,7 @@ extern "C" {
 #endif
 
 // Python binds to extern C code
-#define PYHESAFF extern PYHESAFF_EXPORT
+#define PYHESAFF extern HESAFF_EXPORT
 
 
 PYHESAFF int detect(AffineHessianDetector* detector)
