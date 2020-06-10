@@ -6,7 +6,7 @@ includedir=${prefix}/include
 
 Name: @PROJECT_NAME@
 Description: @PKG_DESC@
-Version: @PYHESAFF_VERISON@
+Version: @PYHESAFF_VERSION@
 Requires: @PKG_EXTERNAL_DEPS@
 Libs: -L${libdir} -lpyhesaff -lpyhesaff_cpp
 Cflags: -I${includedir}

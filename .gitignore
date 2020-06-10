@@ -10,7 +10,7 @@ dist
 *.a
 _skbuild/
 pip-wheel-metadata/
-
+src/cpp/hesaff/config.h
 
 # utool output
 _test_times.txt
