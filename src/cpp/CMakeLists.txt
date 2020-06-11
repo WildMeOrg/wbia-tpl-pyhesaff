@@ -1,7 +1,5 @@
 #include_directories(${CMAKE_SOURCE_DIR}/include algorithms ext util nn .)
 
-message(STATUS "HESAFF_CHECKPOINT = TRUE")
-
 message(STATUS "PYHESAFF_VERSION = ${PYHESAFF_VERSION}")
 set(HESAFF_VERSION ${PYHESAFF_VERSION})
 message(STATUS "HESAFF_VERSION = ${HESAFF_VERSION}")
@@ -24,7 +22,7 @@ set(CPP_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/hesaff/siftdesc.cpp)
 
 add_library(hesaff_s STATIC ${CPP_SOURCES})
-target_link_libraries(hesaff_s ${OpenCV_LIBRARIES})
+target_link_libraries(hesaff_s ${OpenCV_LIBS})
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_CLANG)
     set_target_properties(hesaff_s PROPERTIES COMPILE_FLAGS -fPIC)
