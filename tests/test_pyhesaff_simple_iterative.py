@@ -6,12 +6,12 @@ import utool as ut
 def simple_iterative_test():
     r"""
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff_simple_iterative --test-simple_iterative_test
-        python -m pyhesaff.tests.test_pyhesaff_simple_iterative --test-simple_iterative_test --show
+        python -m tests.test_pyhesaff_simple_iterative --test-simple_iterative_test
+        python -m tests.test_pyhesaff_simple_iterative --test-simple_iterative_test --show
 
     Example:
         >>> # GUI_DOCTEST
-        >>> from pyhesaff.tests.test_pyhesaff_simple_iterative import *  # NOQA
+        >>> from tests.test_pyhesaff_simple_iterative import *  # NOQA
         >>> result = simple_iterative_test()
         >>> print(result)
         >>> ut.show_if_requested()
@@ -49,9 +49,9 @@ def simple_iterative_test():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff_simple_iterative simple_iterative_test
-        python -m pyhesaff.tests.test_pyhesaff_simple_iterative --allexamples
-        python -m pyhesaff.tests.test_pyhesaff_simple_iterative --allexamples --noface --nosrc
+        python -m tests.test_pyhesaff_simple_iterative simple_iterative_test
+        python -m tests.test_pyhesaff_simple_iterative --allexamples
+        python -m tests.test_pyhesaff_simple_iterative --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

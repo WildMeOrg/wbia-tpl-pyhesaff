@@ -25,7 +25,7 @@ def sift_test():
         0.38947, 244.762, 291.113, 7.50165, 8.16208, 73.2169, 21.9674,
         0.00429259, ])
 
-    import vtool_ibeis as vt
+    import vtool as vt
 
     # CONFIRMED: One normalization followed by another does not do anything
     #sift_root1 = vt.normalize(sift_root1, ord=2)

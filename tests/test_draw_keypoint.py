@@ -13,17 +13,17 @@ px_ = 0
 def test_draw_keypoint_main():
     r"""
     CommandLine:
-        python -m pyhesaff.tests.test_draw_keypoint --test-test_draw_keypoint_main --show
+        python -m tests.test_draw_keypoint --test-test_draw_keypoint_main --show
 
     Example:
         >>> # DISABLE_DOCTEST
-        >>> from pyhesaff.tests.test_draw_keypoint import *  # NOQA
+        >>> from tests.test_draw_keypoint import *  # NOQA
         >>> test_draw_keypoint_main()
         >>> ut.show_if_requested()
     """
     from plottool import draw_func2 as df2
     from plottool import mpl_keypoint
-    import vtool_ibeis.keypoint as ktool  # NOQA
+    import vtool.keypoint as ktool  # NOQA
 
     # TODO: Gui tests yield:
     # Jul 13 13:14:53 www.longerdog.com Python[23974] <Error>: This user is not allowed access to the window system right now.
@@ -175,9 +175,9 @@ def test_draw_keypoint_main():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_draw_keypoint
-        python -m pyhesaff.tests.test_draw_keypoint --allexamples
-        python -m pyhesaff.tests.test_draw_keypoint --allexamples --noface --nosrc
+        python -m tests.test_draw_keypoint
+        python -m tests.test_draw_keypoint --allexamples
+        python -m tests.test_draw_keypoint --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

@@ -18,21 +18,21 @@ def double_detect(img_fpath, **kw):
 def test_ori_extract_main():
     """
     CommandLine:
-        python -m pyhesaff.tests.test_exhaustive_ori_extract --test-test_ori_extract_main
-        python -m pyhesaff.tests.test_exhaustive_ori_extract --test-test_ori_extract_main --show
+        python -m tests.test_exhaustive_ori_extract --test-test_ori_extract_main
+        python -m tests.test_exhaustive_ori_extract --test-test_ori_extract_main --show
 
     Example:
         >>> # GUI_DOCTEST
-        >>> from pyhesaff.tests.test_exhaustive_ori_extract import *  # NOQA
+        >>> from tests.test_exhaustive_ori_extract import *  # NOQA
         >>> test_ori_extract_main()
         >>> ut.show_if_requested()
     """
     import pyhesaff
     from plottool import draw_func2 as df2
     from plottool.viz_keypoints import show_keypoints
-    import vtool_ibeis  # NOQA
-    import vtool_ibeis.image as gtool
-    import vtool_ibeis.keypoint as ktool
+    import vtool  # NOQA
+    import vtool.image as gtool
+    import vtool.keypoint as ktool
     np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
     # Read data
     print('[rotinvar] loading test data')
@@ -123,9 +123,9 @@ def test_ori_extract_main():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_exhaustive_ori_extract
-        python -m pyhesaff.tests.test_exhaustive_ori_extract --allexamples
-        python -m pyhesaff.tests.test_exhaustive_ori_extract --allexamples --noface --nosrc
+        python -m tests.test_exhaustive_ori_extract
+        python -m tests.test_exhaustive_ori_extract --allexamples
+        python -m tests.test_exhaustive_ori_extract --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

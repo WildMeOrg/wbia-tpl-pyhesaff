@@ -2,7 +2,7 @@ from __future__ import absolute_import, print_function, division
 # Standard
 import sys
 from os.path import realpath, join, split
-from vtool_ibeis.tests import grabdata
+from vtool.tests import grabdata
 # Scientific
 import numpy as np
 import cv2

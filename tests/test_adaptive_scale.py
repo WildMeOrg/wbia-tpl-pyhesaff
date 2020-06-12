@@ -35,7 +35,7 @@ def test_adaptive_scale():
     exec(open('vtellipse.py').read())
     """
     print('test_adaptive_scale()')
-    from pyhesaff.tests import pyhestest
+    from tests import pyhestest
     test_data = pyhestest.load_test_data(short=True, n=4)
     img_fpath = test_data['img_fpath']
     imgL = test_data['imgL']
@@ -136,12 +136,12 @@ def test_adaptive_scale():
 def test_adaptive_scale_main():
     r"""
     CommandLine:
-        python -m pyhesaff.tests.test_adaptive_scale --test-test_adaptive_scale_main
-        python -m pyhesaff.tests.test_adaptive_scale --test-test_adaptive_scale_main --show
+        python -m tests.test_adaptive_scale --test-test_adaptive_scale_main
+        python -m tests.test_adaptive_scale --test-test_adaptive_scale_main --show
 
     Example:
         >>> # DISABLE_DOCTEST
-        >>> from pyhesaff.tests.test_adaptive_scale import *  # NOQA
+        >>> from tests.test_adaptive_scale import *  # NOQA
         >>> # build test data
         >>> # execute function
         >>> result = test_adaptive_scale_main()
@@ -150,7 +150,7 @@ def test_adaptive_scale_main():
     """
     from plottool import draw_func2 as df2
     from plottool.viz_keypoints import show_keypoints
-    import vtool_ibeis.ellipse as vtellipse
+    import vtool.ellipse as vtellipse
     print('__main__ = test_adaptive_scale.py')
     np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
 
@@ -166,9 +166,9 @@ def test_adaptive_scale_main():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_adaptive_scale
-        python -m pyhesaff.tests.test_adaptive_scale --allexamples
-        python -m pyhesaff.tests.test_adaptive_scale --allexamples --noface --nosrc
+        python -m tests.test_adaptive_scale
+        python -m tests.test_adaptive_scale --allexamples
+        python -m tests.test_adaptive_scale --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

@@ -12,12 +12,12 @@ def test_pyheaff(img_fpath):
         img_fpath (str):
 
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff --test-test_pyheaff
-        python -m pyhesaff.tests.test_pyhesaff --test-test_pyheaff --show
+        python -m tests.test_pyhesaff --test-test_pyheaff
+        python -m tests.test_pyhesaff --test-test_pyheaff --show
 
     Example:
         >>> # ENABLE_DOCTEST
-        >>> from pyhesaff.tests.test_pyhesaff import *  # NOQA
+        >>> from tests.test_pyhesaff import *  # NOQA
         >>> img_fpath = ut.grab_test_imgpath('jeff.png')
         >>> test_pyheaff(img_fpath)
         >>> ut.show_if_requested()
@@ -34,9 +34,9 @@ def test_pyheaff(img_fpath):
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff
-        python -m pyhesaff.tests.test_pyhesaff --allexamples
-        python -m pyhesaff.tests.test_pyhesaff --allexamples --noface --nosrc
+        python -m tests.test_pyhesaff
+        python -m tests.test_pyhesaff --allexamples
+        python -m tests.test_pyhesaff --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

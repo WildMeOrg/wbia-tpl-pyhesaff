@@ -9,7 +9,7 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
     from plottool import draw_func2 as df2
     from plottool.viz_keypoints import _annotate_kpts, show_keypoints
     from plottool.viz_featrow import draw_feat_row
-    import vtool_ibeis.patch as ptool
+    import vtool.patch as ptool
     hrint = utool.horiz_print
     print('[rotinvar] +---')
     print('[rotinvar] | 3) Find dominant orientation in histogram')
@@ -25,7 +25,7 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
 def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers):
     from plottool import draw_func2 as df2
     import plottool
-    import vtool_ibeis.patch as ptool
+    import vtool.patch as ptool
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
     fnum = 1
     gorimag = plottool.color_orimag(gori, gmag, True)
@@ -71,7 +71,7 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
 
 def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     import pyhesaff
-    import vtool_ibeis.patch as ptool
+    import vtool.patch as ptool
     from plottool import draw_func2 as df2
     #----------------------#
     # --- Extract Data --- #
@@ -119,17 +119,17 @@ def test_patch_ori_main():
         ?: locals_
 
     CommandLine:
-        python -m pyhesaff.tests.test_patch_orientation --test-test_patch_ori_main
-        python -m pyhesaff.tests.test_patch_orientation --test-test_patch_ori_main --show
+        python -m tests.test_patch_orientation --test-test_patch_ori_main
+        python -m tests.test_patch_orientation --test-test_patch_ori_main --show
 
     Example:
         >>> # xdoctest: +SKIP
-        >>> from pyhesaff.tests.test_patch_orientation import *  # NOQA
+        >>> from tests.test_patch_orientation import *  # NOQA
         >>> test_patch_ori_main()
         >>> ut.show_if_requested()
     """
     print('[rotinvar] loading test data')
-    import pyhesaff.tests.pyhestest as pyhestest
+    import tests.pyhestest as pyhestest
     test_data = pyhestest.load_test_data(short=True, n=3)
     img_fpath = test_data['img_fpath']
     kpts = test_data['kpts']
@@ -143,9 +143,9 @@ def test_patch_ori_main():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_patch_orientation
-        python -m pyhesaff.tests.test_patch_orientation --allexamples
-        python -m pyhesaff.tests.test_patch_orientation --allexamples --noface --nosrc
+        python -m tests.test_patch_orientation
+        python -m tests.test_patch_orientation --allexamples
+        python -m tests.test_patch_orientation --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

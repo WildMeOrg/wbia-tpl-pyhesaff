@@ -63,7 +63,7 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     from plottool.viz_keypoints import _annotate_kpts, show_keypoints
     from plottool.viz_featrow import draw_feat_row
     import plottool
-    import vtool_ibeis.patch as ptool
+    import vtool.patch as ptool
     #----------------------#
     # --- Extract Data --- #
     #----------------------#
@@ -105,13 +105,13 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
 def test_cpp_rotinvar_main():
     r"""
     CommandLine:
-        python -m pyhesaff.tests.test_cpp_rotation_invariance --test-test_cpp_rotinvar_main
-        python -m pyhesaff.tests.test_cpp_rotation_invariance --test-test_cpp_rotinvar_main --show
+        python -m tests.test_cpp_rotation_invariance --test-test_cpp_rotinvar_main
+        python -m tests.test_cpp_rotation_invariance --test-test_cpp_rotinvar_main --show
 
 
     Example:
         >>> # DISABLE_DOCTEST
-        >>> from pyhesaff.tests.test_cpp_rotation_invariance import *  # NOQA
+        >>> from tests.test_cpp_rotation_invariance import *  # NOQA
         >>> # build test data
         >>> # execute function
         >>> result = test_cpp_rotinvar_main()
@@ -119,7 +119,7 @@ def test_cpp_rotinvar_main():
         >>> print(result)
     """
     # TODO; take visualization out of this test by default
-    from pyhesaff.tests import pyhestest
+    from tests import pyhestest
     import pyhesaff
     # Read data
     print('[rotinvar] loading test data')
@@ -168,10 +168,10 @@ def test_cpp_rotinvar_main():
 #if __name__ == '__main__':
 #    """
 #    CommandLine:
-#        python -c "import utool, pyhesaff.tests.test_cpp_rotation_invariance; utool.doctest_funcs(pyhesaff.tests.test_cpp_rotation_invariance, allexamples=True)"
+#        python -c "import utool, tests.test_cpp_rotation_invariance; utool.doctest_funcs(tests.test_cpp_rotation_invariance, allexamples=True)"
 #
-#        python -m pyhesaff.tests.test_cpp_rotation_invariance --allexamples
-#        python -m pyhesaff.tests.test_cpp_rotation_invariance --allexamples --noface --nosrc
+#        python -m tests.test_cpp_rotation_invariance --allexamples
+#        python -m tests.test_cpp_rotation_invariance --allexamples --noface --nosrc
 #    """
 #    import multiprocessing
 #    multiprocessing.freeze_support()  # for win32
@@ -182,9 +182,9 @@ def test_cpp_rotinvar_main():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_cpp_rotation_invariance
-        python -m pyhesaff.tests.test_cpp_rotation_invariance --allexamples
-        python -m pyhesaff.tests.test_cpp_rotation_invariance --allexamples --noface --nosrc
+        python -m tests.test_cpp_rotation_invariance
+        python -m tests.test_cpp_rotation_invariance --allexamples
+        python -m tests.test_cpp_rotation_invariance --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

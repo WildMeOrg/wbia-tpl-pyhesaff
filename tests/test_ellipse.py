@@ -9,7 +9,7 @@ from six.moves import zip, range
 import utool as ut
 import matplotlib as mpl
 import numpy as np
-import vtool_ibeis.linalg as ltool
+import vtool.linalg as ltool
 
 
 TAU = 2 * np.pi  # References: tauday.com
@@ -55,12 +55,12 @@ def in_depth_ellipse(kp):
     understanding.
 
     CommandLine:
-        python -m pyhesaff.tests.test_ellipse --test-in_depth_ellipse --show --num-samples=12
+        python -m tests.test_ellipse --test-in_depth_ellipse --show --num-samples=12
 
     Example:
         >>> # SCRIPT
-        >>> from pyhesaff.tests.test_ellipse import *  # NOQA
-        >>> import pyhesaff.tests.pyhestest as pyhestest
+        >>> from tests.test_ellipse import *  # NOQA
+        >>> import tests.pyhestest as pyhestest
         >>> test_data = pyhestest.load_test_data(short=True)
         >>> kpts = test_data['kpts']
         >>> kp = kpts[0]
@@ -120,7 +120,7 @@ def in_depth_ellipse(kp):
     V = np.linalg.inv(invV)
     Z = (V.T).dot(V)
 
-    import vtool_ibeis as vt
+    import vtool as vt
     V_2x2 = V[0:2, 0:2]
     Z_2x2 = Z[0:2, 0:2]
     V_2x2_ = vt.decompose_Z_to_V_2x2(Z_2x2)
@@ -504,12 +504,12 @@ def in_depth_ellipse(kp):
 #def test_ellipse_main():
 #    r"""
 #    CommandLine:
-#        python -m pyhesaff.tests.test_ellipse --test-test_ellipse_main
-#        python -m pyhesaff.tests.test_ellipse --test-test_ellipse_main --show
+#        python -m tests.test_ellipse --test-test_ellipse_main
+#        python -m tests.test_ellipse --test-test_ellipse_main --show
 
 #    Example:
 #        >>> # ENABLE_DOCTEST
-#        >>> from pyhesaff.tests.test_ellipse import *  # NOQA
+#        >>> from tests.test_ellipse import *  # NOQA
 #        >>> # build test data
 #        >>> # execute function
 #        >>> result = test_ellipse_main()
@@ -518,7 +518,7 @@ def in_depth_ellipse(kp):
 #    """
 #    print('__main__ = test_ellipse.py')
 #    np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
-#    import pyhesaff.tests.pyhestest as pyhestest
+#    import tests.pyhestest as pyhestest
 #    test_data = pyhestest.load_test_data(short=True)
 #    kpts = test_data['kpts']
 #    kp = kpts[0]
@@ -538,9 +538,9 @@ def in_depth_ellipse(kp):
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_ellipse
-        python -m pyhesaff.tests.test_ellipse --allexamples
-        python -m pyhesaff.tests.test_ellipse --allexamples --noface --nosrc
+        python -m tests.test_ellipse
+        python -m tests.test_ellipse --allexamples
+        python -m tests.test_ellipse --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32

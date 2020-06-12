@@ -8,11 +8,11 @@ import utool as ut
 def test_simple_parallel():
     r"""
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff_simple_parallel --test-test_simple_parallel --show
+        python -m tests.test_pyhesaff_simple_parallel --test-test_simple_parallel --show
 
     Example:
         >>> # ENABLE_DOCTEST
-        >>> from pyhesaff.tests.test_pyhesaff_simple_parallel import *  # NOQA
+        >>> from tests.test_pyhesaff_simple_parallel import *  # NOQA
         >>> import matplotlib as mpl
         >>> from matplotlib import pyplot as plt
         >>> img_fpaths, kpts_array, desc_array = test_simple_parallel()
@@ -66,9 +66,9 @@ def test_simple_parallel():
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff.tests.test_pyhesaff_simple_parallel
-        python -m pyhesaff.tests.test_pyhesaff_simple_parallel --allexamples
-        python -m pyhesaff.tests.test_pyhesaff_simple_parallel --allexamples --noface --nosrc
+        python -m tests.test_pyhesaff_simple_parallel
+        python -m tests.test_pyhesaff_simple_parallel --allexamples
+        python -m tests.test_pyhesaff_simple_parallel --allexamples --noface --nosrc
     """
     import multiprocessing
     multiprocessing.freeze_support()  # for win32
