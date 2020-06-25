@@ -68,7 +68,7 @@ retrieval results will be placed here.
 NOTES
 -----
 
-Requires opencv. On ubuntu you can: ``sudo apt-get install libopencv-dev``. You can also build / use wheels. 
+Requires opencv. On ubuntu you can: ``sudo apt-get install libopencv-dev``. You can also build / use wheels. If cmake is unable to find OpenCV, manually set the location of OpenCV to the OpenCV_DIR environment variable
 
 
 .. |Travis| image:: https://img.shields.io/travis/WildbookOrg/hesaff/master.svg?label=Travis%20CI
