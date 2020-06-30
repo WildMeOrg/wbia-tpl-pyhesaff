@@ -25,4 +25,3 @@ find_package_handle_standard_args(PyHesaff DEFAULT_MSG
     PYHESAFF_LIBRARY PYHESAFF_INCLUDE_DIR)
 
 mark_as_advanced(PYHESAFF_LIBRARY PYHESAFF_INCLUDE_DIR)
-

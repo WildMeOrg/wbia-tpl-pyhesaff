@@ -43,4 +43,3 @@ macro(pyhesaff_add_pyunit file)
     add_dependencies(pyunit_${_testname} pyhesaff)
     add_dependencies(test pyunit_${_testname})
 endmacro(pyhesaff_add_pyunit)
-
