@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
 Setup the base image containing the opencv deps that pyhesaff needs to build
 
