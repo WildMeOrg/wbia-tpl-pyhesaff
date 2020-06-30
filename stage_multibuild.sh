@@ -5,7 +5,7 @@ Execute the multibuild.
 This file is the entry point for a multibuild. It can either be run locally in
 the root of the primary repo checkout, or it can be run via a CI server via
 travis. The specific binary will (try) to target the users environment by
-default. 
+default.
 
 Note that this script uses the network to stage its dependencies.
 """
@@ -42,7 +42,7 @@ fi
 
 #### --- BEFORE INSTALL --- ####
 
-setup-staging(){ 
+setup-staging(){
     REPO_NAME=hesaff
     _SOURCE_REPO=$(realpath $(dirname "${BASH_SOURCE[0]}"))
     _STAGEING_DPATH=$_SOURCE_REPO/_staging
@@ -60,7 +60,7 @@ setup-staging(){
     if [ ! -d $_STAGED_REPO/multibuild ]; then
         git clone https://github.com/matthew-brett/multibuild.git $_STAGED_REPO/multibuild
     fi
-    # Patch multibuild so we can start from a local docker image  
+    # Patch multibuild so we can start from a local docker image
     find $_STAGED_REPO/multibuild -iname "*.sh" -type f -exec sed -i 's/ retry docker pull/ #retry docker pull/g' {} +
 
     # Ensure that the manylinux1_x86_64-opencv4.1.0-py3.6 docker image exists
@@ -99,4 +99,3 @@ if [ -n "$IS_OSX" ]; then
 
     brew_cache_cleanup
 fi
-

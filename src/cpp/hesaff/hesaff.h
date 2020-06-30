@@ -42,12 +42,12 @@ struct HesaffParams
     {
         scale_min = -1;
         scale_max = -1;
-        ori_maxima_thresh = .8; 
+        ori_maxima_thresh = .8;
         rotation_invariance = false; //remove in favor of adapt_rotation?
         augment_orientation = false; //remove in favor of adapt_rotation?
         adapt_rotation = false;
         adapt_scale = false;
-        affine_invariance = true;  // if false uses circular keypoints 
+        affine_invariance = true;  // if false uses circular keypoints
         only_count = false;
     }
 };

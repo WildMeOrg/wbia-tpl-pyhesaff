@@ -102,7 +102,7 @@ void SIFTDescriptor::precomputeBinsAndWeights()
 
 void SIFTDescriptor::samplePatch()
 {
-    // Measure gradient information and record in 
+    // Measure gradient information and record in
     // the weighted oriented histogram
     for(int r = 0; r < this->par.patchSize; ++r)
     {
@@ -251,15 +251,15 @@ void SIFTDescriptor::powerLaw()
     // Handle special case (RootSIFT) of power=.5; sqrt is faster than pow
     if (this->par.siftPower == 0.5)
     {
-        for(size_t i = 0; i < this->vec.size(); i++) 
+        for(size_t i = 0; i < this->vec.size(); i++)
         {
             this->vec[i] = ::sqrt(this->vec[i]);
         }
     }
     // apply more general power law
-    else 
+    else
     {
-        for(size_t i = 0; i < this->vec.size(); i++) 
+        for(size_t i = 0; i < this->vec.size(); i++)
         {
             this->vec[i] = ::pow(this->vec[i], this->par.siftPower);
         }
@@ -271,7 +271,7 @@ bool SIFTDescriptor::clipBins()
 {
     bool changed = false;
     // check if there are some descriptor values above threshold
-    for(size_t i = 0; i < this->vec.size(); i++) 
+    for(size_t i = 0; i < this->vec.size(); i++)
     {
         if(this->vec[i] > this->par.maxBinValue)
         {
@@ -303,12 +303,12 @@ void SIFTDescriptor::sample()
     /*
      * Computes this->vec (The 128D SIFT descriptor) of an image patch
      */
-    
+
     // TODO: return original vector length
     // then use this to filter out homogenous keypoints as in
     // A comparison of dense region detectors for image search and fine-grained
     // classification (2015)
-    
+
     // Initialize descriptor vector to zero
     this->initialize();
 
@@ -346,7 +346,7 @@ void SIFTDescriptor::sample()
     //    float maxval_postclip = *max_element(this->vec.begin(), this->vec.end());
     //    printDBG_SIFT("maxval_postclip " << maxval_postclip);
     //    printDBG_SIFT("])");
-    //#endif 
+    //#endif
 
 void SIFTDescriptor::computeSiftDescriptor(Mat &patch)
 {

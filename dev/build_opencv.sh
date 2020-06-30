@@ -44,7 +44,7 @@ git pull
 
 LOCAL_PREFIX=$HOME/.local
 echo "LOCAL_PREFIX = $LOCAL_PREFIX"
-        
+
 
 # Checkout opencv core
 # git clone https://github.com/Itseez/opencv.git

@@ -4,7 +4,7 @@
 Hessian Affine + SIFT keypoints in Python
 =========================================
 
-This is an implementation of Hessian-Affine detector. 
+This is an implementation of Hessian-Affine detector.
 
 The implementation uses a Lowe's (Lowe 1999, Lowe 2004) like pyramid
 to sample Gaussian scale-space and localizes local extrema of the
@@ -24,7 +24,7 @@ original, the affine iteration and normalization was derived from the
 code of Krystian Mikolajczyk.
 
 The SIFT descriptor code was patented under a US Patent 6,711,293, which
-expired on March 7th 2019, so the license is no longer required for use. 
+expired on March 7th 2019, so the license is no longer required for use.
 
 
 OUTPUT
@@ -38,7 +38,7 @@ The output format is compatible with the binaries available from the
 page "Affine Covariant Features". The geometry of an affine region is
 specified by: u,v,a,b,c in a(x-u)(x-u)+2b(x-u)(y-v)+c(y-v)(y-v)=1. The
 top left corner of the image is at (u,v)=(0,0). The geometry of an
-affine region is followed by N descriptor values (N = 128).  
+affine region is followed by N descriptor values (N = 128).
 
 File format:
 

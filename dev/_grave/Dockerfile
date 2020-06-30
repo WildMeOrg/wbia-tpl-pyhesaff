@@ -23,5 +23,5 @@
  RUN mkdir -p /root/code/opencv/build &&             cd /root/code/opencv/build &&             cmake -G "Unix Makefiles"                    -DINSTALL_CREATE_DISTRIB=ON                    -DOPENCV_SKIP_PYTHON_LOADER=ON                    -DBUILD_opencv_apps=OFF                    -DBUILD_SHARED_LIBS=OFF                    -DBUILD_TESTS=OFF                    -DBUILD_PERF_TESTS=OFF                    -DBUILD_DOCS=OFF                    -DWITH_QT=OFF                    -DWITH_IPP=OFF                    -DWITH_V4L=ON                    -DBUILD_JPEG=OFF                    -DENABLE_PRECOMPILED_HEADERS=OFF                 /root/code/opencv
 
 # Note: there is no need to compile the above with python
-# -DPYTHON3_EXECUTABLE=$PYTHON_EXE        # -DBUILD_opencv_python3=ON        # -DOPENCV_PYTHON3_INSTALL_PATH=python 
+# -DPYTHON3_EXECUTABLE=$PYTHON_EXE        # -DBUILD_opencv_python3=ON        # -DOPENCV_PYTHON3_INSTALL_PATH=python
  RUN cd /root/code/opencv/build && make -j9 && make install
