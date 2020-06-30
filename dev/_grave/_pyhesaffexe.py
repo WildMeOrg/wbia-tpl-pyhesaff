@@ -22,7 +22,7 @@ desc_dtype = np.uint8
 
 def find_hesaff_fpath(exe_name='hesaffexe'):
     exe_ext = {'win32': '.exe', 'darwin': '.mac', 'linux2': ''}[sys.platform]
-    if not '__file__' in vars():
+    if '__file__' not in vars():
         __file__ = os.path.realpath('pyhesaff.py')
     exe_path = realpath(dirname(__file__))
     exe_fpath = join(exe_path, exe_name + exe_ext)
