@@ -14,7 +14,6 @@ from os.path import join, exists
 
 
 def main():
-
     def argval(clikey, envkey=None, default=ub.NoParam):
         if envkey is not None:
             envval = os.environ.get(envkey)
@@ -31,6 +30,7 @@ def main():
     UNICODE_WIDTH = argval('--unicode_width', 'UNICODE_WIDTH', '32')
 
     import multiprocessing
+
     MAKE_CPUS = argval('--make_cpus', 'MAKE_CPUS', multiprocessing.cpu_count() + 1)
 
     OPENCV_VERSION = '4.1.0'
@@ -47,7 +47,11 @@ def main():
 
     if not exists(join(dpath, 'opencv-' + OPENCV_VERSION)):
         # FIXME: make robust in the case this fails
-        fpath = ub.grabdata('https://github.com/opencv/opencv/archive/{}.zip'.format(OPENCV_VERSION), dpath=dpath, verbose=1)
+        fpath = ub.grabdata(
+            'https://github.com/opencv/opencv/archive/{}.zip'.format(OPENCV_VERSION),
+            dpath=dpath,
+            verbose=1,
+        )
         ub.cmd('ln -s {} .'.format(fpath), cwd=dpath, verbose=3)
         ub.cmd('unzip {}'.format(fpath), cwd=dpath, verbose=3)
 
@@ -56,7 +60,7 @@ def main():
     # We will need to do a bit of refactoring to handle OSX and windows.
     # But the goal is to get at least one OS working end-to-end.
     docker_code = ub.codeblock(
-        '''
+        """
         FROM {BASE_REPO}/{BASE}
 
         # SETUP ENV
@@ -101,7 +105,10 @@ def main():
         # -DOPENCV_PYTHON3_INSTALL_PATH=python \
 
         RUN cd /root/code/opencv/build && make -j{MAKE_CPUS} && make install
-        '''.format(**locals()))
+        """.format(
+            **locals()
+        )
+    )
 
     try:
         print(ub.color_text('\n--- DOCKER CODE ---', 'white'))
@@ -112,13 +119,16 @@ def main():
     with open(dockerfile_fpath, 'w') as file:
         file.write(docker_code)
 
-    docker_build_cli = ' '.join([
-        'docker', 'build',
-        # '--build-arg PY_VER={}'.format(PY_VER),
-        '--tag {}'.format(DOCKER_TAG),
-        '-f {}'.format(dockerfile_fpath),
-        '.'
-    ])
+    docker_build_cli = ' '.join(
+        [
+            'docker',
+            'build',
+            # '--build-arg PY_VER={}'.format(PY_VER),
+            '--tag {}'.format(DOCKER_TAG),
+            '-f {}'.format(dockerfile_fpath),
+            '.',
+        ]
+    )
     print('docker_build_cli = {!r}'.format(docker_build_cli))
     info = ub.cmd(docker_build_cli, verbose=3, shell=True)
 

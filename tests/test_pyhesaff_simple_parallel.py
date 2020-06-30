@@ -32,6 +32,7 @@ def test_simple_parallel():
         >>> ut.show_if_requested()
     """
     import pyhesaff
+
     test_fnames = ['carl.jpg', 'lena.png', 'zebra.png', 'ada.jpg', 'star.png']
     img_fpaths = list(map(ut.grab_test_imgpath, test_fnames)) * 2
 
@@ -50,13 +51,15 @@ def test_simple_parallel():
 
     print('Checking for errors')
     for (kpts_, desc_, kpts, desc) in zip(kpts_list2, desc_list2, kpts_array, desc_array):
-        print('shape(kpts, kpts_, desc, desc_) = %9r, %9r, %11r, %11r' %
-              (kpts.shape, kpts_.shape, desc.shape, desc_.shape))
+        print(
+            'shape(kpts, kpts_, desc, desc_) = %9r, %9r, %11r, %11r'
+            % (kpts.shape, kpts_.shape, desc.shape, desc_.shape)
+        )
         try:
             assert np.all(kpts_ == kpts), 'parallel computation inconsistent'
             assert np.all(desc_ == desc), 'parallel computation inconsistent'
             assert len(kpts_) > 0, 'no kpts detected'
-            #assert False, 'deliberate triggering to see printouts'
+            # assert False, 'deliberate triggering to see printouts'
         except Exception as ex:
             ut.printex(ex)
             raise
@@ -72,6 +75,8 @@ if __name__ == '__main__':
         python -m tests.test_pyhesaff_simple_parallel --allexamples --noface --nosrc
     """
     import multiprocessing
+
     multiprocessing.freeze_support()  # for win32
     import utool as ut  # NOQA
+
     ut.doctest_funcs()

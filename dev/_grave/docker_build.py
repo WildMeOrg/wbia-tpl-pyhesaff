@@ -27,10 +27,16 @@ def setup_staging():
 
 def stage_self(ROOT, staging_dpath):
     import shutil
+
     # stage the important files in this repo
     dist_paths = [
-        'pyhesaff', 'src', 'CMakeLists.txt', 'setup.py', 'run_doctests.sh',
-        'CMake', 'run_tests.py'
+        'pyhesaff',
+        'src',
+        'CMakeLists.txt',
+        'setup.py',
+        'run_doctests.sh',
+        'CMake',
+        'run_tests.py',
     ]
     from os.path import isfile, exists
 
@@ -59,6 +65,7 @@ def stage_self(ROOT, staging_dpath):
 
 def main():
     import os
+
     ROOT = join(os.getcwd())
     ROOT = ub.expandpath('~/code/hesaff')
     os.chdir(ROOT)
@@ -74,16 +81,26 @@ def main():
     # Prestage the multibuild repo
     if not exists(join(staging_dpath, 'multibuild')):
         # FIXME: make robust in the case this fails
-        info = ub.cmd('git clone https://github.com/matthew-brett/multibuild.git', cwd=staging_dpath, verbose=3)
+        info = ub.cmd(
+            'git clone https://github.com/matthew-brett/multibuild.git',
+            cwd=staging_dpath,
+            verbose=3,
+        )
 
     if not exists(join(staging_dpath, 'opencv')):
         # FIXME: make robust in the case this fails
         opencv_version = '4.1.0'
-        fpath = ub.grabdata('https://github.com/opencv/opencv/archive/{}.zip'.format(opencv_version), verbose=1)
+        fpath = ub.grabdata(
+            'https://github.com/opencv/opencv/archive/{}.zip'.format(opencv_version),
+            verbose=1,
+        )
         ub.cmd('ln -s {} .'.format(fpath), cwd=staging_dpath, verbose=3)
         ub.cmd('unzip {}'.format(fpath), cwd=staging_dpath, verbose=3)
         import shutil
-        shutil.move(join(staging_dpath, 'opencv-' + opencv_version), join(staging_dpath, 'opencv'))
+
+        shutil.move(
+            join(staging_dpath, 'opencv-' + opencv_version), join(staging_dpath, 'opencv')
+        )
 
     stage_self(ROOT, staging_dpath)
 
@@ -92,7 +109,7 @@ def main():
     # We will need to do a bit of refactoring to handle OSX and windows.
     # But the goal is to get at least one OS working end-to-end.
     docker_code = ub.codeblock(
-        '''
+        """
         FROM quay.io/skvark/manylinux1_x86_64
 
         # SETUP ENV
@@ -211,7 +228,8 @@ def main():
 
         # RUN source /root/.bashrc && \
         #     pip install xdoctest
-        ''')
+        """
+    )
 
     try:
         print(ub.color_text('\n--- DOCKER CODE ---', 'white'))
@@ -222,13 +240,16 @@ def main():
     with open(dockerfile_fpath, 'w') as file:
         file.write(docker_code)
 
-    docker_build_cli = ' '.join([
-        'docker', 'build',
-        # '--build-arg PY_VER={}'.format(PY_VER),
-        '--tag {}'.format(tag),
-        '-f {}'.format(dockerfile_fpath),
-        '.'
-    ])
+    docker_build_cli = ' '.join(
+        [
+            'docker',
+            'build',
+            # '--build-arg PY_VER={}'.format(PY_VER),
+            '--tag {}'.format(tag),
+            '-f {}'.format(dockerfile_fpath),
+            '.',
+        ]
+    )
     print('docker_build_cli = {!r}'.format(docker_build_cli))
     info = ub.cmd(docker_build_cli, verbose=3, shell=True)
 
@@ -258,17 +279,24 @@ def main():
         # cp /root/ffmpeg_build/lib/libavformat.so.58 /root/vmnt
         # cp /root/ffmpeg_build/lib/libavutil.so.56 /root/vmnt
         # cp /root/ffmpeg_build/lib/libswscale.so.5 /root/vmnt
-        inside_cmds = ' && '.join(ub.codeblock(
-            '''
+        inside_cmds = ' && '.join(
+            ub.codeblock(
+                """
             cp code/hesaff/dist/pyhesaff*.whl /root/vmnt
-            ''').split('\n'))
+            """
+            ).split('\n')
+        )
 
-        docker_run_cli = ' '.join([
-            'docker', 'run',
-            '-v {}:/root/vmnt/'.format(VMNT_DIR),
-            '-it', tag,
-            'bash -c "{}"'.format(inside_cmds)
-        ])
+        docker_run_cli = ' '.join(
+            [
+                'docker',
+                'run',
+                '-v {}:/root/vmnt/'.format(VMNT_DIR),
+                '-it',
+                tag,
+                'bash -c "{}"'.format(inside_cmds),
+            ]
+        )
         print(docker_run_cli)
         info = ub.cmd(docker_run_cli, verbose=3)
         assert info['ret'] == 0
@@ -284,8 +312,10 @@ def main():
         # shutil.copy(join(VMNT_DIR, 'libswscale.so.5'), join(PKG_DIR, 'libswscale.so.5'))
 
     # print(ub.highlight_code(ub.codeblock(
-    print(ub.highlight_code(ub.codeblock(
-        r'''
+    print(
+        ub.highlight_code(
+            ub.codeblock(
+                r"""
         # Finished creating the docker image.
         # To test / export you can do something like this:
 
@@ -307,7 +337,11 @@ def main():
 
         mkdir -p ${ROOT}/{NAME}-docker/dist
         docker save -o ${ROOT}/{NAME}-docker/dist/{tag}.docker.tar {tag}
-        ''').format(NAME=NAME, ROOT=ROOT, tag=tag), 'bash'))
+        """
+            ).format(NAME=NAME, ROOT=ROOT, tag=tag),
+            'bash',
+        )
+    )
 
 
 if __name__ == '__main__':

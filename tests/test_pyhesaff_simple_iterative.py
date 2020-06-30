@@ -18,6 +18,7 @@ def simple_iterative_test():
         >>> ut.show_if_requested()
     """
     import pyhesaff
+
     fpath_list = [
         ut.grab_test_imgpath('lena.png'),
         ut.grab_test_imgpath('carl.jpg'),
@@ -38,13 +39,14 @@ def simple_iterative_test():
     if ut.show_was_requested():
         import matplotlib as mpl
         from matplotlib import pyplot as plt
+
         fig = plt.figure()
         for i, fpath, kpts in enumerate(zip(fpath_list, kpts_list), start=1):
             ax = fig.add_subplot(2, 2, i)
             img = mpl.image.imread(fpath)
             plt.imshow(img)
             _xs, _ys = kpts.T[0:2]
-            ax.plot(_xs, _ys, 'ro', alpha=.5)
+            ax.plot(_xs, _ys, 'ro', alpha=0.5)
 
 
 if __name__ == '__main__':
@@ -55,6 +57,8 @@ if __name__ == '__main__':
         python -m tests.test_pyhesaff_simple_iterative --allexamples --noface --nosrc
     """
     import multiprocessing
+
     multiprocessing.freeze_support()  # for win32
     import utool as ut  # NOQA
+
     ut.doctest_funcs()

@@ -6,9 +6,9 @@ import os
 import ctypes as C
 
 
-#============================
+# ============================
 # general ctypes interface
-#============================
+# ============================
 
 __DEBUG_CLIB__ = '--debug' in sys.argv or '--debug-clib' in sys.argv
 
@@ -18,6 +18,7 @@ def get_plat_specifier():
     Standard platform specifier used by distutils
     """
     import distutils
+
     try:
         plat_name = distutils.util.get_platform()
     except AttributeError:
@@ -64,9 +65,9 @@ def get_lib_fname_list(libname):
     else:
         raise Exception('Unknown operating system: %s' % sys.platform)
     # Construct priority ordering of libnames
-    libnames = [''.join((prefix, spec, ext))
-                for spec in spec_list
-                for prefix in prefix_list]
+    libnames = [
+        ''.join((prefix, spec, ext)) for spec in spec_list for prefix in prefix_list
+    ]
     return libnames
 
 
@@ -76,10 +77,12 @@ def get_lib_dpath_list(root_dir):
     returns <libnames>: list of plausible directories to look.
     """
     'returns possible lib locations'
-    get_lib_dpath_list = [root_dir,
-                          join(root_dir, 'lib'),
-                          join(root_dir, 'build'),
-                          join(root_dir, 'build', 'lib')]
+    get_lib_dpath_list = [
+        root_dir,
+        join(root_dir, 'lib'),
+        join(root_dir, 'build'),
+        join(root_dir, 'build', 'lib'),
+    ]
     return get_lib_dpath_list
 
 
@@ -123,9 +126,11 @@ def find_lib_fpath(libname, root_dir, recurse_down=True, verbose=False):
         pass
         return FINAL_LIB_FPATH
 
-    msg = ('\n[C!] find_lib_fpath(libname=%r root_dir=%r, recurse_down=%r, verbose=%r)' %
-           (libname, root_dir, recurse_down, verbose) +
-           '\n[c!] Cannot FIND dynamic library')
+    msg = (
+        '\n[C!] find_lib_fpath(libname=%r root_dir=%r, recurse_down=%r, verbose=%r)'
+        % (libname, root_dir, recurse_down, verbose)
+        + '\n[c!] Cannot FIND dynamic library'
+    )
     print(msg)
     print('\n[c!] Checked: '.join(tried_fpaths))
     raise ImportError(msg)
@@ -152,6 +157,7 @@ def load_clib(libname, root_dir):
             cfunc = getattr(clib, func_name)
             cfunc.restype = return_type
             cfunc.argtypes = arg_type_list
+
         clib.__LIB_FPATH__ = lib_fpath
         return clib, def_cfunc, lib_fpath
     except OSError as ex:
@@ -175,4 +181,5 @@ if __name__ == '__main__':
         python -m pyhesaff.ctypes_interface --allexamples
     """
     import xdoctest
+
     xdoctest.doctest_module(__file__)
