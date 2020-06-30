@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, division
+
 # Standard
 import sys
 from os.path import realpath, join, split
 from vtool.tests import grabdata
+
 # Scientific
 import numpy as np
 import cv2
+
 # TPL
 import pyhesaff
 import utool
+
 utool.inject_colored_exceptions()
 
 
@@ -30,17 +34,14 @@ def load_test_data(short=False, n=0, use_cpp=False, **kwargs):
     if 'short' not in vars():
         short = False
     # Read Image
-    #ellipse.rrr()
+    # ellipse.rrr()
     nScales = 4
     nSamples = 16
     img_fpath = get_test_image()
     imgBGR = cv2.imread(img_fpath)
     imgLAB = cv2.cvtColor(imgBGR, cv2.COLOR_BGR2LAB)
     imgL = imgLAB[:, :, 0]
-    detect_kwargs = {
-        'scale_min': 20,
-        'scale_max': 100
-    }
+    detect_kwargs = {'scale_min': 20, 'scale_max': 100}
     detect_kwargs.update(kwargs)
     if not use_cpp:
         kpts, desc = pyhesaff.detect_feats(img_fpath, **detect_kwargs)

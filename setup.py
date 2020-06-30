@@ -17,10 +17,12 @@ def native_mb_python_tag(plat_impl=None, version_info=None):
     """
     if plat_impl is None:
         import platform
+
         plat_impl = platform.python_implementation()
 
     if version_info is None:
         import sys
+
         version_info = sys.version_info
 
     major, minor = version_info[0:2]
@@ -59,16 +61,19 @@ def parse_version(fpath='pyhesaff/__init__.py'):
 
     """
     import ast
+
     if not exists(fpath):
         raise ValueError('fpath={!r} does not exist'.format(fpath))
     with open(fpath, 'r') as file_:
         sourcecode = file_.read()
     pt = ast.parse(sourcecode)
+
     class VersionVisitor(ast.NodeVisitor):
         def visit_Assign(self, node):
             for target in node.targets:
                 if getattr(target, 'id', None) == '__version__':
                     self.version = node.value.s
+
     visitor = VersionVisitor()
     visitor.visit(pt)
     return visitor.version
@@ -93,6 +98,7 @@ def parse_requirements(fname='requirements.txt'):
         python -c "import setup; print(setup.parse_requirements())"
     """
     import re
+
     require_fpath = fname
 
     def parse_line(line):
@@ -151,6 +157,7 @@ def parse_requirements(fname='requirements.txt'):
 
 
 try:
+
     class EmptyListWithLength(list):
         def __len__(self):
             return 1
@@ -160,6 +167,8 @@ try:
 
         def __str__(self):
             return 'EmptyListWithLength()'
+
+
 except Exception:
     raise RuntimeError('FAILED TO ADD BUILD CONSTRUCTS')
 
@@ -226,12 +235,9 @@ KWARGS = OrderedDict(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-        'Topic :: Scientific/Engineering :: Image Recognition'
+        'Topic :: Scientific/Engineering :: Image Recognition',
     ],
-    cmake_args=[
-        '-DBUILD_TESTS=OFF',
-        '-DBUILD_DOC=OFF',
-    ],
+    cmake_args=['-DBUILD_TESTS=OFF', '-DBUILD_DOC=OFF',],
     ext_modules=EmptyListWithLength(),  # hack for including ctypes bins
 )
 
@@ -240,4 +246,5 @@ if __name__ == '__main__':
     python -c "import pyhesaff; print(pyhesaff.__file__)"
     """
     import skbuild
+
     skbuild.setup(**KWARGS)

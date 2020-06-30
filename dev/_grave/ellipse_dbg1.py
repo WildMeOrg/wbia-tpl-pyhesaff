@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 'This module should handle all things elliptical'
 from __future__ import print_function, division
+
 # Python
 from itertools import izip
+
 # Scientific
 from numpy import array, zeros, ones
 from numpy.core.umath_tests import matrix_multiply
@@ -10,14 +12,18 @@ from scipy.signal import argrelextrema
 import cv2
 import numpy as np
 import scipy as sp  # NOQA
+
 # Hotspotter
 from hotspotter import __common__
-print, print_, print_on, print_off, rrr, profile, printDBG =\
-    __common__.init(__name__, module_prefix='[ell]', DEBUG=False, initmpl=False)
+
+print, print_, print_on, print_off, rrr, profile, printDBG = __common__.init(
+    __name__, module_prefix='[ell]', DEBUG=False, initmpl=False
+)
 
 
 def test_data():
     import test_pyhesaff
+
     test_data = test_pyhesaff.load_test_data()
     kpts = test_data['kpts']
     exec(open('ellipse.py').read())
@@ -26,10 +32,7 @@ def test_data():
 
 def check_kpts_in_bounds(kpts_, width, height):
     # Test to make sure the extents of the keypoints are in bounds
-    unit_bbox = np.array([(-1, -1, 1),
-                          (-1,  1, 1),
-                          ( 1, -1, 1),
-                          ( 1,  1, 1)]).T
+    unit_bbox = np.array([(-1, -1, 1), (-1, 1, 1), (1, -1, 1), (1, 1, 1)]).T
     invV = kpts_to_invV(kpts_)
     bbox_pts = [v.dot(unit_bbox)[0:2] for v in invV]
     maxx = np.array([pts[0].max() for pts in bbox_pts]) < width
@@ -48,8 +51,8 @@ def adaptive_scale(imgBGR, kpts, nScales=16, nSamples=64):
     assert kpts.shape == (nKp, 5)
 
     # Expand each keypoint into a number of different scales
-    low = -.5
-    high = .5
+    low = -0.5
+    high = 0.5
     range_ = high - low
     scales = 2 ** np.linspace(low, high, nScales)
     expanded_kpts_list = expand_scales(kpts, scales)
@@ -79,32 +82,34 @@ def adaptive_scale(imgBGR, kpts, nScales=16, nSamples=64):
     border_vals_sum = border_vals.sum(3).sum(2)
     assert border_vals_sum.shape == (nKp, nScales)
 
-    #invalid_ell_bit = True - check_kpts_in_bounds(expanded_kpts, width, height)
-    #assert len(invalid_ell_bit) == (nKp * nScales)
-    #invalid_ell_bit.shape = (nKp, nScales)
-    #border_vals_sum[invalid_ell_bit] = 0
+    # invalid_ell_bit = True - check_kpts_in_bounds(expanded_kpts, width, height)
+    # assert len(invalid_ell_bit) == (nKp * nScales)
+    # invalid_ell_bit.shape = (nKp, nScales)
+    # border_vals_sum[invalid_ell_bit] = 0
 
     # interpolate maxima
     def bin_to_subscale(bins):
         return 2 ** ((peaks[:, 0] / nScales) - low) / (range_)
 
     peak_list = interpolate_maxima(border_vals_sum)
-    subscale_list = [bin_to_subscale(peaks) if len(peaks) > 0 else [] for peaks in peak_list]
+    subscale_list = [
+        bin_to_subscale(peaks) if len(peaks) > 0 else [] for peaks in peak_list
+    ]
     subscale_kpts = expand_subscales(kpts, subscale_list)
     #
     isvalid = check_kpts_in_bounds(subscale_kpts, width, height)
     adapted_kpts = np.array(subscale_kpts[isvalid], dtype=dtype_)
     return adapted_kpts
 
-    #expanded_kpts2 = np.rollaxis(expanded_kpts.reshape(nScales, nKp, 5), 1)
-    #assert expanded_kpts2.shape == (nKp, nScales, 5)
+    # expanded_kpts2 = np.rollaxis(expanded_kpts.reshape(nScales, nKp, 5), 1)
+    # assert expanded_kpts2.shape == (nKp, nScales, 5)
     # Dont select one of the original expanded scales
-    #sel_kpts_list = [[ekpts[np.round(peak[0])] for peak in peaks] for ekpts, peaks in izip(expanded_kpts2, peak_list)]
-    #sel_kpts_list = [kplist for kplist in sel_kpts_list if len(kplist) > 0]
-    #sel_kpts = np.vstack(sel_kpts_list)
+    # sel_kpts_list = [[ekpts[np.round(peak[0])] for peak in peaks] for ekpts, peaks in izip(expanded_kpts2, peak_list)]
+    # sel_kpts_list = [kplist for kplist in sel_kpts_list if len(kplist) > 0]
+    # sel_kpts = np.vstack(sel_kpts_list)
     # Instead interpolate the scale values
     # df2.plot(x, y); df2.update() ; df2.plot(xv, yv, color=df2.RED, marker='x'); df2.update()
-    #_fn = interpolate_fn = sp.interpolate.interp1d(x, y, kind='quadratic')
+    # _fn = interpolate_fn = sp.interpolate.interp1d(x, y, kind='quadratic')
 
 
 def expand_scales(kpts, scales):
@@ -119,9 +124,11 @@ def expand_scales(kpts, scales):
 
 
 def expand_subscales(kpts, subscale_list):
-    subscale_kpts_list = [kp * np.array((1, 1, scale, scale, scale))
-                          for kp, subscales in izip(kpts, subscale_list)
-                          for scale in subscales]
+    subscale_kpts_list = [
+        kp * np.array((1, 1, scale, scale, scale))
+        for kp, subscales in izip(kpts, subscale_list)
+        for scale in subscales
+    ]
     subscale_kpts = np.vstack(subscale_kpts_list)
     return subscale_kpts
 
@@ -131,11 +138,18 @@ def interpolate_maxima(scalar_list):
     nBins = len(y_list[0])
     x = np.arange(nBins)
     extrema_ = [argrelextrema(y, np.greater)[0] for y in y_list]
-    extrema_left_  = [np.clip(extrema - 1, 0, nBins) for extrema in extrema_]
+    extrema_left_ = [np.clip(extrema - 1, 0, nBins) for extrema in extrema_]
     extrema_right_ = [np.clip(extrema + 1, 0, nBins) for extrema in extrema_]
-    data_list = [np.vstack([exl, exm, exr]) for exl, exm, exr in izip(extrema_left_, extrema_, extrema_right_)]
-    x_data_list = [[] if data.size == 0 else y[data] for y, data in izip(y_list, data_list)]
-    y_data_list = [[] if data.size == 0 else x[data] for y, data in izip(y_list, data_list)]
+    data_list = [
+        np.vstack([exl, exm, exr])
+        for exl, exm, exr in izip(extrema_left_, extrema_, extrema_right_)
+    ]
+    x_data_list = [
+        [] if data.size == 0 else y[data] for y, data in izip(y_list, data_list)
+    ]
+    y_data_list = [
+        [] if data.size == 0 else x[data] for y, data in izip(y_list, data_list)
+    ]
 
     peak_list = interpolate_peaks(x_data_list, y_data_list)
     return peak_list
@@ -143,7 +157,7 @@ def interpolate_maxima(scalar_list):
 
 @profile
 def interpolate_peaks(x_data_list, y_data_list):
-    #http://stackoverflow.com/questions/717762/how-to-calculate-the-vertex-of-a-parabola-given-three-point
+    # http://stackoverflow.com/questions/717762/how-to-calculate-the-vertex-of-a-parabola-given-three-point
     peak_list = []
     for y_data, x_data in izip(x_data_list, y_data_list):
         if len(y_data) == 0:
@@ -152,9 +166,11 @@ def interpolate_peaks(x_data_list, y_data_list):
         y1, y2, y3 = y_data
         x1, x2, x3 = x_data
         denom = (x1 - x2) * (x1 - x3) * (x2 - x3)
-        A     = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom
-        B     = (x3 * x3 * (y1 - y2) + x2 * x2 * (y3 - y1) + x1 * x1 * (y2 - y3)) / denom
-        C     = (x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3) / denom
+        A = (x3 * (y2 - y1) + x2 * (y1 - y3) + x1 * (y3 - y2)) / denom
+        B = (x3 * x3 * (y1 - y2) + x2 * x2 * (y3 - y1) + x1 * x1 * (y2 - y3)) / denom
+        C = (
+            x2 * x3 * (x2 - x3) * y1 + x3 * x1 * (x3 - x1) * y2 + x1 * x2 * (x1 - x2) * y3
+        ) / denom
         xv = -B / (2 * A)
         yv = C - B * B / (4 * A)
         peak_list.append(np.vstack((xv.T, yv.T)).T)
@@ -202,35 +218,38 @@ def sample_uniform(kpts, nSamples=128):
         num_steps = (total_dist - dist_walked) // step_size
         num_steps_list.append(num_steps)
         # Log how much further youve gotten
-        dist_walked += (num_steps * step_size)
+        dist_walked += num_steps * step_size
     # Check for floating point errors
     # take an extra step if you need to
     num_steps_list[-1] += np.round((perimeter - dist_walked) / step_size)
     assert np.all(array(num_steps_list).sum(0) == nSamples)
 
-    #offset_iter1 = zip(num_steps_list, distsT, offset_list)
-    #offset_list = [((step_size - offset) / dist, ((num * step_size) - offset) / dist, num)
-                   #for num, dist, offset in zip(num_steps_list, distsT, offset_list)]
+    # offset_iter1 = zip(num_steps_list, distsT, offset_list)
+    # offset_list = [((step_size - offset) / dist, ((num * step_size) - offset) / dist, num)
+    # for num, dist, offset in zip(num_steps_list, distsT, offset_list)]
 
-    #offset_iter2 = offset_list
+    # offset_iter2 = offset_list
 
-    #cut_locs = [[
-        #np.linspace(off1, off2, n, endpoint=True) for (off1, off2, n) in izip(offset1, offset2, num)]
-        #for (offset1, offset2, num) in offset_iter2
-    #]
+    # cut_locs = [[
+    # np.linspace(off1, off2, n, endpoint=True) for (off1, off2, n) in izip(offset1, offset2, num)]
+    # for (offset1, offset2, num) in offset_iter2
+    # ]
     # store the percent location at each line segment where
     # the cut will be made
     # HERE IS NEXT
     cut_list = []
     # This loops over the pt samples and performs the operation for every keypoint
     for num, dist, offset in izip(num_steps_list, distsT, offset_list):
-        #if num == 0
-            #cut_list.append([])
-            #continue
+        # if num == 0
+        # cut_list.append([])
+        # continue
         # This was a bitch to keep track of
         offset1 = (step_size - offset) / dist
         offset2 = ((num * step_size) - offset) / dist
-        cut_locs = [np.linspace(off1, off2, n, endpoint=True) for (off1, off2, n) in izip(offset1, offset2, num)]
+        cut_locs = [
+            np.linspace(off1, off2, n, endpoint=True)
+            for (off1, off2, n) in izip(offset1, offset2, num)
+        ]
         # post check for divide by 0
         cut_locs = [array([0 if np.isinf(c) else c for c in cut]) for cut in cut_locs]
         cut_list.append(cut_locs)
@@ -246,46 +265,56 @@ def sample_uniform(kpts, nSamples=128):
         return ((1 - percent) * pt1) + ((percent) * pt2)
 
     def polygon_points(polygon_pts, dist_list):
-        return array([interpolate(polygon_pts[count], polygon_pts[(count + 1) % nSamples], loc)
-                      for count, locs in enumerate(dist_list)
-                      for loc in iter(locs)])
+        return array(
+            [
+                interpolate(polygon_pts[count], polygon_pts[(count + 1) % nSamples], loc)
+                for count, locs in enumerate(dist_list)
+                for loc in iter(locs)
+            ]
+        )
 
-    new_locations = array([polygon_points(polygon_pts, cuts) for polygon_pts,
-                           cuts in izip(polygon1_list, cut_list)])
+    new_locations = array(
+        [
+            polygon_points(polygon_pts, cuts)
+            for polygon_pts, cuts in izip(polygon1_list, cut_list)
+        ]
+    )
     # =================
     # =================
     # METHOD 2
-    #from itertools import cycle as icycle
-    #from itertools import islice
+    # from itertools import cycle as icycle
+    # from itertools import islice
 
-    #def icycle_shift1(iterable):
-        #return islice(icycle(poly_pts), 1, len(poly_pts) + 1)
+    # def icycle_shift1(iterable):
+    # return islice(icycle(poly_pts), 1, len(poly_pts) + 1)
 
-    #cutptsIter_list = [izip(iter(poly_pts), icycle_shift1(poly_pts), cuts)
-                       #for poly_pts, cuts in izip(polygon1_list, cut_list)]
-    #new_locations = [[[((1 - cut) * pt1) + ((cut) * pt2) for cut in cuts]
-                      #for (pt1, pt2, cuts) in cutPtsIter]
-                     #for cutPtsIter in cutptsIter_list]
+    # cutptsIter_list = [izip(iter(poly_pts), icycle_shift1(poly_pts), cuts)
+    # for poly_pts, cuts in izip(polygon1_list, cut_list)]
+    # new_locations = [[[((1 - cut) * pt1) + ((cut) * pt2) for cut in cuts]
+    # for (pt1, pt2, cuts) in cutPtsIter]
+    # for cutPtsIter in cutptsIter_list]
     # =================
 
     # assert new_locations.shape == (nKp, nSamples, 3)
     # Warp new_locations to the unit circle
-    #new_unit = V.dot(new_locations.T).T
+    # new_unit = V.dot(new_locations.T).T
     new_unit = array([v.dot(newloc.T).T for v, newloc in izip(V, new_locations)])
     # normalize new_unit
     new_mag = np.sqrt((new_unit ** 2).sum(-1))
     new_unorm_unit = new_unit / np.dstack([new_mag] * 3)
     new_norm_unit = new_unorm_unit / np.dstack([new_unorm_unit[:, :, 2]] * 3)
     # Get angle (might not be necessary)
-    #x_axis = array([1, 0, 0])
-    #arccos_list = x_axis.dot(new_norm_unit.T)
-    #uniform_theta_list = np.arccos(arccos_list)
+    # x_axis = array([1, 0, 0])
+    # arccos_list = x_axis.dot(new_norm_unit.T)
+    # uniform_theta_list = np.arccos(arccos_list)
     # Maybe this?
     # Find the angle from the center of the circle
     theta_list2 = np.arctan2(new_norm_unit[:, :, 1], new_norm_unit[:, :, 0])
     # assert uniform_theta_list.shape = (nKp, nSample)
     # Use this angle to unevenly sample the perimeter of the circle
-    uneven_cicrle_pts = np.dstack([np.cos(theta_list2), np.sin(theta_list2), ones(theta_list2.shape)])
+    uneven_cicrle_pts = np.dstack(
+        [np.cos(theta_list2), np.sin(theta_list2), ones(theta_list2.shape)]
+    )
     # The uneven circle points were sampled in such a way that when they are
     # transformeed they will be approximately uniform along the boundary of the
     # ellipse.
@@ -295,9 +324,9 @@ def sample_uniform(kpts, nSamples=128):
     return ell_border_pts_list
 
 
-#----------------
+# ----------------
 # Image Helpers
-#----------------
+# ----------------
 
 
 def gradient_magnitude(img):
@@ -308,9 +337,9 @@ def gradient_magnitude(img):
 
 
 def subpixel_values(img, pts):
-    ''' adapted from
+    """ adapted from
     stackoverflow.com/uestions/12729228/simple-efficient-binlinear-
-    interpolation-of-images-in-numpy-and-python'''
+    interpolation-of-images-in-numpy-and-python"""
     # Image info
     height, width = img.shape[0:2]
     nChannels = 1 if len(img.shape) == 2 else img.shape[2]
@@ -337,11 +366,11 @@ def subpixel_values(img, pts):
     wb = (x1 - x) * (y - y0)
     wc = (x - x0) * (y1 - y)
     wd = (x - x0) * (y - y0)
-    if  nChannels != 1:
-        wa = array([wa] *  nChannels).T
-        wb = array([wb] *  nChannels).T
-        wc = array([wc] *  nChannels).T
-        wd = array([wd] *  nChannels).T
+    if nChannels != 1:
+        wa = array([wa] * nChannels).T
+        wb = array([wb] * nChannels).T
+        wc = array([wc] * nChannels).T
+        wd = array([wd] * nChannels).T
 
     # Sample values
     Ia = img[y0, x0]
@@ -358,9 +387,10 @@ def get_num_channels(img):
     return 1 if len(img.shape) == 2 else img.shape[2]
 
 
-#----------------
+# ----------------
 # Numeric Helpers
-#----------------
+# ----------------
+
 
 def kpts_to_invV(kpts):
     nKp = len(kpts)
@@ -372,9 +402,7 @@ def kpts_to_invV(kpts):
     # np.dot operates over the -1 and -2 axis of arrays
     # Start with
     #     invV.shape = (3, 3, nKp)
-    invV = array([[ia11, ia12, ia13],
-                  [ia21, ia22, ia23],
-                  [ia31, ia32, ia33]])
+    invV = array([[ia11, ia12, ia13], [ia21, ia22, ia23], [ia31, ia32, ia33]])
     # And roll into
     invV = np.rollaxis(invV, 2)
     invV = np.ascontiguousarray(invV)
@@ -393,7 +421,7 @@ def kpts_matrix(kpts):
     invV = kpts_to_invV(kpts)
     V = [np.linalg.inv(v) for v in invV]
     assert len(V) == (nKp)
-    #V = faster_inverse(invV)
+    # V = faster_inverse(invV)
     # transform into conic matrix Z
     # Z = (V.T).dot(V)
     Vt = array(map(np.transpose, V))
@@ -414,37 +442,30 @@ def homogenous_circle_pts(nSamples):
 @profile
 def circular_distance(arr=None):
     dist_head_ = ((arr[0:-1] - arr[1:]) ** 2).sum(1)
-    dist_tail_  = ((arr[-1] - arr[0]) ** 2).sum(0)
-    #dist_end_.shape = (1, len(dist_end_))
-    #print(dist_most_.shape)
-    #print(dist_end_.shape)
+    dist_tail_ = ((arr[-1] - arr[0]) ** 2).sum(0)
+    # dist_end_.shape = (1, len(dist_end_))
+    # print(dist_most_.shape)
+    # print(dist_end_.shape)
     dists = np.sqrt(np.hstack((dist_head_, dist_tail_)))
     return dists
 
 
-def almost_eq(a, b, thresh=1E-11):
+def almost_eq(a, b, thresh=1e-11):
     return abs(a - b) < thresh
 
 
 def rotation(theta):
     sin_ = np.sin(theta)
     cos_ = np.cos(theta)
-    rot_ = array([[cos_, -sin_],
-                  [sin_, cos_]])
+    rot_ = array([[cos_, -sin_], [sin_, cos_]])
     return rot_
 
 
 def rotation_around(theta, x, y):
     sin_ = np.sin(theta)
     cos_ = np.cos(theta)
-    tr1_ = array([[1, 0, -x],
-                  [0, 1, -y],
-                  [0, 0, 1]])
-    rot_ = array([[cos_, -sin_, 0],
-                  [sin_, cos_,  0],
-                  [   0,    0,  1]])
-    tr2_ = array([[1, 0, x],
-                  [0, 1, y],
-                  [0, 0, 1]])
+    tr1_ = array([[1, 0, -x], [0, 1, -y], [0, 0, 1]])
+    rot_ = array([[cos_, -sin_, 0], [sin_, cos_, 0], [0, 0, 1]])
+    tr2_ = array([[1, 0, x], [0, 1, y], [0, 0, 1]])
     rot = tr2_.dot(rot_).dot(tr1_)
     return rot

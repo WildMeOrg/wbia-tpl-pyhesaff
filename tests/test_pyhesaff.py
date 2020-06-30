@@ -24,10 +24,12 @@ def test_pyheaff(img_fpath):
         >>> ut.show_if_requested()
     """
     import pyhesaff
+
     kpts, desc = pyhesaff.detect_feats(img_fpath)
     rchip = cv2.imread(img_fpath)
     if ut.show_was_requested():
         from plottool.interact_keypoints import ishow_keypoints
+
         ishow_keypoints(rchip, kpts, desc)
     return locals()
 
@@ -40,6 +42,8 @@ if __name__ == '__main__':
         python -m tests.test_pyhesaff --allexamples --noface --nosrc
     """
     import multiprocessing
+
     multiprocessing.freeze_support()  # for win32
     import utool as ut  # NOQA
+
     ut.doctest_funcs()
