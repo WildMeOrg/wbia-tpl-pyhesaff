@@ -49,7 +49,7 @@ echo "RUN_TESTS: DONE"
 
 if [ "$FAILED_TESTS" != "" ] ; then
     echo "-----"
-    printf "Failed Tests:" 
+    printf "Failed Tests:"
     printf "$FAILED_TESTS\n"
     echo "-----"
 fi

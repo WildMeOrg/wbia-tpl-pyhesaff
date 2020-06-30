@@ -22,7 +22,7 @@ function bdist_wheel_cmd {
     rm -rf _skbuild
 
     #python setup.py build $BDIST_PARAMS
-    # HACK TO GET LIBS IN THE RIGHT PLACE  
+    # HACK TO GET LIBS IN THE RIGHT PLACE
     python setup.py build_ext --inplace $BDIST_PARAMS
 
     echo "-- RUN SETUP BDIST_WHEEL --"
@@ -101,7 +101,7 @@ function pre_build {
 
   if [ -n "$IS_OSX" ]; then
     echo "Running for OSX"
-    
+
     local CACHE_STAGE; (echo "$TRAVIS_BUILD_STAGE_NAME" | grep -qiF "final") || CACHE_STAGE=1
 
     #after the cache stage, all bottles and Homebrew metadata should be already cached locally
@@ -132,10 +132,10 @@ function pre_build {
         brew_go_bootstrap_mode 0
         return 0
     fi
-    
+
     # Have to install macpython late to avoid conflict with Homebrew Python update
     before_install
-    
+
   else
     echo "Running for linux"
   fi

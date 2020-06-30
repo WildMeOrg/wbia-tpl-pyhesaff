@@ -38,7 +38,7 @@ export PYTHON_EXE=$PYTHON_ROOT/bin/python
 #echo "PATH = $PATH"
 #echo $($PYTHON_EXE --version)
 
-if [ -d "$HOME/venv" ]; then 
+if [ -d "$HOME/venv" ]; then
     source $HOME/venv/bin/activate
 fi
 

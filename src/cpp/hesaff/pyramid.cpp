@@ -8,7 +8,7 @@
  */
 
 /*
-Detects hessian keypoint locations (but not affine shape) in a Gaussian pyramid. 
+Detects hessian keypoint locations (but not affine shape) in a Gaussian pyramid.
 */
 
 #include <vector>
@@ -91,14 +91,14 @@ bool isMin(float val, const Mat &pix, int row, int col)
 Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 {
     /*
-     Does 3x3 convolution to produce responce map 
-     
+     Does 3x3 convolution to produce responce map
+
      Computes the scale normalized determanant of the hessian matrix for a
      given image image (which is a level of the Gaussian pyramid).
-    
+
     Step 1.1: Called from: main
     void HessianDetector::detectPyramidKeypoints(const Mat &image)
-    void HessianDetector::detectOctaveHessianKeypoints(const Mat &firstLevel, float pixelDistance, 
+    void HessianDetector::detectOctaveHessianKeypoints(const Mat &firstLevel, float pixelDistance,
                                                 Mat &nextOctaveFirstLevel)
     RETURNS output_image
     */
@@ -117,44 +117,44 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 
     /*
     Image:
-      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)] 
+      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)]
 
-      [( 0,-1)] [( 0, 0)] [( 0, 1)] [( 0, 2)] 
-              
-      [( 1,-1)] [( 1, 0)] [( 1, 1)] [( 1, 2)] 
-             
+      [( 0,-1)] [( 0, 0)] [( 0, 1)] [( 0, 2)]
+
+      [( 1,-1)] [( 1, 0)] [( 1, 1)] [( 1, 2)]
+
       [( 2,-1)] [( 2, 0)] [( 2, 1)] [( 2, 2)]
-             
+
       [( 3,-1)] [( 3, 0)] [( 3, 1)] [( 3, 2)]
 
     -----
-      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)] 
+      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)]
                +-----------------------------
-      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)] 
+      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)]
                |
-      [( 1,-1)]|[    *in] [   *out] [( 1, 2)] 
+      [( 1,-1)]|[    *in] [   *out] [( 1, 2)]
                |
       [( 2,-1)]|[( 2, 0)] [( 2, 1)] [( 2, 2)]
                |
       [( 3,-1)]|[( 3, 0)] [( 3, 1)] [( 3, 2)]
 
     -----
-      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)] 
+      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)]
                +-----------------------------
-      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)] 
+      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)]
                |
-      [    v11]|[    v21] [    v31] [( 1, 2)] 
+      [    v11]|[    v21] [    v31] [( 1, 2)]
                |
       [    v12]|[    v22] [    v32] [( 2, 2)]
                |
       [    v13]|[    v23] [    v33] [( 3, 2)]
 
     -----
-      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)] 
+      [(-1,-1)] [(-1 ,0)] [(-1, 1)] [(-1, 2)]
                +-----------------------------
-      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)] 
+      [( 0,-1)]|[( 0, 0)] [( 0, 1)] [( 0, 2)]
                |
-      [    v11]|[    v21] [    v31] [( 1, 2)] 
+      [    v11]|[    v21] [    v31] [( 1, 2)]
                |
       [    v12]|[    v22] [    v32] [( 2, 2)]
                |
@@ -162,34 +162,34 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 
 
       ----------
-      Lxx and Lyy might be inverted 
+      Lxx and Lyy might be inverted
 
       Lxx - turns out this does compute a 2nd derivative
-      
+
         [v11] [v21] [v31]
-              
+
         [v12] [v22] [v32]    1  -2  1
-                               
+
         [v13] [v23] [v33]
 
       ----------
       Lyy
-      
+
         [v11] [v21] [v31]      1
-              
+
         [v12] [v22] [v32]     -2
-                               
+
         [v13] [v23] [v33]      1
 
       ----------
       Lxy
-      
+
         [v11] [v21] [v31]   -1/4        1/4
-              
-        [v12] [v22] [v32]         
-                               
+
+        [v12] [v22] [v32]
+
         [v13] [v23] [v33]    1/4       -1/4
-     
+
      */
 
     float norm2 = norm * norm;
@@ -219,7 +219,7 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
             float Lyy = (v12 - (2 * v22) + v32);
             float Lxy = (v13 - v11 + v31 - v33) / 4.0f;
 
-            // Compute the scale normalized hessian determanant and 
+            // Compute the scale normalized hessian determanant and
             // write to the ouptut image.
             // normalize and write out
             *out = (Lxx * Lyy - Lxy * Lxy) * norm2;
@@ -251,17 +251,17 @@ Mat HessianDetector::hessianResponse(const Mat &inputImage, float norm)
 void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixelDistance)
 {
     /*
-     
+
     - Localizes the keypoint in position and scale (but not shape) by fitting a
     parabola (2nd order taylor expansion), finding the extrema, relocalizing,
     and then iterating until convergence.  - Checks to make sure keypoint is
     not on an edge.
 
-    
+
     Step 2:
     main
     0: void HessianDetector::detectPyramidKeypoints(const Mat &image)
-    1: void HessianDetector::detectOctaveHessianKeypoints(const Mat &firstLevel, float pixelDistance, 
+    1: void HessianDetector::detectOctaveHessianKeypoints(const Mat &firstLevel, float pixelDistance,
                                                    Mat &nextOctaveFirstLevel)
     1.2: void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance)
     */
@@ -284,9 +284,9 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
         float dss = this->low.at<float>(r, c) - 2.0f * this->cur.at<float>(r, c) + this->high.at<float>(r, c);
 
         float dxy = 0.25f * (
-                this->cur.at<float>(r + 1, c + 1) - 
-                this->cur.at<float>(r + 1, c - 1) - 
-                this->cur.at<float>(r - 1, c + 1) + 
+                this->cur.at<float>(r + 1, c + 1) -
+                this->cur.at<float>(r + 1, c - 1) -
+                this->cur.at<float>(r - 1, c + 1) +
                 this->cur.at<float>(r - 1, c - 1));
         // check edge like shape of the response function in first iteration
         if(0 == iter)
@@ -299,10 +299,10 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
             }
         }
         float dxs = 0.25f * (
-                this->high.at<float>(r  , c + 1) - this->high.at<float>(r  , c - 1) - 
+                this->high.at<float>(r  , c + 1) - this->high.at<float>(r  , c - 1) -
                  this->low.at<float>(r  , c + 1) +  this->low.at<float>(r  , c - 1));
         float dys = 0.25f * (
-                this->high.at<float>(r + 1, c) - this->high.at<float>(r - 1, c) - 
+                this->high.at<float>(r + 1, c) - this->high.at<float>(r - 1, c) -
                  this->low.at<float>(r + 1, c) +  this->low.at<float>(r - 1, c));
 
         float A[9];
@@ -364,7 +364,7 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
         }
     }
     // if spatial localization was all right and the scale is close enough...
-    if(fabs(b[0]) > 1.5 || fabs(b[1]) > 1.5 || fabs(b[2]) > 1.5 || 
+    if(fabs(b[0]) > 1.5 || fabs(b[1]) > 1.5 || fabs(b[2]) > 1.5 ||
        fabs(val) < this->finalThreshold || this->octaveMap.at<unsigned char>(r, c) > 0)
     {
         return;
@@ -386,7 +386,7 @@ void HessianDetector::localizeKeypoint(int r, int c, float curScale, float pixel
         // findAffineShape(blur, x, y, s, pixelDistance, type, response);
         // Call Step 3. in hessaff.cpp
         this->hessianKeypointCallback->onHessianKeypointDetected(
-                this->prevBlur, x, y, s, pixelDistance, type, val); 
+                this->prevBlur, x, y, s, pixelDistance, type, val);
     }
 }
 
@@ -480,13 +480,13 @@ void HessianDetector::findLevelKeypoints(float curScale, float pixelDistance)
             //If current val is an extreme point in (x,y,sigma)
             // either positive -> local max. or negative -> local min.
             const bool pass_pos_thresh = (val > this->positiveThreshold &&
-                (isMax(val, this->cur, r, c) && 
-                 isMax(val, this->low, r, c) && 
+                (isMax(val, this->cur, r, c) &&
+                 isMax(val, this->low, r, c) &&
                  isMax(val, this->high, r, c))
                 );
-            const bool pass_neg_thresh = (val < this->negativeThreshold && 
-                (isMin(val, this->cur, r, c) && 
-                 isMin(val, this->low, r, c) && 
+            const bool pass_neg_thresh = (val < this->negativeThreshold &&
+                (isMin(val, this->cur, r, c) &&
+                 isMin(val, this->low, r, c) &&
                  isMin(val, this->high, r, c))
                 );
             if(pass_pos_thresh || pass_neg_thresh)

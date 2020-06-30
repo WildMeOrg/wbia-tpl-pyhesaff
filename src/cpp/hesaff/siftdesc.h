@@ -31,7 +31,7 @@ struct SIFTDescriptorParams
         orientationBins = 8;
         maxBinValue = 0.2f;  // clipping
         patchSize = 41;
-        siftPower = 1.0;  
+        siftPower = 1.0;
         // TODO: mean vector?
         //
         // Common Variants:
@@ -45,9 +45,9 @@ struct SIFTDescriptor
 {
 
 public:
-    
+
     // top level interface
-    SIFTDescriptor(const SIFTDescriptorParams &par); 
+    SIFTDescriptor(const SIFTDescriptorParams &par);
 
     void computeSiftDescriptor(cv::Mat &patch);
 

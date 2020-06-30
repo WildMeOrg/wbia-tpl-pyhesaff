@@ -6,7 +6,7 @@ add_dependencies(test tests)
 set(EXECUTABLE_OUTPUT_PATH ${TEST_OUTPUT_PATH})
 
 #---------- pyunit tests --------------
-if (BUILD_PYTHON_BINDINGS) 
+if (BUILD_PYTHON_BINDINGS)
     pyhesaff_add_pyunit(test_pyhesaff.py)
     pyhesaff_add_pyunit(test_pyhesaff_simple_parallel.py)
     pyhesaff_add_pyunit(test_pyhesaff_simple_iterative.py)

@@ -21,7 +21,7 @@ function run_tests {
 
 function setup_venv(){
     #$PYTHON_EXE -m pip install --upgrade pip
-    $PYTHON_EXE -m pip install virtualenv 
+    $PYTHON_EXE -m pip install virtualenv
     $PYTHON_EXE -m virtualenv --python=$PYTHON_EXE venv
     pip install virtualenv
     source $HOME/venv/bin/activate && \

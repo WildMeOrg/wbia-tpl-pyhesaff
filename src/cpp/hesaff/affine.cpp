@@ -33,7 +33,7 @@ using namespace cv;
 bool AffineShape::findAffineShape(const Mat &blur, float x, float y, float s, float pixelDistance, int type, float response)
 {
     /*
-    Takes a keypoint with localized position and shape and iteravely computes the 
+    Takes a keypoint with localized position and shape and iteravely computes the
     affine shape that causes the second moment matrix (SMM) to become the identity
 
     Step 3: main
