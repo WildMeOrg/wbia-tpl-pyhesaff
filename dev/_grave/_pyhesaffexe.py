@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import print_function, division
 # Standard
 #from ctypes.util import find_library
@@ -172,5 +173,3 @@ def rectify_up_abcd(abcd):
     a22 = absdet_ / b2a2
     acd = np.vstack([a11, a21, a22]).T
     return acd
-
-

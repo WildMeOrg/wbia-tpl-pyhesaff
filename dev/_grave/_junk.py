@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 def arrptr_to_np_OLD(c_arrptr, shape, arr_t, dtype):
     """
     Casts an array pointer from C to numpy
@@ -162,5 +163,3 @@ def arrptr_to_np(c_arrptr, shape, arr_t, dtype):
         ut.printex(ex, keys=key_list)
         raise
     return np_arr
-
-

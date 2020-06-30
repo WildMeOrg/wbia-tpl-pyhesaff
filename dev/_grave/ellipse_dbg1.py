@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 'This module should handle all things elliptical'
 from __future__ import print_function, division
 # Python

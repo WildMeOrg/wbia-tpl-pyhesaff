@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
     #print('[pyhesaff] extracting %d desc' % nKpts)
     #print('[pyhesaff] kpts.shape =%r' % (kpts.shape,))
     #print('[pyhesaff] kpts.dtype =%r' % (kpts.dtype,))
