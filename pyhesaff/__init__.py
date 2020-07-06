@@ -3,7 +3,10 @@
 from __future__ import absolute_import, print_function, division
 
 
-__version__ = '1.2.0'
+try:
+    from pyhesaff._version import __version__
+except ImportError:
+    __version__ = '0.0.0'
 
 
 from pyhesaff import ctypes_interface
