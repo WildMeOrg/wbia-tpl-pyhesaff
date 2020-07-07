@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
+from plottool.viz_keypoints import show_keypoints
+from plottool import draw_func2 as df2
+import vtool.ellipse as vtellipse
 from six.moves import zip
 import utool as ut
 import numpy as np
@@ -154,10 +157,6 @@ def test_adaptive_scale_main():
         >>> # verify results
         >>> print(result)
     """
-    from plottool import draw_func2 as df2
-    from plottool.viz_keypoints import show_keypoints
-    import vtool.ellipse as vtellipse
-
     print('__main__ = test_adaptive_scale.py')
     np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
 

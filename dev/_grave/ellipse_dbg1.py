@@ -89,7 +89,7 @@ def adaptive_scale(imgBGR, kpts, nScales=16, nSamples=64):
 
     # interpolate maxima
     def bin_to_subscale(bins):
-        return 2 ** ((peaks[:, 0] / nScales) - low) / (range_)
+        return 2 ** ((bins[:, 0] / nScales) - low) / (range_)
 
     peak_list = interpolate_maxima(border_vals_sum)
     subscale_list = [
@@ -208,7 +208,7 @@ def sample_uniform(kpts, nSamples=128):
     assert distsT.shape == (nSamples, nKp)
 
     # This loops over the pt samples and performs the operation for every keypoint
-    for count in xrange(nSamples):
+    for count in range(nSamples):
         segment_len = distsT[count]
         # Find where your starting location is
         offset_list.append(total_dist - dist_walked)

@@ -47,6 +47,7 @@ def test_ori_extract_main():
     detect_kw2 = {'scale_min': 40, 'scale_max': 60}
     detect_kw3 = {'scale_min': 45, 'scale_max': 49}
     # Remove skew and anisotropic scaling
+
     def force_isotropic(kpts):
         kpts_ = kpts.copy()
         kpts_[:, ktool.SKEW_DIM] = 0

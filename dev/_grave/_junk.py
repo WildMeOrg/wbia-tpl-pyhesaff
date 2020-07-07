@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+import numpy as np
+import ctypes as C
+import six
+
+
 def arrptr_to_np_OLD(c_arrptr, shape, arr_t, dtype):
     """
     Casts an array pointer from C to numpy
@@ -16,7 +21,7 @@ def arrptr_to_np_OLD(c_arrptr, shape, arr_t, dtype):
 
     """
     try:
-        byte_t = ctypes.c_char
+        byte_t = C.c_char
         itemsize_ = dtype().itemsize
         # import utool
         # utool.printvar2('itemsize_')
@@ -131,7 +136,7 @@ def arrptr_to_np(c_arrptr, shape, arr_t, dtype):
 
     """
     try:
-        byte_t = ctypes.c_char
+        byte_t = C.c_char
         itemsize_ = dtype().itemsize  # size of a single byte
         dtype_t = byte_t * itemsize_  # datatype of array elements
         dtype_ptr_t = C.POINTER(dtype_t)  # size of each item

@@ -7,9 +7,6 @@ import utool as ut
 
 
 def TEST_ptool_find_kpts_direction(imgBGR, kpts):
-    from plottool import draw_func2 as df2
-    from plottool.viz_keypoints import _annotate_kpts, show_keypoints
-    from plottool.viz_featrow import draw_feat_row
     import vtool.patch as ptool
 
     hrint = utool.horiz_print

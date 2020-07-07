@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+from plottool import draw_func2 as df2
+from os.path import split
+from tests import pyhestest
+import pyhesaff
+import ubelt as ub
+
 # print('[pyhesaff] extracting %d desc' % nKpts)
 # print('[pyhesaff] kpts.shape =%r' % (kpts.shape,))
 # print('[pyhesaff] kpts.dtype =%r' % (kpts.dtype,))
@@ -19,6 +25,7 @@
 
 def test_hesaff(n=None, fnum=1, **kwargs):
     from hotspotter import interaction
+    import vtool.ellipse as etool
 
     reextract = kwargs.get('reextrac', False)
     new_exe = kwargs.get('new_exe', False)
@@ -36,19 +43,21 @@ def test_hesaff(n=None, fnum=1, **kwargs):
 
     print('[test]---------------------')
     try:
+        img_fpath, image = None, None
+
         # Select kpts
         title = split(_pyhesaffexe.EXE_FPATH)[1] if use_exe else 'libhesaff'
-        detect_func = _pyhesaffexe.detect_feats if use_exe else detect_feats
-        with helpers.Timer(msg=title):
+        detect_func = _pyhesaffexe.detect_feats if use_exe else pyhesaff.detect_feats
+        with ub.Timer(msg=title):
             kpts, desc = detect_func(img_fpath, scale_min=0, scale_max=1000)
         if reextract:
             title = 'reextract'
-            with helpers.Timer(msg='reextract'):
-                desc = extract_desc(img_fpath, kpts)
-        kpts_ = kpts if n is None else spaced_elements(kpts, n)
-        desc_ = desc if n is None else spaced_elements(desc, n)
+            with ub.Timer(msg='reextract'):
+                desc = pyhesaff.extract_desc_from_patches(img_fpath, kpts)
+        kpts_ = kpts if n is None else pyhestest.spaced_elements(kpts, n)
+        desc_ = desc if n is None else pyhestest.spaced_elements(desc, n)
         if adaptive:
-            kpts_, desc_ = adaptive_scale(img_fpath, kpts_, desc_)
+            kpts_, desc_ = etool.adaptive_scale(img_fpath, kpts_, desc_)
         # Print info
         print('detected %d keypoints' % len(kpts))
         print('drawing %d/%d kpts' % (len(kpts_), len(kpts)))

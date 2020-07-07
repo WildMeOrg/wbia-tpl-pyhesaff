@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
+from plottool.viz_keypoints import show_keypoints
+from plottool import draw_func2 as df2
+import plottool
+import vtool.patch as ptool
 import numpy as np
 import utool as ut
 import utool
@@ -54,6 +58,9 @@ def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
 
 
 def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
+    from plottool.viz_keypoints import _annotate_kpts
+    from plottool.viz_featrow import draw_feat_row
+
     # df2.imshow(wpatch, fnum=2)
     sift = desc[sel]
     viz_kwargs = dict(
@@ -72,9 +79,6 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
 
 def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     from plottool import draw_func2 as df2
-    from plottool.viz_keypoints import _annotate_kpts, show_keypoints
-    from plottool.viz_featrow import draw_feat_row
-    import plottool
     import vtool.patch as ptool
 
     # ----------------------#

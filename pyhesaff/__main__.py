@@ -1,44 +1,19 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
-
-def detect_feats_main():
+def main():  # nocover
     import pyhesaff
-    from pyhesaff._pyhesaff import grab_test_imgpath
-    from pyhesaff._pyhesaff import argparse_hesaff_params
-    import cv2
-    import ubelt as ub
 
-    img_fpath = grab_test_imgpath(ub.argval('--fname', default='astro.png'))
-    kwargs = argparse_hesaff_params()
-    print('kwargs = %r' % (kwargs,))
+    print('Looks like the imports worked')
+    print('pyhesaff = {!r}'.format(pyhesaff))
+    print('pyhesaff.__file__ = {!r}'.format(pyhesaff.__file__))
+    print('pyhesaff.__version__ = {!r}'.format(pyhesaff.__version__))
 
-    (kpts, vecs) = pyhesaff.detect_feats(img_fpath, **kwargs)
-
-    if ub.argflag('--show'):
-        # Show keypoints
-        imgBGR = cv2.imread(img_fpath)
-        default_showkw = dict(
-            ori=False, ell=True, ell_linewidth=2, ell_alpha=0.4, ell_color='distinct'
-        )
-        print('default_showkw = %r' % (default_showkw,))
-        import utool as ut
-
-        showkw = ut.argparse_dict(default_showkw)
-        import plottool as pt
-
-        pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, **showkw)
-        pt.show_if_requested()
-
-
-def main():
-    detect_feats_main()
+    print('pyhesaff.HESAFF_CLIB = {!r}'.format(pyhesaff.HESAFF_CLIB))
+    print('pyhesaff.__LIB_FPATH__ = {!r}'.format(pyhesaff.__LIB_FPATH__))
 
 
 if __name__ == '__main__':
     """
     CommandLine:
-        python -m pyhesaff --show
+       python -m pyhesaff
     """
     main()
