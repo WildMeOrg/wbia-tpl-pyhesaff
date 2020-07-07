@@ -14,6 +14,7 @@ from pyhesaff import _pyhesaff
 from pyhesaff._pyhesaff import (
     DESC_DIM,
     HESAFF_CLIB,
+    __LIB_FPATH__,
     HESAFF_PARAM_DICT,
     HESAFF_PARAM_TYPES,
     HESAFF_TYPED_PARAMS,
