@@ -42,6 +42,8 @@ if(OS_IS_MACOS)
   include_directories(/opt/local/include)
   link_directories(/opt/local/lib)
 
+  find_package(Eigen3 3 REQUIRED NO_MODULE)
+
   set(CMAKE_INSTALL_RPATH "/opt/local/lib")
 
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
@@ -64,7 +66,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
   set(CMAKE_COMPILER_IS_CLANGXX 1)
 endif()
 
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMake)
 
 # Add an "uninstall" target
 configure_file("${PROJECT_SOURCE_DIR}/CMake/uninstall_target.cmake.in"
@@ -95,6 +97,19 @@ set(TEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/test)
 option(BUILD_TESTS "Build tests" ON)
 option(BUILD_DOC "Build documentation" ON)
 option(USE_OPENMP "Use OpenMP multi-threading" ON)
+
+if(OS_IS_MACOS)
+  find_package(Gflags REQUIRED)
+  if(Gflags_FOUND
+     OR GFLAGS_FOUND
+     OR GFLAGS_INCLUDE_DIRS)
+    message(STATUS "GFLAGS_INCLUDE_DIR: ${GFLAGS_INCLUDE_DIR}")
+    message(STATUS "GFLAGS_LIBRARIES: ${GFLAGS_LIBRARIES}")
+    include_directories(${GFLAGS_INCLUDE_DIR})
+  else()
+    message(FATAL_ERROR "GFlags NOT found")
+  endif()
+endif()
 
 find_package(OpenCV REQUIRED)
 if(OpenCV_FOUND)
