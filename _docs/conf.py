@@ -28,7 +28,9 @@ html_sidebars = {
 
 project = 'wbia-pyhesaff'
 copyright = '2020, Wild Me'
-author = 'Krystian Mikolajczyk, Michal Perdoch, Jon Crall, Avi Weinstock, WildMe Developers'
+author = (
+    'Krystian Mikolajczyk, Michal Perdoch, Jon Crall, Avi Weinstock, WildMe Developers'
+)
 
 # The short X.Y version
 version = '3.1.0'
