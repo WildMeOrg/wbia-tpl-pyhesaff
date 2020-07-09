@@ -1,2 +1,3 @@
 ubelt
+opencv-python == 3.4.10.35
 wbia-vtool
