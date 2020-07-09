@@ -22,8 +22,8 @@ def test_draw_keypoint_main():
         >>> test_draw_keypoint_main()
         >>> ut.show_if_requested()
     """
-    from plottool import draw_func2 as df2
-    from plottool import mpl_keypoint
+    from wbia.plottool import draw_func2 as df2
+    from wbia.plottool import mpl_keypoint
     import vtool.keypoint as ktool  # NOQA
 
     # TODO: Gui tests yield:
@@ -123,7 +123,7 @@ def test_draw_keypoint_main():
     nRows = 2
     nCols = 4
 
-    import plottool as pt
+    from wbia import plottool as pt
 
     # pnum_ = pt.pnum_generator(nRows, nCols).next
     pnum_ = pt.pnum_generator(nRows, nCols)

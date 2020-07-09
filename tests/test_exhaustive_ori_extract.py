@@ -30,8 +30,8 @@ def test_ori_extract_main():
         >>> ut.show_if_requested()
     """
     import pyhesaff
-    from plottool import draw_func2 as df2
-    from plottool.viz_keypoints import show_keypoints
+    from wbia.plottool import draw_func2 as df2
+    from wbia.plottool.viz_keypoints import show_keypoints
     import vtool  # NOQA
     import vtool.image as gtool
     import vtool.keypoint as ktool

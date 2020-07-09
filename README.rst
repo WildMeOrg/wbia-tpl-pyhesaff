@@ -1,8 +1,10 @@
-|Travis| |Pypi|
+======================
+Wildbook IA - PyHesaff
+======================
 
+|Build| |Pypi| |ReadTheDocs|
 
-Hessian Affine + SIFT keypoints in Python
-=========================================
+Hessian Affine + SIFT keypoints in Python! - Part of the WildMe / Wildbook IA Project.
 
 This is an implementation of Hessian-Affine detector.
 
@@ -71,7 +73,14 @@ NOTES
 Requires opencv. On ubuntu you can: ``sudo apt-get install libopencv-dev``. You can also build / use wheels. If cmake is unable to find OpenCV, manually set the location of OpenCV to the OpenCV_DIR environment variable
 
 
-.. |Travis| image:: https://img.shields.io/travis/WildbookOrg/hesaff/master.svg?label=Travis%20CI
-   :target: https://travis-ci.org/WildbookOrg/hesaff?branch=master
-.. |Pypi| image:: https://img.shields.io/pypi/v/hesaff.svg
+.. |Build| image:: https://img.shields.io/github/workflow/status/WildbookOrg/wbia-tpl-pyhesaff/Build%20and%20upload%20to%20PyPI/master
+    :target: https://github.com/WildbookOrg/wbia-tpl-pyhesaff/actions?query=branch%3Amaster+workflow%3A%22Build+and+upload+to+PyPI%22
+    :alt: Build and upload to PyPI (master)
+
+.. |Pypi| image:: https://img.shields.io/pypi/v/wbia-pyhesaff.svg
    :target: https://pypi.python.org/pypi/wbia-pyhesaff
+   :alt: Latest PyPI version
+
+.. |ReadTheDocs| image:: https://readthedocs.org/projects/wbia-tpl-pyhesaff/badge/?version=latest
+    :target: http://wbia-tpl-pyhesaff.readthedocs.io/en/latest/
+    :alt: Documentation on ReadTheDocs

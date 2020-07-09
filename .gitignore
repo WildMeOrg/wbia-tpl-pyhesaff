@@ -41,3 +41,5 @@ cmake_builds
 
 # setuptools_scm version discovery writes the version to <pkg>/_version.py
 **/_version.py
+
+_docs/_build

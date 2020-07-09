@@ -7,8 +7,8 @@ from __future__ import absolute_import, division, print_function
 # ----------------
 from six.moves import zip, range
 
-# from plottool import draw_func2 as df2
-# from plottool.viz_keypoints import show_keypoints
+# from wbia.plottool import draw_func2 as df2
+# from wbia.plottool.viz_keypoints import show_keypoints
 import utool as ut
 import matplotlib as mpl
 import numpy as np
@@ -19,7 +19,7 @@ TAU = 2 * np.pi  # References: tauday.com
 
 
 def draw_expanded_scales(imgL, sel_kpts, exkpts, exdesc_):
-    import plottool as pt
+    from wbia import plottool as pt
 
     draw_keypoint_patch = pt.draw_keypoint_patch
     get_warped_patch = pt.get_warped_patch  # NOQA
@@ -65,7 +65,7 @@ def in_depth_ellipse(kp):
     Example:
         >>> # SCRIPT
         >>> from tests.test_ellipse import *  # NOQA
-        >>> import tests.pyhestest as pyhestest
+        >>> import pyhestest
         >>> test_data = pyhestest.load_test_data(short=True)
         >>> kpts = test_data['kpts']
         >>> kp = kpts[0]
@@ -74,7 +74,7 @@ def in_depth_ellipse(kp):
         >>> ut.quit_if_noshow()
         >>> ut.show_if_requested()
     """
-    import plottool as pt
+    from wbia import plottool as pt
 
     # nSamples = 12
     nSamples = ut.get_argval('--num-samples', type_=int, default=12)
@@ -537,7 +537,7 @@ def in_depth_ellipse(kp):
 #    """
 #    print('__main__ = test_ellipse.py')
 #    np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
-#    import tests.pyhestest as pyhestest
+#    import pyhestest
 #    test_data = pyhestest.load_test_data(short=True)
 #    kpts = test_data['kpts']
 #    kp = kpts[0]

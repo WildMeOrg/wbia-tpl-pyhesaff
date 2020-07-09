@@ -11,6 +11,7 @@ except ImportError:
 
 from pyhesaff import ctypes_interface
 from pyhesaff import _pyhesaff
+from pyhesaff import __main__
 from pyhesaff._pyhesaff import (
     DESC_DIM,
     HESAFF_CLIB,

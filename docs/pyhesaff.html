@@ -1,0 +1,812 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pyhesaff package &#8212; wbia-pyhesaff 3.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to pyhesaff’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="pyhesaff-package">
+<h1>pyhesaff package<a class="headerlink" href="#pyhesaff-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyhesaff.__main__">
+<span id="pyhesaff-main-module"></span><h2>pyhesaff.__main__ module<a class="headerlink" href="#module-pyhesaff.__main__" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyhesaff.__main__.main">
+<code class="descclassname">pyhesaff.__main__.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/__main__.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.__main__.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-pyhesaff._pyhesaff">
+<span id="pyhesaff-pyhesaff-module"></span><h2>pyhesaff._pyhesaff module<a class="headerlink" href="#module-pyhesaff._pyhesaff" title="Permalink to this headline">¶</a></h2>
+<p>The python hessian affine keypoint module</p>
+<dl class="docutils">
+<dt>Command Line:</dt>
+<dd>python -m pyhesaff detect_feats –show –siftPower=0.5 –maxBinValue=-1
+python -m pyhesaff detect_feats –show
+python -m pyhesaff detect_feats –show –siftPower=0.5,</dd>
+</dl>
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.adapt_scale">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">adapt_scale</code><span class="sig-paren">(</span><em>img_fpath</em>, <em>kpts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#adapt_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.adapt_scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.alloc_kpts">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">alloc_kpts</code><span class="sig-paren">(</span><em>nKpts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#alloc_kpts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.alloc_kpts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.alloc_patches">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">alloc_patches</code><span class="sig-paren">(</span><em>nKpts</em>, <em>size=41</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#alloc_patches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.alloc_patches" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.alloc_vecs">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">alloc_vecs</code><span class="sig-paren">(</span><em>nKpts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#alloc_vecs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.alloc_vecs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.argparse_hesaff_params">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">argparse_hesaff_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#argparse_hesaff_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.argparse_hesaff_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.detect_feats">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">detect_feats</code><span class="sig-paren">(</span><em>img_fpath</em>, <em>use_adaptive_scale=False</em>, <em>nogravity_hack=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#detect_feats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.detect_feats" title="Permalink to this definition">¶</a></dt>
+<dd><p>driver function for detecting hessian affine keypoints from an image path.
+extra parameters can be passed to the hessian affine detector by using
+kwargs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>img_fpath</strong> (<em>str</em>) – image file path on disk</li>
+<li><strong>use_adaptive_scale</strong> (<em>bool</em>) – </li>
+<li><strong>nogravity_hack</strong> (<em>bool</em>) – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Kwargs:</dt>
+<dd>numberOfScales (int)         : default=3
+threshold (float)            : default=5.33333333333
+edgeEigenValueRatio (float)  : default=10.0
+border (int)                 : default=5
+maxIterations (int)          : default=16
+convergenceThreshold (float) : default=0.05
+smmWindowSize (int)          : default=19
+mrSize (float)               : default=5.19615242271
+spatialBins (int)            : default=4
+orientationBins (int)        : default=8
+maxBinValue (float)          : default=0.2
+initialSigma (float)         : default=1.6
+patchSize (int)              : default=41
+scale_min (float)            : default=-1.0
+scale_max (float)            : default=-1.0
+rotation_invariance (bool)   : default=False
+affine_invariance (bool)     : default=True</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">(kpts, vecs)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd><p class="first">python -m pyhesaff detect_feats
+python -m pyhesaff detect_feats –show
+python -m pyhesaff detect_feats –show –fname star.png
+python -m pyhesaff detect_feats –show –fname zebra.png
+python -m pyhesaff detect_feats –show –fname astro.png
+python -m pyhesaff detect_feats –show –fname carl.jpg</p>
+<p>python -m pyhesaff detect_feats –show –fname astro.png –ri
+python -m pyhesaff detect_feats –show –fname astro.png –ai</p>
+<p>python -m pyhesaff detect_feats –show –fname easy1.png –no-ai
+python -m pyhesaff detect_feats –show –fname easy1.png –no-ai –numberOfScales=1 –verbose
+python -m pyhesaff detect_feats –show –fname easy1.png –no-ai –scale-max=100 –verbose
+python -m pyhesaff detect_feats –show –fname easy1.png –no-ai –scale-min=20 –verbose
+python -m pyhesaff detect_feats –show –fname easy1.png –no-ai –scale-min=100 –verbose
+python -m pyhesaff detect_feats –show –fname easy1.png –no-ai –scale-max=20 –verbose</p>
+<p>python -m vtool.test_constrained_matching visualize_matches –show
+python -m vtool.tests.dummy testdata_ratio_matches –show</p>
+<dl class="docutils">
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –ai </dt>
+<dd>–verbose –rebuild-hesaff –scale-min=35 –scale-max=40 –no-rmbuild</dd>
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –ai </dt>
+<dd>–verbose –scale-min=35 –scale-max=40&amp;</dd>
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –no-ai </dt>
+<dd>–verbose –scale-min=35 –scale-max=40&amp;</dd>
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –no-ai </dt>
+<dd>–verbose –scale-max=40 –darken .5</dd>
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –no-ai </dt>
+<dd>–verbose –scale-max=30 –darken .5</dd>
+<dt>python -m pyhesaff detect_feats –show –fname easy1.png –ai </dt>
+<dd>–verbose –scale-max=30 –darken .5</dd>
+</dl>
+<p># DENSE KEYPOINTS
+python -m pyhesaff detect_feats –show –fname astro.png </p>
+<blockquote>
+<div>–no-affine-invariance –numberOfScales=1 –maxPyramidLevels=1 –use_dense –dense_stride=64</div></blockquote>
+<dl class="docutils">
+<dt>python -m pyhesaff detect_feats –show –fname astro.png </dt>
+<dd>–no-affine-invariance –numberOfScales=1 –maxPyramidLevels=1 –use_dense –dense_stride=64 –rotation-invariance</dd>
+<dt>python -m pyhesaff detect_feats –show –fname astro.png </dt>
+<dd>–affine-invariance –numberOfScales=1 –maxPyramidLevels=1 –use_dense –dense_stride=64</dd>
+<dt>python -m pyhesaff detect_feats –show –fname astro.png </dt>
+<dd>–no-affine-invariance –numberOfScales=3 –maxPyramidLevels=2 –use_dense –dense_stride=32</dd>
+</dl>
+<p class="last">python -m pyhesaff detect_feats –show –only_count=False</p>
+</dd>
+<dt>Example0:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Test simple detect</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">TAU</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--fname&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;astro.png&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">theta</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--theta&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1"># TAU * 3 / 8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">rotate_image_ondisk</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">argparse_hesaff_params</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;kwargs = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">kwargs</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">kpts</span><span class="p">,</span> <span class="n">vecs</span><span class="p">)</span> <span class="o">=</span> <span class="n">detect_feats</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Show keypoints</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># xdoctest: +REQUIRES(--show)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imgBGR</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># take a random stample</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">frac</span> <span class="o">=</span> <span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--frac&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;frac = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">frac</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">idxs</span> <span class="o">=</span> <span class="n">vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vecs</span><span class="p">)</span> <span class="o">*</span> <span class="n">frac</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs</span><span class="p">,</span> <span class="n">kpts</span> <span class="o">=</span> <span class="n">vecs</span><span class="p">[</span><span class="n">idxs</span><span class="p">],</span> <span class="n">kpts</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">default_showkw</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ori</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ell_linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                      <span class="n">ell_alpha</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">ell_color</span><span class="o">=</span><span class="s1">&#39;distinct&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;default_showkw = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">default_showkw</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#showkw = ut.argparse_dict(default_showkw)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#import plottool as pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, **showkw)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#pt.show_if_requested()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.detect_feats2">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">detect_feats2</code><span class="sig-paren">(</span><em>img_or_fpath</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#detect_feats2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.detect_feats2" title="Permalink to this definition">¶</a></dt>
+<dd><p>General way of detecting from either an fpath or ndarray</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>img_or_fpath</strong> (<em>str</em><em> or </em><em>ndarray</em>) – file path string</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.detect_feats_in_image">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">detect_feats_in_image</code><span class="sig-paren">(</span><em>img</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#detect_feats_in_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.detect_feats_in_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a preloaded image and detects keypoints and descriptors</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>img</strong> (<em>ndarray</em><em>[</em><em>uint8_t</em><em>, </em><em>ndim=2</em><em>]</em>) – image data, should be in BGR or grayscale</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(kpts, vecs)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff detect_feats_in_image –show
+python -m pyhesaff detect_feats_in_image –rebuild-hesaff –show –no-rmbuild</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;astro.png&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">kpts</span><span class="p">,</span> <span class="n">vecs</span><span class="p">)</span> <span class="o">=</span> <span class="n">detect_feats_in_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># xdoctest: +REQUIRES(--show)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">plottool</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">interact_keypoints</span><span class="o">.</span><span class="n">ishow_keypoints</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kpts</span><span class="p">,</span> <span class="n">vecs</span><span class="p">,</span> <span class="n">ori</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">ell_alpha</span><span class="o">=.</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;distinct&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">set_figtitle</span><span class="p">(</span><span class="s1">&#39;Detect Kpts in Image&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">show_if_requested</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.detect_feats_list">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">detect_feats_list</code><span class="sig-paren">(</span><em>image_paths_list</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#detect_feats_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.detect_feats_list" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>image_paths_list</strong> (<em>list</em>) – A list of image paths</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(kpts_list, vecs_list) A tuple of lists of keypoints and decsriptors</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Kwargs:</dt>
+<dd>numberOfScales (int)         : default=3
+threshold (float)            : default=5.33333333333
+edgeEigenValueRatio (float)  : default=10.0
+border (int)                 : default=5
+maxIterations (int)          : default=16
+convergenceThreshold (float) : default=0.05
+smmWindowSize (int)          : default=19
+mrSize (float)               : default=5.19615242271
+spatialBins (int)            : default=4
+orientationBins (int)        : default=8
+maxBinValue (float)          : default=0.2
+initialSigma (float)         : default=1.6
+patchSize (int)              : default=41
+scale_min (float)            : default=-1.0
+scale_max (float)            : default=-1.0
+rotation_invariance (bool)   : default=False</dd>
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff._pyhesaff detect_feats_list –show</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;astro.png&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_paths_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;carl.jpg&#39;</span><span class="p">),</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;star.png&#39;</span><span class="p">),</span> <span class="n">fpath</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">kpts_list</span><span class="p">,</span> <span class="n">vecs_list</span><span class="p">)</span> <span class="o">=</span> <span class="n">detect_feats_list</span><span class="p">(</span><span class="n">image_paths_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#print((kpts_list, vecs_list))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Assert that the normal version agrees</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">serial_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">detect_feats</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span> <span class="k">for</span> <span class="n">fpath</span> <span class="ow">in</span> <span class="n">image_paths_list</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts_list2</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">serial_list</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs_list2</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">serial_list</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff_kpts</span> <span class="o">=</span> <span class="p">[</span><span class="n">kpts</span> <span class="o">-</span> <span class="n">kpts2</span> <span class="k">for</span> <span class="n">kpts</span><span class="p">,</span> <span class="n">kpts2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">kpts_list</span><span class="p">,</span> <span class="n">kpts_list2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">vecs</span> <span class="o">-</span> <span class="n">vecs2</span> <span class="k">for</span> <span class="n">vecs</span><span class="p">,</span> <span class="n">vecs2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vecs_list</span><span class="p">,</span> <span class="n">vecs_list2</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">diff_kpts</span><span class="p">]),</span> <span class="s1">&#39;inconsistent results&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">diff_vecs</span><span class="p">]),</span> <span class="s1">&#39;inconsistent results&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.detect_num_feats_in_image">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">detect_num_feats_in_image</code><span class="sig-paren">(</span><em>img</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#detect_num_feats_in_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.detect_num_feats_in_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just quickly returns how many keypoints are in the image. Does not attempt
+to return or store the values.</p>
+<p>It is a good idea to turn off things like ai and ri here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>img</strong> (<em>ndarray</em><em>[</em><em>uint8_t</em><em>, </em><em>ndim=2</em><em>]</em>) – image data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">nKpts</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+<p>ISSUE: there seems to be an inconsistency for jpgs between this and detect_feats</p>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff detect_num_feats_in_image:0 –show
+python -m pyhesaff detect_num_feats_in_image:1 –show
+python -m xdoctest pyhesaff detect_num_feats_in_image:0</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;zebra.png&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nKpts</span> <span class="o">=</span> <span class="n">detect_num_feats_in_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts</span><span class="p">,</span> <span class="n">vecs</span> <span class="o">=</span> <span class="n">detect_feats_in_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#assert nKpts == len(kpts), &#39;inconsistency&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;nKpts = </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">repr2</span><span class="p">(</span><span class="n">nKpts</span><span class="p">),))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Example1:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># TIMEDOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setup</span> <span class="o">=</span> <span class="n">ub</span><span class="o">.</span><span class="n">codeblock</span><span class="p">(</span>
+<span class="go">    &#39;&#39;&#39;</span>
+<span class="go">    import vtool as vt</span>
+<span class="go">    import pyhesaff</span>
+<span class="go">    img_fpath = grab_test_imgpath(&#39;carl.jpg&#39;)</span>
+<span class="go">    img = vt.imread(img_fpath)</span>
+<span class="go">    &#39;&#39;&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stmt_list</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pyhesaff.detect_feats_in_image(img)&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pyhesaff.detect_num_feats_in_image(img, affine_invariance=False)&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="s1">&#39;pyhesaff.detect_num_feats_in_image(img)&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#ut.timeit_compare(stmt_list, setup=setup, iterations=iterations,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#                  verbose=verbose, assertsame=False)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.extract_desc_from_patches">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">extract_desc_from_patches</code><span class="sig-paren">(</span><em>patch_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#extract_desc_from_patches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.extract_desc_from_patches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Careful about the way the patches are extracted here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>patch_list</strong> (<em>ndarray</em><em>[</em><em>ndims=3</em><em>]</em>) – </td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff extract_desc_from_patches  –rebuild-hesaff –no-rmbuild
+python -m pyhesaff extract_desc_from_patches  –rebuild-hesaff –no-rmbuild –show
+python -m pyhesaff extract_desc_from_patches:1 –show</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--fname&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;astro.png&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># First extract keypoints normally</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">orig_kpts_list</span><span class="p">,</span> <span class="n">orig_vecs_list</span><span class="p">)</span> <span class="o">=</span> <span class="n">detect_feats</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Take 9 keypoints</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts_list</span> <span class="o">=</span> <span class="n">orig_kpts_list</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">orig_kpts_list</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs_list</span> <span class="o">=</span> <span class="n">orig_vecs_list</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">orig_vecs_list</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract the underlying grayscale patches (using different patch_size)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patch_list_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vt</span><span class="o">.</span><span class="n">get_warped_patches</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kpts_list</span><span class="p">,</span> <span class="n">patch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patch_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vt</span><span class="o">.</span><span class="n">convert_image_list_colorspace</span><span class="p">(</span><span class="n">patch_list_</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract descriptors from the patches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs_array</span> <span class="o">=</span> <span class="n">extract_desc_from_patches</span><span class="p">(</span><span class="n">patch_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--fname&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;astro.png&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># First extract keypoints normally</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">orig_kpts_list</span><span class="p">,</span> <span class="n">orig_vecs_list</span><span class="p">)</span> <span class="o">=</span> <span class="n">detect_feats</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Take 9 keypoints</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts_list</span> <span class="o">=</span> <span class="n">orig_kpts_list</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">orig_kpts_list</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs_list</span> <span class="o">=</span> <span class="n">orig_vecs_list</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">orig_vecs_list</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract the underlying grayscale patches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#patch_list_ = np.array(vt.get_warped_patches(img, kpts_list)[0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#patch_list = np.array(vt.convert_image_list_colorspace(patch_list_, &#39;gray&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patch_list</span> <span class="o">=</span> <span class="n">extract_patches</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kpts_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patch_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">patch_list</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Currently its impossible to get the correct answer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># TODO: allow patches to be passed in as float32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract descriptors from those patches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs_array</span> <span class="o">=</span> <span class="n">extract_desc_from_patches</span><span class="p">(</span><span class="n">patch_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Comparse to see if they are close to the original descriptors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">L2_sift</span><span class="p">(</span><span class="n">vecs_list</span><span class="p">,</span> <span class="n">vecs_array</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Errors: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errors</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># xdoctest: +REQUIRES(--show)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">plottool</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">patch_list</span><span class="p">,</span> <span class="n">vecs_array</span><span class="p">,</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;patch extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">patch_list</span><span class="p">,</span> <span class="n">vecs_list</span><span class="p">,</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;image extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">show_if_requested</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.extract_patches">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">extract_patches</code><span class="sig-paren">(</span><em>img_or_fpath</em>, <em>kpts</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#extract_patches"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.extract_patches" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract patches used to compute SIFT descriptors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>img_or_fpath</strong> (<em>ndarray</em><em> or </em><em>str</em>) – </li>
+<li><strong>kpts</strong> (<em>ndarray</em><em>[</em><em>float32_t</em><em>, </em><em>ndim=2</em><em>]</em>) – keypoints</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff extract_patches:0 –show
+python -m pyhesaff extract_vecs:1 –fname=astro.png
+python -m pyhesaff extract_vecs:1 –fname=patsy.jpg –show
+python -m pyhesaff extract_vecs:1 –fname=carl.jpg
+python -m pyhesaff extract_vecs:1 –fname=zebra.png</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;carl.jpg&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_or_fpath</span> <span class="o">=</span> <span class="n">img</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts</span><span class="p">,</span> <span class="n">vecs1</span> <span class="o">=</span> <span class="n">detect_feats</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts</span> <span class="o">=</span> <span class="n">kpts</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">kpts</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs1</span> <span class="o">=</span> <span class="n">vecs1</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="nb">len</span><span class="p">(</span><span class="n">vecs1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cpp_patch_list</span> <span class="o">=</span> <span class="n">extract_patches</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kpts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">py_patch_list_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vt</span><span class="o">.</span><span class="n">get_warped_patches</span><span class="p">(</span><span class="n">img_or_fpath</span><span class="p">,</span> <span class="n">kpts</span><span class="p">,</span> <span class="n">patch_size</span><span class="o">=</span><span class="mi">41</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">py_patch_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vt</span><span class="o">.</span><span class="n">convert_image_list_colorspace</span><span class="p">(</span><span class="n">py_patch_list_</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># xdoctest: +REQUIRES(--show)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">plottool</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">cpp_patch_list</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;C++ extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">py_patch_list</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Python extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">show_if_requested</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.extract_vecs">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">extract_vecs</code><span class="sig-paren">(</span><em>img_fpath</em>, <em>kpts</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#extract_vecs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.extract_vecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract SIFT descriptors at keypoint locations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>img_fpath</strong> (<em>str</em>) – </li>
+<li><strong>kpts</strong> (<em>ndarray</em><em>[</em><em>float32_t</em><em>, </em><em>ndim=2</em><em>]</em>) – keypoints</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">vecs -  descriptor vectors</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray[uint8_t, ndim=2]</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff extract_vecs:0
+python -m pyhesaff extract_vecs:1 –fname=astro.png
+python -m pyhesaff extract_vecs:1 –fname=patsy.jpg –show
+python -m pyhesaff extract_vecs:1 –fname=carl.jpg
+python -m pyhesaff extract_vecs:1 –fname=zebra.png</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="s1">&#39;carl.jpg&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">demodata</span><span class="o">.</span><span class="n">get_dummy_kpts</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs</span> <span class="o">=</span> <span class="n">extract_vecs</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">,</span> <span class="n">kpts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;vecs = </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">vecs</span><span class="p">),))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">vtool</span> <span class="k">as</span> <span class="nn">vt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_fpath</span> <span class="o">=</span> <span class="n">grab_test_imgpath</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">argval</span><span class="p">(</span><span class="s1">&#39;--fname&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;astro.png&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract original keypoints</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpts</span><span class="p">,</span> <span class="n">vecs1</span> <span class="o">=</span> <span class="n">detect_feats</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Re-extract keypoints</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecs2</span> <span class="o">=</span> <span class="n">extract_vecs</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">,</span> <span class="n">kpts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Descriptors should be the same</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">L2_sift</span><span class="p">(</span><span class="n">vecs1</span><span class="p">,</span> <span class="n">vecs2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">errors</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;errors = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errors</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;errors_index = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errors_index</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;errors.sum() = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">errors</span><span class="o">.</span><span class="n">sum</span><span class="p">(),))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># VISUALIZTION</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># xdoctest: +REQUIRES(--show)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">plottool</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract the underlying grayscale patches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">vt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#patch_list_ = np.array(vt.get_warped_patches(img, kpts)[0])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#patch_list = np.array(vt.convert_image_list_colorspace(patch_list_, &#39;gray&#39;))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patch_list</span> <span class="o">=</span> <span class="n">extract_patches</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kpts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">interact_keypoints</span><span class="o">.</span><span class="n">ishow_keypoints</span><span class="p">(</span><span class="n">img_fpath</span><span class="p">,</span> <span class="n">kpts</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">vecs1</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">fnum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">patch_list</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">vecs1</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">fnum</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;patch extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">draw_patches_and_sifts</span><span class="p">(</span><span class="n">patch_list</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">vecs2</span><span class="p">[</span><span class="n">errors_index</span><span class="p">],</span> <span class="n">pnum</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">fnum</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;image extracted&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">set_figtitle</span><span class="p">(</span><span class="s1">&#39;Error Keypoints&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pt</span><span class="o">.</span><span class="n">show_if_requested</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.get_cpp_version">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">get_cpp_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#get_cpp_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.get_cpp_version" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">cpp_version</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff get_cpp_version</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENABLE_DOCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cpp_version</span> <span class="o">=</span> <span class="n">get_cpp_version</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">isdebug</span> <span class="o">=</span> <span class="n">get_is_debug_mode</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cpp_version = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cpp_version</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;isdebug = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">isdebug</span><span class="p">,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">cpp_version</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;cpp version mimatch&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.get_hesaff_default_params">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">get_hesaff_default_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#get_hesaff_default_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.get_hesaff_default_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.get_is_debug_mode">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">get_is_debug_mode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#get_is_debug_mode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.get_is_debug_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.grab_test_imgpath">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">grab_test_imgpath</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#grab_test_imgpath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.grab_test_imgpath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyhesaff._pyhesaff.str_list_t">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">str_list_t</code><a class="headerlink" href="#pyhesaff._pyhesaff.str_list_t" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">pyhesaff._pyhesaff.LP_c_char_p</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.test_rot_invar">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">test_rot_invar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#test_rot_invar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.test_rot_invar" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>CommandLine:</dt>
+<dd><p class="first">python -m pyhesaff test_rot_invar –show –rebuild-hesaff –no-rmbuild
+python -m pyhesaff test_rot_invar –show –nocpp</p>
+<p class="last">python -m vtool.tests.demodata testdata_ratio_matches –show –ratio_thresh=1.0 –rotation_invariance –rebuild-hesaff
+python -m vtool.tests.demodata testdata_ratio_matches –show –ratio_thresh=1.1 –rotation_invariance –rebuild-hesaff</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># DISABLE_DODCTEST</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff._pyhesaff</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_rot_invar</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff._pyhesaff.vtool_adapt_rotation">
+<code class="descclassname">pyhesaff._pyhesaff.</code><code class="descname">vtool_adapt_rotation</code><span class="sig-paren">(</span><em>img_fpath</em>, <em>kpts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/_pyhesaff.html#vtool_adapt_rotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff._pyhesaff.vtool_adapt_rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>rotation invariance in python</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyhesaff.ctypes_interface">
+<span id="pyhesaff-ctypes-interface-module"></span><h2>pyhesaff.ctypes_interface module<a class="headerlink" href="#module-pyhesaff.ctypes_interface" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyhesaff.ctypes_interface.find_lib_fpath">
+<code class="descclassname">pyhesaff.ctypes_interface.</code><code class="descname">find_lib_fpath</code><span class="sig-paren">(</span><em>libname</em>, <em>root_dir</em>, <em>recurse_down=True</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/ctypes_interface.html#find_lib_fpath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.ctypes_interface.find_lib_fpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for the library</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff.ctypes_interface.get_lib_dpath_list">
+<code class="descclassname">pyhesaff.ctypes_interface.</code><code class="descname">get_lib_dpath_list</code><span class="sig-paren">(</span><em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/ctypes_interface.html#get_lib_dpath_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.ctypes_interface.get_lib_dpath_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>input &lt;root_dir&gt;: deepest directory to look for a library (dll, so, dylib)
+returns &lt;libnames&gt;: list of plausible directories to look.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff.ctypes_interface.get_lib_fname_list">
+<code class="descclassname">pyhesaff.ctypes_interface.</code><code class="descname">get_lib_fname_list</code><span class="sig-paren">(</span><em>libname</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/ctypes_interface.html#get_lib_fname_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.ctypes_interface.get_lib_fname_list" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>libname</strong> (<em>str</em>) – library name (e.g. ‘hesaff’, not ‘libhesaff’)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">libnames - list of plausible library file names</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>CommandLine:</dt>
+<dd>python -m pyhesaff.ctypes_interface get_lib_fname_list</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyhesaff.ctypes_interface</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># NOQA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">libname</span> <span class="o">=</span> <span class="s1">&#39;hesaff&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">libnames</span> <span class="o">=</span> <span class="n">get_lib_fname_list</span><span class="p">(</span><span class="n">libname</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ubelt</span> <span class="k">as</span> <span class="nn">ub</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;libnames = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ub</span><span class="o">.</span><span class="n">repr2</span><span class="p">(</span><span class="n">libnames</span><span class="p">)))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff.ctypes_interface.get_plat_specifier">
+<code class="descclassname">pyhesaff.ctypes_interface.</code><code class="descname">get_plat_specifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/ctypes_interface.html#get_plat_specifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.ctypes_interface.get_plat_specifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard platform specifier used by distutils</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyhesaff.ctypes_interface.load_clib">
+<code class="descclassname">pyhesaff.ctypes_interface.</code><code class="descname">load_clib</code><span class="sig-paren">(</span><em>libname</em>, <em>root_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyhesaff/ctypes_interface.html#load_clib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhesaff.ctypes_interface.load_clib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches for a library matching libname and loads it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>libname</strong> – library name (e.g. ‘hesaff’, not ‘libhesaff’)</li>
+<li><strong>root_dir</strong> – the deepest directory searched for the
+library file (dll, dylib, or so).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a ctypes object used to interface with the library</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">clib</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyhesaff">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyhesaff" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">wbia-pyhesaff</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyhesaff package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyhesaff.__main__">pyhesaff.__main__ module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyhesaff._pyhesaff">pyhesaff._pyhesaff module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyhesaff.ctypes_interface">pyhesaff.ctypes_interface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pyhesaff">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to pyhesaff’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Wild Me.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/pyhesaff.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

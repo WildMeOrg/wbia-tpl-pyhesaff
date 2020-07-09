@@ -4,7 +4,6 @@ from __future__ import absolute_import, print_function, division
 # Standard
 import sys
 from os.path import realpath, join, split
-from vtool.tests import grabdata
 
 # Scientific
 import numpy as np
@@ -12,9 +11,22 @@ import cv2
 
 # TPL
 import pyhesaff
-import utool
+import utool as ut
 
-utool.inject_colored_exceptions()
+
+ut.inject_colored_exceptions()
+
+
+def get_testdata_dir(ensure=True, key='testdb1'):
+    """
+    Gets test img directory and downloads it if it doesn't exist
+    """
+    testdata_map = {
+        'testdb1': 'https://wildbookiarepository.azureedge.net/data/testdata.zip'
+    }
+    zipped_testdata_url = testdata_map[key]
+    testdata_dir = ut.grab_zipped_url(zipped_testdata_url, ensure=ensure)
+    return testdata_dir
 
 
 def get_test_image():
@@ -25,7 +37,7 @@ def get_test_image():
         img_fname = 'lena.jpg'
     if '--jeff.png' in sys.argv:
         img_fname = 'jeff.png'
-    imgdir = grabdata.get_testdata_dir()
+    imgdir = get_testdata_dir()
     img_fpath = realpath(join(imgdir, img_fname))
     return img_fpath
 

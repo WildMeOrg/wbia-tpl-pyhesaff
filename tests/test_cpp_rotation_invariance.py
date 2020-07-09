@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
-from plottool.viz_keypoints import show_keypoints
-from plottool import draw_func2 as df2
-import plottool
+from wbia import plottool as pt
+from wbia.plottool.viz_keypoints import show_keypoints
+from wbia.plottool import draw_func2 as df2
 import vtool.patch as ptool
 import numpy as np
 import utool as ut
@@ -25,11 +25,11 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
 
 def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
-    gorimag = plottool.color_orimag(gori, gmag)
+    gorimag = pt.color_orimag(gori, gmag)
     nRow, nCol = (2, 7)
 
     df2.figure(fnum=fnum, pnum=(nRow, 1, nRow), doclf=True, docla=True)
-    plottool.draw_hist_subbin_maxima(hist, centers)
+    pt.draw_hist_subbin_maxima(hist, centers)
     df2.set_xlabel('grad orientation (radians)')
     df2.set_ylabel('grad magnitude')
     df2.set_title('dominant orientations')
@@ -58,8 +58,8 @@ def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
 
 
 def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
-    from plottool.viz_keypoints import _annotate_kpts
-    from plottool.viz_featrow import draw_feat_row
+    from wbia.plottool.viz_keypoints import _annotate_kpts
+    from wbia.plottool.viz_featrow import draw_feat_row
 
     # df2.imshow(wpatch, fnum=2)
     sift = desc[sel]
@@ -78,7 +78,7 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
 
 
 def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
-    from plottool import draw_func2 as df2
+    from wbia.plottool import draw_func2 as df2
     import vtool.patch as ptool
 
     # ----------------------#
@@ -137,7 +137,7 @@ def test_cpp_rotinvar_main():
         >>> print(result)
     """
     # TODO; take visualization out of this test by default
-    from tests import pyhestest
+    import pyhestest
     import pyhesaff
 
     # Read data

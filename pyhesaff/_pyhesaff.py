@@ -352,7 +352,6 @@ def get_cpp_version():
         >>> print('isdebug = %r' % (isdebug,))
         >>> assert cpp_version == 3, 'cpp version mimatch'
     """
-
     # str_ptr = HESAFF_CLIB.cmake_build_type()
     # copy c string into python
     # pystr = C.c_char_p(str_ptr).value
@@ -475,7 +474,7 @@ def detect_feats(img_fpath, use_adaptive_scale=False, nogravity_hack=False, **kw
         >>>                       ell_alpha=.4, ell_color='distinct')
         >>> print('default_showkw = %r' % (default_showkw,))
         >>> #showkw = ut.argparse_dict(default_showkw)
-        >>> #import plottool as pt
+        >>> #from wbia import plottool as pt
         >>> #pt.interact_keypoints.ishow_keypoints(imgBGR, kpts, vecs, **showkw)
         >>> #pt.show_if_requested()
     """
@@ -621,7 +620,7 @@ def detect_feats_in_image(img, **kwargs):
         >>> img= vt.imread(img_fpath)
         >>> (kpts, vecs) = detect_feats_in_image(img)
         >>> # xdoctest: +REQUIRES(--show)
-        >>> import plottool as pt
+        >>> from wbia import plottool as pt
         >>> pt.interact_keypoints.ishow_keypoints(img, kpts, vecs, ori=True,
         >>>                                       ell_alpha=.4, color='distinct')
         >>> pt.set_figtitle('Detect Kpts in Image')
@@ -751,7 +750,7 @@ def extract_vecs(img_fpath, kpts, **kwargs):
         >>> print('errors.sum() = %r' % (errors.sum(),))
         >>> # VISUALIZTION
         >>> # xdoctest: +REQUIRES(--show)
-        >>> import plottool as pt
+        >>> from wbia import plottool as pt
         >>> # Extract the underlying grayscale patches
         >>> img = vt.imread(img_fpath)
         >>> #patch_list_ = np.array(vt.get_warped_patches(img, kpts)[0])
@@ -807,7 +806,7 @@ def extract_patches(img_or_fpath, kpts, **kwargs):
         >>> py_patch_list_ = np.array(vt.get_warped_patches(img_or_fpath, kpts, patch_size=41)[0])
         >>> py_patch_list = np.array(vt.convert_image_list_colorspace(py_patch_list_, 'gray'))
         >>> # xdoctest: +REQUIRES(--show)
-        >>> import plottool as pt
+        >>> from wbia import plottool as pt
         >>> ax = pt.draw_patches_and_sifts(cpp_patch_list, None, pnum=(1, 2, 1))
         >>> ax.set_title('C++ extracted')
         >>> ax = pt.draw_patches_and_sifts(py_patch_list, None, pnum=(1, 2, 2))
@@ -881,7 +880,7 @@ def extract_desc_from_patches(patch_list):
         >>> errors = vt.L2_sift(vecs_list, vecs_array)
         >>> print('Errors: %r' % (errors,))
         >>> # xdoctest: +REQUIRES(--show)
-        >>> import plottool as pt
+        >>> from wbia import plottool as pt
         >>> ax = pt.draw_patches_and_sifts(patch_list, vecs_array, pnum=(1, 2, 1))
         >>> ax.set_title('patch extracted')
         >>> ax = pt.draw_patches_and_sifts(patch_list, vecs_list, pnum=(1, 2, 2))
@@ -953,7 +952,7 @@ def test_rot_invar():
     """
     import cv2
     import vtool as vt
-    import plottool as pt
+    from wbia import plottool as pt
 
     TAU = 2 * np.pi
     fnum = pt.next_fnum()
