@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
-import cv2
 import utool as ut
 
 
@@ -24,6 +23,7 @@ def test_pyheaff(img_fpath):
         >>> ut.show_if_requested()
     """
     import pyhesaff
+    import cv2
 
     kpts, desc = pyhesaff.detect_feats(img_fpath)
     rchip = cv2.imread(img_fpath)

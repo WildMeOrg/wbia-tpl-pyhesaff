@@ -7,7 +7,6 @@ from os.path import realpath, join, split
 
 # Scientific
 import numpy as np
-import cv2
 
 # TPL
 import pyhesaff
@@ -43,6 +42,8 @@ def get_test_image():
 
 
 def load_test_data(short=False, n=0, use_cpp=False, **kwargs):
+    import cv2
+
     if 'short' not in vars():
         short = False
     # Read Image
