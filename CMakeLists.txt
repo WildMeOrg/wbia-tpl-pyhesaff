@@ -111,7 +111,7 @@ if(OS_IS_MACOS)
   endif()
 endif()
 
-find_package(OpenCV 3.4 REQUIRED)
+find_package(OpenCV REQUIRED)
 if(OpenCV_FOUND)
   include_directories(${OpenCV_INCLUDE_DIRS})
 else()
