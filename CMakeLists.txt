@@ -94,8 +94,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 # set output path for tests
 set(TEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/test)
 
-option(BUILD_TESTS "Build tests" ON)
-option(BUILD_DOC "Build documentation" ON)
+option(BUILD_TESTS "Build tests" OFF)
+option(BUILD_DOC "Build documentation" OFF)
 option(USE_OPENMP "Use OpenMP multi-threading" ON)
 
 if(OS_IS_MACOS)
