@@ -6,7 +6,7 @@ import utool
 import utool as ut
 
 
-def TEST_ptool_find_kpts_direction(imgBGR, kpts):
+def _test_ptool_find_kpts_direction(imgBGR, kpts):
     import vtool.patch as ptool
 
     hrint = utool.horiz_print
@@ -21,7 +21,7 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
     return kpts2
 
 
-def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers):
+def _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers):
     from wbia.plottool import draw_func2 as df2
     from wbia import plottool
     import vtool.patch as ptool
@@ -60,7 +60,7 @@ def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers):
     return locals()
 
 
-def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
+def _test_figure2(imgBGR, kpts, desc, sel, fnum=2):
     # df2.imshow(wpatch, fnum=2)
     from wbia.plottool import draw_func2 as df2
     from wbia.plottool.viz_keypoints import _annotate_kpts, show_keypoints
@@ -81,7 +81,7 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
     draw_feat_row(imgBGR, sel, kpts[sel], sift, fnum=fnum, nRows=2, nCols=3, px=3)
 
 
-def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel):
+def _test_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     import pyhesaff
     import vtool.patch as ptool
     from wbia.plottool import draw_func2 as df2
@@ -103,18 +103,18 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     hist, centers = ptool.get_orientation_histogram(gori, gori_weights)
 
     # Get dominant direction in radians
-    kpts2 = TEST_ptool_find_kpts_direction(imgBGR, kpts)
+    kpts2 = test_ptool_find_kpts_direction(imgBGR, kpts)
     kpts2, desc2 = pyhesaff.vtool_adapt_rotation(img_fpath, kpts)
 
     # ----------------------#
     # --- Draw Results --- #
     # ----------------------#
-    f1_loc = TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers)
+    f1_loc = test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers)
     df2.set_figtitle('Dominant Orienation Extraction')
 
-    TEST_figure2(imgBGR, kpts, desc, sel, fnum=2)
+    test_figure2(imgBGR, kpts, desc, sel, fnum=2)
     df2.set_figtitle('Gravity Vector')
-    TEST_figure2(imgBGR, kpts2, desc2, sel, fnum=3)
+    test_figure2(imgBGR, kpts2, desc2, sel, fnum=3)
     df2.set_figtitle('Rotation Invariant')
 
     # df2.draw_keypoint_gradient_orientations(imgBGR, kp=kpts2[sel],
@@ -126,7 +126,7 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     return locals()
 
 
-def test_patch_ori_main():
+def wbia_test_patch_ori_main():
     r"""
     Returns:
         ?: locals_
@@ -151,7 +151,7 @@ def test_patch_ori_main():
     imgBGR = test_data['imgBGR']
     sel = min(len(kpts) - 1, 3)
 
-    locals_ = TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel)
+    locals_ = test_keypoint(imgBGR, img_fpath, kpts, desc, sel)
     return locals_
 
 

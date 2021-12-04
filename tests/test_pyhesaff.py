@@ -4,7 +4,7 @@ from __future__ import absolute_import, division, print_function
 import utool as ut
 
 
-def test_pyheaff(img_fpath):
+def _test_pyheaff(img_fpath):
     r"""
     This show is interactive in this test!
 
@@ -16,7 +16,7 @@ def test_pyheaff(img_fpath):
         python -m tests.test_pyhesaff --test-test_pyheaff --show
 
     Example:
-        >>> # ENABLE_DOCTEST
+        >>> # xdoctest: +REQUIRES(module:wbia)
         >>> from tests.test_pyhesaff import *  # NOQA
         >>> img_fpath = ut.grab_test_imgpath('jeff.png')
         >>> test_pyheaff(img_fpath)

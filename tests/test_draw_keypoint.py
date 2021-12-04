@@ -11,13 +11,13 @@ import six
 px_ = 0
 
 
-def test_draw_keypoint_main():
+def wbia_test_draw_keypoint_main():
     r"""
     CommandLine:
         python -m tests.test_draw_keypoint --test-test_draw_keypoint_main --show
 
     Example:
-        >>> # DISABLE_DOCTEST
+        >>> # xdoctest: +REQUIRES(module:wbia)
         >>> from tests.test_draw_keypoint import *  # NOQA
         >>> test_draw_keypoint_main()
         >>> ut.show_if_requested()

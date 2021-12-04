@@ -359,7 +359,7 @@ template <class T> Histogram<T> wrap_histogram(const Histogram<T>& input)
     std::vector<int> tmp;
     tmp.resize(input.edges.size());
     std::adjacent_difference(input.edges.begin(), input.edges.end(), tmp.begin());
-    int low = tmp[0], high = tmp[tmp.size() - 1];
+    // int low = tmp[0], high = tmp[tmp.size() - 1];
     Histogram<T> output;
     output.step = input.step;
     output.range_min = input.range_min;
@@ -422,7 +422,7 @@ template <class T> void hist_edges_to_centers(Histogram<T>& hist)
 
 template <class T> void hist_argmaxima(Histogram<T> hist, std::vector<int>& argmaxima_list, float maxima_thresh=.8)
 {
-    int size = hist.data.size() - 2; // the edge points aren't to be counted, due to being only there to make interpolation simpler
+    // int size = hist.data.size() - 2; // the edge points aren't to be counted, due to being only there to make interpolation simpler
     // The first and last bins are duplicates so we dont need to look at those
     int argmax = 1;
     T maxval = hist.data[1]; // initialize

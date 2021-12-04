@@ -11,7 +11,8 @@ def simple_iterative_test():
         python -m tests.test_pyhesaff_simple_iterative --test-simple_iterative_test --show
 
     Example:
-        >>> # GUI_DOCTEST
+        >>> # xdoctest: +REQUIRES(module:wbia)
+        >>> # xdoctest: +REQUIRES(--gui)
         >>> from tests.test_pyhesaff_simple_iterative import *  # NOQA
         >>> result = simple_iterative_test()
         >>> print(result)

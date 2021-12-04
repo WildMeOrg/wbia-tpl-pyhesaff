@@ -161,7 +161,7 @@ public:
         for(size_t fx = 0; fx < nKpts; fx++)
         {
             Keypoint &k = this->keys[fx];
-            float x, y, iv11, iv12, iv21, iv22, s, det;
+            float x, y, iv11, iv12, iv21, iv22, det;
             const float sc = AffineShape::par.mrSize * k.s;
             const size_t rowk = fx * KPTS_DIM;
             const size_t rowd = fx * DESC_DIM;
@@ -296,7 +296,7 @@ public:
         {
             // 2D Array offsets
             size_t rowk = fx * KPTS_DIM;
-            size_t rowd = fx * DESC_DIM;
+            // size_t rowd = fx * DESC_DIM;
             //Read a keypoint from the file
             x = kpts[rowk + 0];
             y = kpts[rowk + 1];
@@ -344,7 +344,7 @@ public:
         {
             // 2D Array offsets
             const size_t rowk = fx * KPTS_DIM;
-            const size_t rowd = fx * DESC_DIM;
+            // const size_t rowd = fx * DESC_DIM;
             //Read a keypoint from the file
             x = kpts[rowk + 0];
             y = kpts[rowk + 1];
@@ -857,7 +857,7 @@ public:
         printDBG(name << ".type() = " <<  M.type());
         printDBG(name << ".depth() = " <<  M.depth());
         printDBG(name << ".at(0, 0) = " <<  (M.at<float>(0, 0)));
-        int channels = M.channels();
+        // int channels = M.channels();
         std::cout << name << " = cv::Matrix[\n";
         for (int r = 0; r < M.rows; r+=stride)
         {

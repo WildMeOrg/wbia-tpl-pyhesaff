@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
-from wbia.plottool.viz_keypoints import show_keypoints
-from wbia.plottool import draw_func2 as df2
 import vtool.ellipse as vtellipse
 from six.moves import zip
 import utool as ut
 import numpy as np
 
 
-def test_hesaff_kpts(img_fpath, **kwargs):
+def _test_hesaff_kpts(img_fpath, **kwargs):
     if 'kwargs' not in vars():
         kwargs = {}
     # Make detector and read image
@@ -32,7 +30,7 @@ def test_hesaff_kpts(img_fpath, **kwargs):
     return kpts, desc
 
 
-def test_adaptive_scale():
+def _test_adaptive_scale():
     # Get relevant test data
     """
     __name__ = 'IPython'
@@ -41,6 +39,8 @@ def test_adaptive_scale():
     """
     print('test_adaptive_scale()')
     import pyhestest
+    from wbia.plottool.viz_keypoints import show_keypoints
+    from wbia.plottool import draw_func2 as df2
 
     test_data = pyhestest.load_test_data(short=True, n=4)
     img_fpath = test_data['img_fpath']
@@ -142,14 +142,14 @@ def test_adaptive_scale():
     return locals()
 
 
-def test_adaptive_scale_main():
+def wbia_test_adaptive_scale_main():
     r"""
     CommandLine:
         python -m tests.test_adaptive_scale --test-test_adaptive_scale_main
         python -m tests.test_adaptive_scale --test-test_adaptive_scale_main --show
 
     Example:
-        >>> # DISABLE_DOCTEST
+        >>> # xdoctest: +REQUIRES(module:wbia)
         >>> from tests.test_adaptive_scale import *  # NOQA
         >>> # build test data
         >>> # execute function
@@ -157,6 +157,8 @@ def test_adaptive_scale_main():
         >>> # verify results
         >>> print(result)
     """
+    from wbia.plottool import draw_func2 as df2
+
     print('__main__ = test_adaptive_scale.py')
     np.set_printoptions(threshold=5000, linewidth=5000, precision=3)
 

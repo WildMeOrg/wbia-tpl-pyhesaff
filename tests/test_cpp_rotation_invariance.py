@@ -1,16 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, division, print_function
-from wbia import plottool as pt
-from wbia.plottool.viz_keypoints import show_keypoints
-from wbia.plottool import draw_func2 as df2
 import vtool.patch as ptool
 import numpy as np
 import utool as ut
 import utool
 
 
-def TEST_ptool_find_kpts_direction(imgBGR, kpts):
+def _test_ptool_find_kpts_direction(imgBGR, kpts):
     hrint = utool.horiz_print
     print('[rotinvar] +---')
     print('[rotinvar] | 3) Find dominant orientation in histogram')
@@ -23,7 +20,10 @@ def TEST_ptool_find_kpts_direction(imgBGR, kpts):
     return kpts2
 
 
-def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
+def _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
+    from wbia import plottool as pt
+    from wbia.plottool.viz_keypoints import show_keypoints
+    from wbia.plottool import draw_func2 as df2
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
     gorimag = pt.color_orimag(gori, gmag)
     nRow, nCol = (2, 7)
@@ -57,7 +57,7 @@ def TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
     return locals()
 
 
-def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
+def _test_figure2(imgBGR, kpts, desc, sel, fnum=2):
     from wbia.plottool.viz_keypoints import _annotate_kpts
     from wbia.plottool.viz_featrow import draw_feat_row
 
@@ -77,7 +77,7 @@ def TEST_figure2(imgBGR, kpts, desc, sel, fnum=2):
     draw_feat_row(imgBGR, sel, kpts[sel], sift, fnum=fnum, nRows=2, nCols=3, px=3)
 
 
-def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
+def _test_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     from wbia.plottool import draw_func2 as df2
     import vtool.patch as ptool
 
@@ -100,12 +100,12 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     # ----------------------#
     # --- Draw Results --- #
     # ----------------------#
-    f1_loc = TEST_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=fnum)
+    f1_loc = test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=fnum)
     df2.set_figtitle(figtitle + 'Dominant Orienation Extraction')
 
-    TEST_figure2(imgBGR, kpts, desc, sel, fnum=fnum + 1)
+    test_figure2(imgBGR, kpts, desc, sel, fnum=fnum + 1)
     df2.set_figtitle(figtitle)
-    #    TEST_figure2(imgBGR, kpts2, Desc2, sel, fnum=fnum + 2)
+    #    test_figure2(imgBGR, kpts2, Desc2, sel, fnum=fnum + 2)
     #    df2.set_figtitle('Rotation Invariant')
 
     # df2.draw_keypoint_gradient_orientations(imgBGR, kp=kpts2[sel],
@@ -120,7 +120,7 @@ def TEST_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
 # if __name__ == '__main__':
 
 
-def test_cpp_rotinvar_main():
+def wbia_test_cpp_rotinvar_main():
     r"""
     CommandLine:
         python -m tests.test_cpp_rotation_invariance --test-test_cpp_rotinvar_main
@@ -139,6 +139,7 @@ def test_cpp_rotinvar_main():
     # TODO; take visualization out of this test by default
     import pyhestest
     import pyhesaff
+    import cv2
 
     # Read data
     print('[rotinvar] loading test data')
@@ -173,17 +174,17 @@ def test_cpp_rotinvar_main():
 
     print('\n----\n'.join([str(k1) + '\n' + str(k2) for k1, k2 in zip(kpts1, kpts2)]))
 
-    imgBGR = pyhestest.cv2.imread(img_fpath)
+    imgBGR = cv2.imread(img_fpath)
     sel = min(len(kpts1) - 1, 3)
 
-    TEST_keypoint(
+    test_keypoint(
         imgBGR, img_fpath, kpts1, desc1, sel, fnum=1, figtitle='Downward Rotation'
     )
-    TEST_keypoint(
+    test_keypoint(
         imgBGR, img_fpath, kpts2, desc2, sel, fnum=9001, figtitle='Adapted Rotation'
     )
 
-    # locals_ = TEST_keypoint(imgBGR, img_fpath, kpts1, desc1, sel)
+    # locals_ = test_keypoint(imgBGR, img_fpath, kpts1, desc1, sel)
     # exec(utool.execstr_dict(locals_, 'locals_'))
     # exec(utool.execstr_dict(f1_loc, 'f1_loc'))  # NOQA
 

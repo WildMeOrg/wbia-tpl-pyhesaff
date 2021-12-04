@@ -73,9 +73,9 @@ NOTES
 Requires opencv. On ubuntu you can: ``sudo apt-get install libopencv-dev``. You can also build / use wheels. If cmake is unable to find OpenCV, manually set the location of OpenCV to the OpenCV_DIR environment variable
 
 
-.. |Build| image:: https://img.shields.io/github/workflow/status/WildbookOrg/wbia-tpl-pyhesaff/Build%20and%20upload%20to%20PyPI/master
-    :target: https://github.com/WildbookOrg/wbia-tpl-pyhesaff/actions?query=branch%3Amaster+workflow%3A%22Build+and+upload+to+PyPI%22
-    :alt: Build and upload to PyPI (master)
+.. |Build| image:: https://img.shields.io/github/workflow/status/WildMeOrg/wbia-tpl-pyhesaff/Build%20and%20upload%20to%20PyPI/main
+    :target: https://github.com/WildMeOrg/wbia-tpl-pyhesaff/actions?query=branch%3Amain+workflow%3A%22Build+and+upload+to+PyPI%22
+    :alt: Build and upload to PyPI (main)
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/wbia-pyhesaff.svg
    :target: https://pypi.python.org/pypi/wbia-pyhesaff

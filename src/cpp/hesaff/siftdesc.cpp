@@ -324,7 +324,7 @@ void SIFTDescriptor::sample()
     }
 
     // Do L2 normalization after any power law
-    float orig_mag = this->normalize2();
+    this->normalize2();
 
     if (this->par.maxBinValue >= 0.0)
     {

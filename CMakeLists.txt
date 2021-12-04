@@ -37,12 +37,16 @@ dissect_version()
 get_os_info()
 
 if(OS_IS_MACOS)
-  message(STATUS "INCLUDING MACPORTS")
+  message(STATUS "INCLUDING HOMEBREW")
 
-  include_directories(/opt/local/include)
-  link_directories(/opt/local/lib)
+  execute_process(COMMAND brew --prefix
+                  OUTPUT_VARIABLE BREW_PREFIX OUTPUT_STRIP_TRAILING_WHITESPACE)
+  message(STATUS "BREW_PREFIX = ${BREW_PREFIX}")
 
-  set(CMAKE_INSTALL_RPATH "/opt/local/lib")
+  include_directories("${BREW_PREFIX}/include")
+  link_directories("${BREW_PREFIX}/lib")
+
+  set(CMAKE_INSTALL_RPATH "${BREW_PREFIX}/lib")
 
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
@@ -97,19 +101,6 @@ set(TEST_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/test)
 option(BUILD_TESTS "Build tests" OFF)
 option(BUILD_DOC "Build documentation" OFF)
 option(USE_OPENMP "Use OpenMP multi-threading" ON)
-
-if(OS_IS_MACOS)
-  find_package(Gflags REQUIRED)
-  if(Gflags_FOUND
-     OR GFLAGS_FOUND
-     OR GFLAGS_INCLUDE_DIRS)
-    message(STATUS "GFLAGS_INCLUDE_DIR: ${GFLAGS_INCLUDE_DIR}")
-    message(STATUS "GFLAGS_LIBRARIES: ${GFLAGS_LIBRARIES}")
-    include_directories(${GFLAGS_INCLUDE_DIR})
-  else()
-    message(FATAL_ERROR "GFlags NOT found")
-  endif()
-endif()
 
 find_package(OpenCV REQUIRED)
 if(OpenCV_FOUND)

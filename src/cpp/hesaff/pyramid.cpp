@@ -567,7 +567,7 @@ void HessianDetector::detectPyramidKeypoints(const Mat &image)
     // between scales, and blurs the image in place. when sigma doubles
     // we downsample the image in this loop and procede to check the octaves in that scale
     int minSize = 2 * par.border + 2;
-    int num_blurs = 0;
+    // int num_blurs = 0;
     int current_pyramid_level = 0;
     const bool use_dense = par.use_dense;
     while(firstLevel.rows > minSize && firstLevel.cols > minSize)

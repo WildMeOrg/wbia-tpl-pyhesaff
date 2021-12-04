@@ -17,14 +17,14 @@ def double_detect(img_fpath, **kw):
     return kpts_, vecs_
 
 
-def test_ori_extract_main():
+def wbia_test_ori_extract_main():
     """
     CommandLine:
         python -m tests.test_exhaustive_ori_extract --test-test_ori_extract_main
         python -m tests.test_exhaustive_ori_extract --test-test_ori_extract_main --show
 
     Example:
-        >>> # GUI_DOCTEST
+        >>> # xdoctest: +REQUIRES(module:wbia)
         >>> from tests.test_exhaustive_ori_extract import *  # NOQA
         >>> test_ori_extract_main()
         >>> ut.show_if_requested()
