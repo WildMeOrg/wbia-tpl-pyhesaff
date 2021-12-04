@@ -87,7 +87,7 @@ def get_lib_dpath_list(root_dir):
 
 
 def find_lib_fpath(libname, root_dir, recurse_down=True, verbose=False):
-    """ Search for the library """
+    """Search for the library"""
     lib_fname_list = get_lib_fname_list(libname)
     tried_fpaths = []
 

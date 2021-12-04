@@ -286,7 +286,7 @@ def _cast_strlist_to_C(py_strlist):
 
 
 def _new_fpath_hesaff(img_fpath, **kwargs):
-    """ Creates new detector object which reads the image """
+    """Creates new detector object which reads the image"""
     hesaff_params = _make_hesaff_cpp_params(kwargs)
     hesaff_args = hesaff_params.values()  # pass all parameters to HESAFF_CLIB
     img_realpath = realpath(img_fpath)
@@ -304,7 +304,7 @@ def _new_fpath_hesaff(img_fpath, **kwargs):
 
 
 def _new_image_hesaff(img, **kwargs):
-    """ Creates new detector object which reads the image """
+    """Creates new detector object which reads the image"""
     hesaff_params = _make_hesaff_cpp_params(kwargs)
     hesaff_args = hesaff_params.values()  # pass all parameters to HESAFF_CLIB
     rows, cols = img.shape[0:2]
@@ -1014,7 +1014,7 @@ def test_rot_invar():
 
 
 def vtool_adapt_rotation(img_fpath, kpts):
-    """ rotation invariance in python """
+    """rotation invariance in python"""
     import vtool.patch as ptool
     import vtool.image as gtool
 

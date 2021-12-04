@@ -24,6 +24,7 @@ def _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
     from wbia import plottool as pt
     from wbia.plottool.viz_keypoints import show_keypoints
     from wbia.plottool import draw_func2 as df2
+
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
     gorimag = pt.color_orimag(gori, gmag)
     nRow, nCol = (2, 7)
