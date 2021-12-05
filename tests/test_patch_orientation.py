@@ -103,18 +103,18 @@ def _test_keypoint(imgBGR, img_fpath, kpts, desc, sel):
     hist, centers = ptool.get_orientation_histogram(gori, gori_weights)
 
     # Get dominant direction in radians
-    kpts2 = test_ptool_find_kpts_direction(imgBGR, kpts)
+    kpts2 = _test_ptool_find_kpts_direction(imgBGR, kpts)
     kpts2, desc2 = pyhesaff.vtool_adapt_rotation(img_fpath, kpts)
 
     # ----------------------#
     # --- Draw Results --- #
     # ----------------------#
-    f1_loc = test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers)
+    f1_loc = _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers)
     df2.set_figtitle('Dominant Orienation Extraction')
 
-    test_figure2(imgBGR, kpts, desc, sel, fnum=2)
+    _test_figure2(imgBGR, kpts, desc, sel, fnum=2)
     df2.set_figtitle('Gravity Vector')
-    test_figure2(imgBGR, kpts2, desc2, sel, fnum=3)
+    _test_figure2(imgBGR, kpts2, desc2, sel, fnum=3)
     df2.set_figtitle('Rotation Invariant')
 
     # df2.draw_keypoint_gradient_orientations(imgBGR, kp=kpts2[sel],
@@ -151,7 +151,7 @@ def wbia_test_patch_ori_main():
     imgBGR = test_data['imgBGR']
     sel = min(len(kpts) - 1, 3)
 
-    locals_ = test_keypoint(imgBGR, img_fpath, kpts, desc, sel)
+    locals_ = _test_keypoint(imgBGR, img_fpath, kpts, desc, sel)
     return locals_
 
 

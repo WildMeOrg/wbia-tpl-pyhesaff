@@ -22,7 +22,6 @@ def _test_ptool_find_kpts_direction(imgBGR, kpts):
 
 def _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
     from wbia import plottool as pt
-    from wbia.plottool.viz_keypoints import show_keypoints
     from wbia.plottool import draw_func2 as df2
 
     print('[rotinvar] 4) Draw histogram with interpolation annotations')
@@ -60,7 +59,9 @@ def _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=1):
 
 def _test_figure2(imgBGR, kpts, desc, sel, fnum=2):
     from wbia.plottool.viz_keypoints import _annotate_kpts
+    from wbia.plottool.viz_keypoints import show_keypoints
     from wbia.plottool.viz_featrow import draw_feat_row
+    from wbia.plottool import draw_func2 as df2
 
     # df2.imshow(wpatch, fnum=2)
     sift = desc[sel]
@@ -101,10 +102,10 @@ def _test_keypoint(imgBGR, img_fpath, kpts, desc, sel, fnum=1, figtitle=''):
     # ----------------------#
     # --- Draw Results --- #
     # ----------------------#
-    f1_loc = test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=fnum)
+    f1_loc = _test_figure1(wpatch, gradx, grady, gmag, gori, hist, centers, fnum=fnum)
     df2.set_figtitle(figtitle + 'Dominant Orienation Extraction')
 
-    test_figure2(imgBGR, kpts, desc, sel, fnum=fnum + 1)
+    _test_figure2(imgBGR, kpts, desc, sel, fnum=fnum + 1)
     df2.set_figtitle(figtitle)
     #    test_figure2(imgBGR, kpts2, Desc2, sel, fnum=fnum + 2)
     #    df2.set_figtitle('Rotation Invariant')
@@ -138,6 +139,7 @@ def wbia_test_cpp_rotinvar_main():
         >>> print(result)
     """
     # TODO; take visualization out of this test by default
+    from wbia.plottool import draw_func2 as df2
     import pyhestest
     import pyhesaff
     import cv2
@@ -178,10 +180,10 @@ def wbia_test_cpp_rotinvar_main():
     imgBGR = cv2.imread(img_fpath)
     sel = min(len(kpts1) - 1, 3)
 
-    test_keypoint(
+    _test_keypoint(
         imgBGR, img_fpath, kpts1, desc1, sel, fnum=1, figtitle='Downward Rotation'
     )
-    test_keypoint(
+    _test_keypoint(
         imgBGR, img_fpath, kpts2, desc2, sel, fnum=9001, figtitle='Adapted Rotation'
     )
 
