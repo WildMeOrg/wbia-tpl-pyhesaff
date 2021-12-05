@@ -1,4 +1,4 @@
+matplotlib
 opencv-contrib-python-headless
 ubelt
 wbia-vtool
-matplotlib
