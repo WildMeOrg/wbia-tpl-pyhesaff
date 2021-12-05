@@ -103,7 +103,7 @@ option(BUILD_TESTS "Build tests" OFF)
 option(BUILD_DOC "Build documentation" OFF)
 option(USE_OPENMP "Use OpenMP multi-threading" ON)
 
-FIND_PACKAGE(OpenCV REQUIRED core cv imgproc imgcodecs highgui)
+FIND_PACKAGE(OpenCV REQUIRED core imgproc imgcodecs highgui)
 
 if(OpenCV_FOUND)
   include_directories(${OpenCV_INCLUDE_DIRS})
