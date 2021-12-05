@@ -25,9 +25,9 @@ set(CPP_SOURCES
 add_library(hesaff_s STATIC ${CPP_SOURCES})
 target_link_libraries(hesaff_s ${OpenCV_LIBS})
 
-target_link_libraries(hesaff_s Eigen)
+target_link_libraries(hesaff_s Eigen3::Eigen)
 target_include_directories(hesaff_s PUBLIC ${EIGEN3_INCLUDE_DIR})
-
+ 
 if(OPENMP_FOUND)
   target_link_libraries(hesaff_s ${OpenMP_CXX_LIBRARIES})
 endif()
