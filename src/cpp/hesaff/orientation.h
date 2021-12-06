@@ -1,8 +1,8 @@
 #ifndef __ORIENTATION_H__
 #define __ORIENTATION_H__
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
+// #include <opencv2/core/core.hpp>
+// #include <opencv2/imgproc/imgproc.hpp>
 #include <cmath>
 #include <vector>
 #include <numeric>
@@ -10,7 +10,7 @@
 #include "helpers.h"
 
 //#include <cv.h>
-#include <opencv2/opencv.hpp>
+// #include <opencv2/opencv.hpp>
 using namespace cv;
 
 #ifndef M_TAU

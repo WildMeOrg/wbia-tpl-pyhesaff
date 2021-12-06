@@ -39,6 +39,7 @@ CommandLine:
 #include <assert.h>
 #endif
 #include <opencv2/core/core.hpp>
+#include <opencv2/opencv.hpp>
 
 #define USE_FREAK 0
 
@@ -49,8 +50,8 @@ CommandLine:
 //#include <opencv2/core/utility.hpp>
 //#include <opencv2/imgcodecs.hpp>
 
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
+// #include <opencv2/imgproc/imgproc.hpp>
+// #include <opencv2/highgui/highgui.hpp>
 
 #include <stdlib.h> // malloc
 #include <string.h> // strcpy
