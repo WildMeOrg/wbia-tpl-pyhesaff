@@ -100,14 +100,10 @@ option(BUILD_TESTS "Build tests" OFF)
 option(BUILD_DOC "Build documentation" OFF)
 option(USE_OPENMP "Use OpenMP multi-threading" ON)
 
-find_package(OpenCV REQUIRED core imgproc highgui)
+FIND_PACKAGE(OpenCV REQUIRED core imgproc highgui)
 
 if(OpenCV_FOUND)
   include_directories(${OpenCV_INCLUDE_DIRS})
-
-  execute_process(COMMAND ls -al ${OpenCV_INCLUDE_DIRS} OUTPUT_VARIABLE OpenCV_INCLUDE_DIRS_LS)
-  execute_process(COMMAND ls -al ${OpenCV_INCLUDE_DIRS}/opencv2 OUTPUT_VARIABLE OpenCV_INCLUDE_DIRS_LS)
-  message(${OpenCV_INCLUDE_DIRS_LS})
 else()
   message(FATAL_ERROR "OpenCV NOT found")
 endif()
@@ -118,7 +114,7 @@ if(USE_OPENMP)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
     set(CMAKE_EXE_LINKER_FLAGS
-        "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+        "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_CXX_LIBRARIES}")
   else()
     message(WARNING "OpenMP NOT found")
   endif()
@@ -141,8 +137,8 @@ set(namespace "pyhesaff::")
 
 if(SKBUILD)
   # Override output paths when using scikit-build
-  set(HESAFF_LIB_INSTALL_DIR "pyhesaff/lib")
-  set(HESAFF_INCLUDE_INSTALL_DIR "pyhesaff/include")
+  set(PYHESAFF_LIB_INSTALL_DIR "pyhesaff/lib")
+  set(PYHESAFF_INCLUDE_INSTALL_DIR "pyhesaff/include")
 endif()
 
 if(NOT SKBUILD)
