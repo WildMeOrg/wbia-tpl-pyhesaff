@@ -150,12 +150,6 @@ def load_clib(libname, root_dir):
     """
     lib_fpath = find_lib_fpath(libname, root_dir)
 
-    import subprocess
-    print(lib_fpath)
-    # output = subprocess.run(['otool', '-L', lib_fpath], check=True, text=True)
-    output = subprocess.run(['ldd', '-d', lib_fpath], check=True, text=True)
-    print(output)
-
     try:
         clib = C.cdll[lib_fpath]
 
