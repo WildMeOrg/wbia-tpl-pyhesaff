@@ -54,9 +54,6 @@ if(OS_IS_MACOS)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++")
 endif()
 
-find_package(Eigen3)
-include_directories(${EIGEN3_INCLUDE_DIR})
-
 # Setup basic python stuff and ensure we have skbuild list(INSERT
 # CMAKE_MODULE_PATH 0 "${CMAKE_SOURCE_DIR}/CMake") include( skbuild-helpers )
 
