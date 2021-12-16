@@ -232,12 +232,17 @@ def _load_hesaff_clib(rebuild=None):
 # Create a global interface to the hesaff lib
 try:
     HESAFF_CLIB, __LIB_FPATH__ = _load_hesaff_clib()
-except AttributeError:
-    print('Need to rebuild hesaff')
-    raise
+    KPTS_DIM = HESAFF_CLIB.get_kpts_dim()
+    DESC_DIM = HESAFF_CLIB.get_desc_dim()
+except (ImportError, AttributeError):
+    import warnings
 
-KPTS_DIM = HESAFF_CLIB.get_kpts_dim()
-DESC_DIM = HESAFF_CLIB.get_desc_dim()
+    warnings.warn('Unable to load C library for Hesaff')
+
+    HESAFF_CLIB = None
+    __LIB_FPATH__ = None
+    KPTS_DIM = None
+    DESC_DIM = None
 
 
 # ============================
