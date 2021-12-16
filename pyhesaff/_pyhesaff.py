@@ -421,36 +421,35 @@ def detect_feats(img_fpath, use_adaptive_scale=False, nogravity_hack=False, **kw
         python -m vtool.tests.dummy testdata_ratio_matches --show
 
         python -m pyhesaff detect_feats --show --fname easy1.png --ai \
-            --verbose --rebuild-hesaff --scale-min=35 --scale-max=40 --no-rmbuild
+        --verbose --rebuild-hesaff --scale-min=35 --scale-max=40 --no-rmbuild
 
         python -m pyhesaff detect_feats --show --fname easy1.png --ai \
-            --verbose --scale-min=35 --scale-max=40&
+        --verbose --scale-min=35 --scale-max=40&
         python -m pyhesaff detect_feats --show --fname easy1.png --no-ai \
-            --verbose --scale-min=35 --scale-max=40&
+        --verbose --scale-min=35 --scale-max=40&
         python -m pyhesaff detect_feats --show --fname easy1.png --no-ai \
-            --verbose --scale-max=40 --darken .5
+        --verbose --scale-max=40 --darken .5
         python -m pyhesaff detect_feats --show --fname easy1.png --no-ai \
-            --verbose --scale-max=30 --darken .5
+        --verbose --scale-max=30 --darken .5
         python -m pyhesaff detect_feats --show --fname easy1.png --ai \
-            --verbose --scale-max=30 --darken .5
+        --verbose --scale-max=30 --darken .5
 
         # DENSE KEYPOINTS
         python -m pyhesaff detect_feats --show --fname astro.png \
-            --no-affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
-            --use_dense --dense_stride=64
+        --no-affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
+        --use_dense --dense_stride=64
         python -m pyhesaff detect_feats --show --fname astro.png \
-            --no-affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
-            --use_dense --dense_stride=64 --rotation-invariance
+        --no-affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
+        --use_dense --dense_stride=64 --rotation-invariance
         python -m pyhesaff detect_feats --show --fname astro.png \
-            --affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
-            --use_dense --dense_stride=64
+        --affine-invariance --numberOfScales=1 --maxPyramidLevels=1 \
+        --use_dense --dense_stride=64
         python -m pyhesaff detect_feats --show --fname astro.png \
-            --no-affine-invariance --numberOfScales=3 \
-            --maxPyramidLevels=2 --use_dense --dense_stride=32
-
+        --no-affine-invariance --numberOfScales=3 \
+        --maxPyramidLevels=2 --use_dense --dense_stride=32
         python -m pyhesaff detect_feats --show --only_count=False
 
-    Example0:
+    Example:
         >>> # ENABLE_DOCTEST
         >>> # Test simple detect
         >>> from pyhesaff._pyhesaff import *  # NOQA
@@ -670,7 +669,7 @@ def detect_num_feats_in_image(img, **kwargs):
         >>> result = ('nKpts = %s' % (ub.repr2(nKpts),))
         >>> print(result)
 
-    Example1:
+    Example:
         >>> # TIMEDOCTEST
         >>> from pyhesaff._pyhesaff import *  # NOQA
         >>> setup = ub.codeblock(
