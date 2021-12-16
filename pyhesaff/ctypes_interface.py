@@ -126,13 +126,14 @@ def find_lib_fpath(libname, root_dir, recurse_down=True, verbose=False):
         pass
         return FINAL_LIB_FPATH
 
-    msg = (
-        '\n[C!] find_lib_fpath(libname=%r root_dir=%r, recurse_down=%r, verbose=%r)'
-        % (libname, root_dir, recurse_down, verbose)
-        + '\n[c!] Cannot FIND dynamic library'
-    )
-    print(msg)
-    print('\n[c!] Checked: '.join(tried_fpaths))
+    # msg = (
+    #     '\n[C!] find_lib_fpath(libname=%r root_dir=%r, recurse_down=%r, verbose=%r)'
+    #     % (libname, root_dir, recurse_down, verbose)
+    #     + '\n[c!] Cannot FIND dynamic library'
+    # )
+    # print(msg)
+    # print('\n[c!] Checked: '.join(tried_fpaths))
+    msg = 'Cannot FIND dynamic library'
     raise ImportError(msg)
 
 

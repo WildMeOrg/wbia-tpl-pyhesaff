@@ -195,13 +195,14 @@
         <span class="k">pass</span>
         <span class="k">return</span> <span class="n">FINAL_LIB_FPATH</span>
 
-    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[C!] find_lib_fpath(libname=</span><span class="si">%r</span><span class="s1"> root_dir=</span><span class="si">%r</span><span class="s1">, recurse_down=</span><span class="si">%r</span><span class="s1">, verbose=</span><span class="si">%r</span><span class="s1">)&#39;</span>
-        <span class="o">%</span> <span class="p">(</span><span class="n">libname</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">recurse_down</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
-        <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[c!] Cannot FIND dynamic library&#39;</span>
-    <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[c!] Checked: &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tried_fpaths</span><span class="p">))</span>
+    <span class="c1"># msg = (</span>
+    <span class="c1">#     &#39;\n[C!] find_lib_fpath(libname=%r root_dir=%r, recurse_down=%r, verbose=%r)&#39;</span>
+    <span class="c1">#     % (libname, root_dir, recurse_down, verbose)</span>
+    <span class="c1">#     + &#39;\n[c!] Cannot FIND dynamic library&#39;</span>
+    <span class="c1"># )</span>
+    <span class="c1"># print(msg)</span>
+    <span class="c1"># print(&#39;\n[c!] Checked: &#39;.join(tried_fpaths))</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Cannot FIND dynamic library&#39;</span>
     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 
