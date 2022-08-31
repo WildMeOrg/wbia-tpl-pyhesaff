@@ -137,6 +137,8 @@ set(namespace "pyhesaff::")
 
 if(SKBUILD)
   # Override output paths when using scikit-build
+  set(HESAFF_LIB_INSTALL_DIR "pyhesaff/lib")
+  set(HESAFF_INCLUDE_INSTALL_DIR "pyhesaff/include")
   set(PYHESAFF_LIB_INSTALL_DIR "pyhesaff/lib")
   set(PYHESAFF_INCLUDE_INSTALL_DIR "pyhesaff/include")
 endif()

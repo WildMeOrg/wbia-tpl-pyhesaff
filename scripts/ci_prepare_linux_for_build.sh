@@ -18,3 +18,5 @@ else
         libopencv-dev \
         libomp-dev
 fi
+
+python setup.py build_ext --inplace
