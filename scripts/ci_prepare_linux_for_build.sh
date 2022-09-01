@@ -2,8 +2,6 @@
 
 set -ex
 
-pip install -r requirements/build.txt
-
 if command -v yum &> /dev/null
 then
     yum install -y \
@@ -18,5 +16,3 @@ else
         libopencv-dev \
         libomp-dev
 fi
-
-python setup.py build_ext --inplace
