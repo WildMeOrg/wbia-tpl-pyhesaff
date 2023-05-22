@@ -122,10 +122,10 @@ HESAFF_PARAM_TYPES = [type_ for (type_, key, val) in HESAFF_TYPED_PARAMS]
 
 def grab_test_imgpath(p):
     fpath = ub.grabdata(
-        'https://i.imgur.com/KXhKM72.png',
-        fname='astro.png',
-        hash_prefix='160b6e5989d2788c0296eac45b33e90fe612da23',
-        hasher='sha1',
+        'https://cthulhu.dyn.wildme.io/public/testimgs/KXhKM72.png',
+        fname='astro.png'
+        # hash_prefix='160b6e5989d2788c0296eac45b33e90fe612da23',
+        # hasher='sha1',
     )
     return fpath
 
