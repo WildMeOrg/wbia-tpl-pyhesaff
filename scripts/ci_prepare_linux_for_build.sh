@@ -13,6 +13,7 @@ else
     apt-get install -y \
         pkg-config \
         libeigen3-dev \
+        python3-opencv \
         libopencv-dev \
         libomp-dev
 fi
