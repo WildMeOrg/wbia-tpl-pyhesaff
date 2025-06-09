@@ -36,7 +36,9 @@ jobs:
             python -m pip install --upgrade pip
             pip install cibuildwheel build setuptools_scm[toml]
             # python -m cibuildwheel --output-dir wheelhouse
-            cibuildwheel --platform linux --output-dir wheelhouse --build cp38-manylinux_x86_64
+            # cibuildwheel --platform linux --output-dir wheelhouse --build cp38-manylinux_x86_64
+            cibuildwheel --platform linux --output-dir wheelhouse
+
 
     
       - uses: actions/upload-artifact@v4
