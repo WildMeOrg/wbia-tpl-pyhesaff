@@ -32,8 +32,10 @@ jobs:
           CIBW_BEFORE_BUILD_MACOS: bash scripts/ci_prepare_macos_for_build.sh && bash run_developer_setup.sh
           CIBW_TEST_COMMAND: PYTHONFAULTHANDLER=1 python -c "import pyhesaff; from pyhesaff.__main__ import main; main()"
         run: |
-          python -m pip install cibuildwheel
-          python -m cibuildwheel --output-dir wheelhouse
+            python -m pip install --upgrade pip
+            pip install setuptools_scm[toml] build
+            python -m cibuildwheel --output-dir wheelhouse
+            python -m cibuildwheel --output-dir wheelhouse
 
       - uses: actions/upload-artifact@v4
         with:
