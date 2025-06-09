@@ -27,7 +27,6 @@ jobs:
 
       - name: Build wheel
         env:
-            CIBW_SKIP: pp* *_musllinux_*      # whatever else you skip
             CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64:2020.02
             CIBW_BUILD: "cp38-manylinux_x86_64"
             CIBW_SKIP: "*"
