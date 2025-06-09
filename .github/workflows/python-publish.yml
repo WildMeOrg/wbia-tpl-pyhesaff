@@ -26,34 +26,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Build wheel
-name: Build and upload to PyPI
-
-# Build on every branch push, tag push, and pull request change:
-on: push
-
-jobs:
-
-  build_wheels:
-    name: Build on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        python-version: [3.8]
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # This allows the setuptools_scm library to discover the tag version from git
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v2
-        name: Install Python
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Build wheel
         env:
           CIBW_SKIP: pp* cp36-* *_i686 *_ppc64le *_s390x cp36-musllinux_* cp37-musllinux_* cp38-musllinux_* cp39-musllinux_* cp310-musllinux_* cp310-macosx_* cp311-musllinux_* cp311-manylinux_* cp311-macosx_*
           CIBW_BEFORE_BUILD_LINUX: bash scripts/ci_prepare_linux_for_build.sh && bash run_developer_setup.sh
@@ -64,59 +36,6 @@ jobs:
           pip install cibuildwheel build setuptools_scm[toml]
           python -m cibuildwheel --output-dir wheelhouse
         
-      - uses: actions/upload-artifact@v4
-        with:
-          path: ./wheelhouse/*.whl
-
-  build_sdist:
-    name: Build source distribution
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-python@v2
-        name: Install Python
-        with:
-          python-version: '3.8'
-
-      - name: Build sdist
-        run: |
-          pip install scikit-build
-          python setup.py sdist
-
-      - uses: actions/upload-artifact@v4
-        with:
-          path: dist/*.tar.gz
-
-  upload_pypi:
-    needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-latest
-    # upload to PyPI on every tag starting with 'v'
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/v')
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: artifact
-          path: dist
-
-      - uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_PASSWORD }}
-          # To test: repository_url: https://test.pypi.org/legacy/
-
-      
-        env:
-          CIBW_SKIP: pp* cp36-* *_i686 *_ppc64le *_s390x cp36-musllinux_* cp37-musllinux_* cp38-musllinux_* cp39-musllinux_* cp310-musllinux_* cp310-macosx_* cp311-musllinux_* cp311-manylinux_* cp311-macosx_*
-          CIBW_BEFORE_BUILD_LINUX: bash scripts/ci_prepare_linux_for_build.sh && bash run_developer_setup.sh
-          CIBW_BEFORE_BUILD_MACOS: bash scripts/ci_prepare_macos_for_build.sh && bash run_developer_setup.sh
-          CIBW_TEST_COMMAND: PYTHONFAULTHANDLER=1 python -c "import pyhesaff; from pyhesaff.__main__ import main; main()"
-        run: |
-            python -m pip install --upgrade pip
-            pip install setuptools_scm[toml] build
-            pip install cibuildwheel build setuptools_scm[toml]
-            python -m cibuildwheel --output-dir wheelhouse
-
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
