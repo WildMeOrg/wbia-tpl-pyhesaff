@@ -35,7 +35,7 @@ jobs:
             CIBW_PLATFORM: linux
             CIBW_ARCHS: "x86_64"
             # override the default manylinux2014_x86_64 image
-            CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64:2025.04.19-1
+            # CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64:2025.04.19-1
             CIBW_BEFORE_BUILD_LINUX: |
                   yum install -y epel-release opencv-devel \
                     && bash scripts/ci_prepare_linux_for_build.sh \
