@@ -27,29 +27,17 @@ jobs:
 
       - name: Build wheel
         env:
-            # Pin every manylinux2014 image to the exact date-tag you pushed
-            CIBW_MANYLINUX_IMAGES: |
-              x86_64: quay.io/pypa/manylinux2014_x86_64:2025.04.19-1
-              i686:   quay.io/pypa/manylinux2014_i686:2025.04.19-1
-              aarch64: quay.io/pypa/manylinux2014_aarch64:2025.04.19-1
-              ppc64le: quay.io/pypa/manylinux2014_ppc64le:2025.04.19-1
-              s390x:   quay.io/pypa/manylinux2014_s390x:2025.04.19-1
-              armv7l:  quay.io/pypa/manylinux_2_31_armv7l:2025.04.19-1
-        
-            # Only build the cp38 wheel (skip cp37, cp39, cp310, etc.)
+            CIBW_SKIP: pp* *_musllinux_*      # whatever else you skip
+            CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
             CIBW_BUILD: "cp38-manylinux_x86_64"
-        
-            # Anything you already had:
-            CIBW_SKIP: pp* *_musllinux_*    # etc.
             CIBW_BEFORE_BUILD_LINUX: bash scripts/ci_prepare_linux_for_build.sh && bash run_developer_setup.sh
-            CIBW_BEFORE_BUILD_MACOS:  brew install cmake ninja && bash scripts/ci_prepare_macos_for_build.sh && bash run_developer_setup.sh
+            CIBW_BEFORE_BUILD_MACOS: brew install cmake ninja && bash scripts/ci_prepare_macos_for_build.sh && bash run_developer_setup.sh
             CIBW_TEST_COMMAND: PYTHONFAULTHANDLER=1 python -c "import pyhesaff; from pyhesaff.__main__ import main; main()"
-        
         run: |
-          python -m pip install --upgrade pip
-          pip install cibuildwheel build setuptools_scm[toml]
-          python -m cibuildwheel --output-dir wheelhouse
-        
+            python -m pip install --upgrade pip
+            pip install cibuildwheel build setuptools_scm[toml]
+            python -m cibuildwheel --output-dir wheelhouse
+    
       - uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
