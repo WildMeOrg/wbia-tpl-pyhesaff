@@ -29,7 +29,6 @@ jobs:
         env:
             CIBW_MANYLINUX_X86_64_IMAGE: quay.io/pypa/manylinux2014_x86_64:2020.02
             CIBW_BUILD: "cp38-manylinux_x86_64"
-            CIBW_SKIP: "*"
             CIBW_BEFORE_BUILD_LINUX: bash scripts/ci_prepare_linux_for_build.sh && bash run_developer_setup.sh
             CIBW_BEFORE_BUILD_MACOS: brew install cmake ninja && bash scripts/ci_prepare_macos_for_build.sh && bash run_developer_setup.sh
             CIBW_TEST_COMMAND: PYTHONFAULTHANDLER=1 python -c "import pyhesaff; from pyhesaff.__main__ import main; main()"
